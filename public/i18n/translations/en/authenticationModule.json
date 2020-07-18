@@ -1,0 +1,19 @@
+{
+   "hiTherePleaseSignUp": "Hi there, please login",
+   "userName": "Email",
+   "password": "PASSWORD",
+   "login": "LOGIN",
+   "confirmPassword": "CONFIRM PASSWORD",
+   "userNameErrorMessage": "Please enter username",
+   "passwordErroeMessage": "Please enter password",
+   "userNamePlaceholderText": "Enter email address",
+   "passwordPlaceholderText": "password",
+   "confirmPasswordPlaceholderText": "confirm password",
+   "userNameInputFieldType": "text",
+   "passwordInputFieldType": "password",
+   "confirmPasswordInputFieldType": "password",
+   "altForCompanyLogo": "IbhusLogo",
+   "signInBtntype": "submit",
+   "LoginButtonName": "LOGIN",
+   "dontHaveanAccountText": "Don't have an account ?"
+}
