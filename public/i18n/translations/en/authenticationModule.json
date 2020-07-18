@@ -15,5 +15,7 @@
    "altForCompanyLogo": "IbhusLogo",
    "signInBtntype": "submit",
    "LoginButtonName": "LOGIN",
-   "dontHaveanAccountText": "Don't have an account ?"
+   "dontHaveanAccountText": "Don't have an account ?",
+   "english": "English",
+   "telugu": "Telugu"
 }

@@ -9,13 +9,13 @@ export const SignInPageMainContainer = styled.div`
 `
 export const SignInCardContanier = styled.div`
    @media only screen and (max-width: 767px) {
-      height: 500px;
+      height: 550px;
       width: 400px;
    }
 
    @media only screen and (min-width: 768px) {
-      height: 550px;
-      width: 400px;
+      height: 600px;
+      width: 470px;
    }
 
    ${tw`  flex  rounded shadow flex-col justify-center items-center `};
@@ -58,5 +58,8 @@ export const DontHaveAccount = styled.p`
    font-family: HKGrotesk;
    font-size: 14px;
    font-weight: normal;
-   ${tw``}
+   ${tw`m-4`}
+`
+export const GoToSignUp = styled.span`
+   color: ${colors.brightBlue};
 `

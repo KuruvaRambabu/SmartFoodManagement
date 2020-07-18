@@ -18,13 +18,12 @@ export const InputElement = styled.input`
    ${tw`focus:outline-none w-full h-8  `};
 `
 export const InputFieldContainer = styled.div`
-   ${tw`flex justify-end`}
+   ${tw`flex`}
 `
 
 export const ErrorImageContainer = styled.div`
-   object-fiit: 'contain';
-   position: ${(props: isError) => (props.isError ? 'absolute' : '')};
-   ${tw`mt-2`};
+   margin-right: ${(props: isError) => (props.isError ? -10 : '')};
+   ${tw`mt-2  `};
 `
 
 export const ErrorImage = styled.img``

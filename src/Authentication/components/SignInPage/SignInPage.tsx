@@ -4,6 +4,11 @@ import { observer } from 'mobx-react'
 import SignInButton from '../../../Common/components/Button/SignInButton'
 
 import InputField from '../../../Common/components/InputField/index'
+import IbHubsLogo from '../../../Common/components/Icons/IbHubsLogo/IbHubsLogo'
+
+import i18n from '../../i18n'
+
+import LanguageSelector from '../LanguageSelector/LanguageSelector'
 
 import {
    SignInPageMainContainer,
@@ -13,10 +18,9 @@ import {
    ImageContainer,
    ErrorMessage,
    DontHaveAccount,
-   LabelField
+   LabelField,
+   GoToSignUp
 } from './styledComponents'
-import IbHubsLogo from '../../../Common/components/Icons/IbHubsLogo/IbHubsLogo'
-import i18n from '../../i18n'
 
 interface SignInPageTypes {
    email: string
@@ -95,59 +99,49 @@ class SignInPage extends React.Component<SignInPageTypes> {
                         ''
                      )}
                   </LabelField>
-                  {/* <div className='h-20 '>
-                     <LabelField>
-                        {t('authenticationModule:password')}
-                        <InputField
-                           forwardRef={this.passwordRef}
-                           onChangeField={onChangePassword}
-                           type={t(
-                              'authenticationModule:passwordInputFieldType'
-                           )}
-                           placeholder={t(
-                              'authenticationModule:passwordPlaceholderText'
-                           )}
-                           value={password}
-                           errorMessage={passwordErrorMessage}
-                           validate={validatePassword}
-                        />
-                        {passwordErrorMessage ? (
-                           <ErrorMessage>{passwordErrorMessage}</ErrorMessage>
-                        ) : (
-                           ''
+
+                  <LabelField>
+                     {t('authenticationModule:password')}
+                     <InputField
+                        forwardRef={this.passwordRef}
+                        onChangeField={onChangePassword}
+                        type={t('authenticationModule:passwordInputFieldType')}
+                        placeholder={t(
+                           'authenticationModule:passwordPlaceholderText'
                         )}
-                     </LabelField>
-                  </div>
+                        value={password}
+                        errorMessage={passwordErrorMessage}
+                        validate={validatePassword}
+                     />
+                     {passwordErrorMessage ? (
+                        <ErrorMessage>{passwordErrorMessage}</ErrorMessage>
+                     ) : (
+                        ''
+                     )}
+                  </LabelField>
+
                   <SignInButton
                      apiStatus={getUserSignInAPIStatus}
                      onClickSignIn={onClickSignIn}
                      name={t('authenticationModule:login')}
                   />
-
                   {errorMessage ? (
                      <ErrorMessage>{errorMessage}</ErrorMessage>
                   ) : (
                      ''
-                  )} */}
+                  )}
                </Form>
-               {/* <DontHaveAccount>
+               <DontHaveAccount>
                   {t('authenticationModule:dontHaveanAccountText')}
-                  <span
+                  <GoToSignUp
                      className='cursor-pointer text-blue-600 font-bold'
                      onClick={goToSignUpPage}
                   >
                      Sign Up
-                  </span>
+                  </GoToSignUp>
                </DontHaveAccount>
-               <select
-                  className='bg-white border rounded focus:outline-none border-black'
-                  onChange={this.changeLanguage}
-               >
-                  <option selected value='en'>
-                     English
-                  </option>
-                  <option value='te'>Telugu</option>
-               </select> */}
+
+               <LanguageSelector t={t} changeLanguage={this.changeLanguage} />
             </SignInCardContanier>
          </SignInPageMainContainer>
       )
