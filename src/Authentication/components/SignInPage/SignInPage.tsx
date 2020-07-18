@@ -1,8 +1,9 @@
 import React from 'react'
 import { observer } from 'mobx-react'
 
-import SignInButton from '../../../Common/components/Button/SignInButton'
+import { Typo14DarkBlueGreyHKGroteskRegularSpan } from '.././../../Common/styleGuide/Typos/index'
 
+import SignInButton from '../../../Common/components/Button/SignInButton'
 import InputField from '../../../Common/components/InputField/index'
 import IbHubsLogo from '../../../Common/components/Icons/IbHubsLogo/IbHubsLogo'
 
@@ -22,6 +23,8 @@ import {
    GoToSignUp
 } from './styledComponents'
 
+import Button from '../../../Common/components/Button/Button'
+
 interface SignInPageTypes {
    email: string
    password: string
@@ -37,7 +40,7 @@ interface SignInPageTypes {
    t: any
    goToSignUpPage: any
 }
-
+Typo14DarkBlueGreyHKGroteskRegularSp
 @observer
 class SignInPage extends React.Component<SignInPageTypes> {
    emailRef: React.RefObject<HTMLInputElement> = React.createRef()
@@ -48,6 +51,9 @@ class SignInPage extends React.Component<SignInPageTypes> {
    }
    changeLanguage = e => {
       i18n.changeLanguage(e.target.value)
+   }
+   onClickSampleButton = () => {
+      alert('hii')
    }
 
    render() {
@@ -69,6 +75,13 @@ class SignInPage extends React.Component<SignInPageTypes> {
 
       return (
          <SignInPageMainContainer>
+            <Button
+               typo={Typo14DarkBlueGreyHKGroteskRegularSpan}
+               type={Button.buttonType.filled}
+               onClickBtn={this.onClickSampleButton}
+               name={'sample'}
+               apiStatus={100}
+            />
             <SignInCardContanier>
                <ImageContainer>
                   <IbHubsLogo />

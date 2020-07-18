@@ -10,8 +10,10 @@ export default {
 
 export const SignInButtonWithoutLoading = () => (
    <SignInButton
-    apiStatus={200}  name ="button"
-   onClickSignIn={action('clicked')} />
+      apiStatus={200}
+      name='button'
+      onClickSignIn={action('clicked')}
+   />
 )
 
 // export const SignInButtonWithLoading = () => (

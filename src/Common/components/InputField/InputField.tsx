@@ -42,16 +42,15 @@ class InputField extends React.Component<InputFieldTypes> {
                onBlur={validate}
                ref={forwardRef}
             ></InputElement>
-            {/* {errorMessage ? (
-               <ErrorImageContainer isError={errorMessage}>
-                  <ErrorImage src={InputErrorLogo}></ErrorImage>
-               </ErrorImageContainer>
-            ) : (
-               ''
-            )} */}
          </InputFieldContainer>
       )
    }
 }
 
 export default InputField
+
+//  <ErrorImage src={InputErrorLogo}></ErrorImage>{errorMessage ? (
+// <ErrorImageContainer>{errorMessage}</ErrorImageContainer>
+// ) : (
+//    ''
+// )}
