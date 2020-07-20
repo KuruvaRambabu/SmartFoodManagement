@@ -26,7 +26,8 @@ import {
    DontHaveAccount,
    LabelField,
    GoToSignUp,
-   ButtonStyles
+   EmailInputFieldContainer,
+   PasswordInputFieldContainer
 } from './styledComponents'
 
 interface SignInPageTypes {
@@ -45,6 +46,7 @@ class SignInPage extends React.Component<SignInPageTypes> {
    @observable emailErrorMessage: string
    emailRef: React.RefObject<HTMLInputElement> = React.createRef()
    passwordRef: React.RefObject<HTMLInputElement> = React.createRef()
+
    constructor(props) {
       super(props)
       this.email = ''
@@ -122,46 +124,56 @@ class SignInPage extends React.Component<SignInPageTypes> {
                </Heading>
 
                <Form>
-                  <LabelField>
-                     {t('authenticationModule:userName')}
-                     <InputField
-                        isError={this.emailErrorMessage}
-                        forwardRef={this.emailRef}
-                        onChangeField={this.onChangeUserName}
-                        type={t('authenticationModule:userNameInputFieldType')}
-                        value={this.email}
-                        placeholder={t(
-                           'authenticationModule:userNamePlaceholderText'
+                  <EmailInputFieldContainer>
+                     <LabelField>
+                        {t('authenticationModule:userName')}
+                        <InputField
+                           isError={this.emailErrorMessage}
+                           forwardRef={this.emailRef}
+                           onChangeField={this.onChangeUserName}
+                           type={t(
+                              'authenticationModule:userNameInputFieldType'
+                           )}
+                           value={this.email}
+                           placeholder={t(
+                              'authenticationModule:userNamePlaceholderText'
+                           )}
+                           errorMessage={this.emailErrorMessage}
+                           validate={this.checkUserNameValidation}
+                        />
+                        {this.emailErrorMessage ? (
+                           <ErrorMessage>{this.emailErrorMessage}</ErrorMessage>
+                        ) : (
+                           ''
                         )}
-                        errorMessage={this.emailErrorMessage}
-                        validate={this.checkUserNameValidation}
-                     />
-                     {this.emailErrorMessage ? (
-                        <ErrorMessage>{this.emailErrorMessage}</ErrorMessage>
-                     ) : (
-                        ''
-                     )}
-                  </LabelField>
+                     </LabelField>
+                  </EmailInputFieldContainer>
 
-                  <LabelField>
-                     {t('authenticationModule:password')}
-                     <InputField
-                        forwardRef={this.passwordRef}
-                        onChangeField={this.onChangePassword}
-                        type={t('authenticationModule:passwordInputFieldType')}
-                        placeholder={t(
-                           'authenticationModule:passwordPlaceholderText'
+                  <PasswordInputFieldContainer>
+                     <LabelField>
+                        {t('authenticationModule:password')}
+                        <InputField
+                           forwardRef={this.passwordRef}
+                           onChangeField={this.onChangePassword}
+                           type={t(
+                              'authenticationModule:passwordInputFieldType'
+                           )}
+                           placeholder={t(
+                              'authenticationModule:passwordPlaceholderText'
+                           )}
+                           value={this.password}
+                           errorMessage={this.passwordErrorMessage}
+                           validate={this.checkPasswordValidation}
+                        />
+                        {this.passwordErrorMessage ? (
+                           <ErrorMessage>
+                              {this.passwordErrorMessage}
+                           </ErrorMessage>
+                        ) : (
+                           ''
                         )}
-                        value={this.password}
-                        errorMessage={this.passwordErrorMessage}
-                        validate={this.checkPasswordValidation}
-                     />
-                     {this.passwordErrorMessage ? (
-                        <ErrorMessage>{this.passwordErrorMessage}</ErrorMessage>
-                     ) : (
-                        ''
-                     )}
-                  </LabelField>
+                     </LabelField>
+                  </PasswordInputFieldContainer>
 
                   <Button
                      typo={Typo14DarkBlueGreyHKGroteskRegularSpan}

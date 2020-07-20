@@ -15,10 +15,10 @@ export const InputElement = styled.input`
    color: ${colors.darkBlueGrey};
 
    font-size: 16px;
-   ${tw`focus:outline-none w-full h-8  `};
+   ${tw`focus:outline-none w-full h-10 `};
 `
 export const InputFieldContainer = styled.div`
-   ${tw`flex h-10`}
+   ${tw`flex `}
 `
 
 export const ErrorImageContainer = styled.div`

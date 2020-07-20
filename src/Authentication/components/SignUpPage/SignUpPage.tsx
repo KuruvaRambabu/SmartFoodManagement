@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import { observer } from 'mobx-react'
 import { observable } from 'mobx'
 
-import SignInButton from '../../../Common/components/Button/SignInButton'
 import IbHubsLogo from '../../../Common/components/Icons/IbHubsLogo/IbHubsLogo'
 import InputField from '../../../Common/components/InputField/InputField'
 
@@ -25,13 +24,20 @@ import {
    ErrorMessage,
    AlreadyHaveAnAccountContainer,
    AlreadyHaveAccountText,
-   SignInText
+   SignInText,
+   EmailInputFieldContainer,
+   PasswordInputFieldContainer,
+   ConfirmPasswordInputFieldContainer
 } from './styledComponents'
+import Button from '../../../Common/components/Button/Button'
+import { Typo14DarkBlueGreyHKGroteskRegularSpan } from '../../../Common/styleGuide/Typos'
 
 interface SignUpPageProps {
    t: any
    onClickSignUp: any
    goToSignInPage: () => void
+   getUserSignInAPIStatus: number
+   errorMessage: string
 }
 
 @observer
@@ -88,9 +94,42 @@ class SignUpPage extends Component<SignUpPageProps> {
    changeLanguage = e => {
       i18n.changeLanguage(e.target.value)
    }
+   onClickSignUp = () => {
+      if (
+         this.email === '' &&
+         this.password === '' &&
+         this.confirmPassword === ''
+      ) {
+         this.confirmPasswordErrorMessage = this.passwordErrorMessage = this.emailErrorMessage =
+            '*Required'
+      } else if (this.password === '' && this.confirmPassword === '') {
+         this.confirmPasswordErrorMessage = this.passwordErrorMessage =
+            '*Required'
+      } else if (this.email === '') {
+         this.emailErrorMessage = '*Required'
+      } else if (this.password === '') {
+         this.passwordErrorMessage = '*Required'
+      } else if (this.confirmPassword === '') {
+         this.confirmPasswordErrorMessage = '*Required'
+      } else {
+         if (
+            this.emailErrorMessage === '' &&
+            this.passwordErrorMessage === '' &&
+            this.confirmPasswordErrorMessage === ''
+         ) {
+            const { onClickSignUp } = this.props
+            onClickSignUp(this.email, this.password, this.confirmPassword)
+         }
+      }
+   }
 
    render() {
-      const { t, goToSignInPage, onClickSignUp } = this.props
+      const {
+         t,
+         goToSignInPage,
+         getUserSignInAPIStatus,
+         errorMessage
+      } = this.props
       return (
          <SignUpPageMainContainer>
             <SignUpCardContanier>
@@ -103,73 +142,91 @@ class SignUpPage extends Component<SignUpPageProps> {
                </Heading>
 
                <Form>
-                  <LabelField>
-                     {t('authenticationModule:userName')}
-                     <InputField
-                        onChangeField={this.onChangeUserName}
-                        type={t('authenticationModule:userNameInputFieldType')}
-                        value={this.email}
-                        placeholder={t(
-                           'authenticationModule:userNamePlaceholderText'
+                  <EmailInputFieldContainer>
+                     <LabelField>
+                        {t('authenticationModule:userName')}
+                        <InputField
+                           onChangeField={this.onChangeUserName}
+                           type={t(
+                              'authenticationModule:userNameInputFieldType'
+                           )}
+                           value={this.email}
+                           placeholder={t(
+                              'authenticationModule:userNamePlaceholderText'
+                           )}
+                           errorMessage={this.emailErrorMessage}
+                           validate={this.checkUserNameValidation}
+                        />
+                        {this.emailErrorMessage ? (
+                           <ErrorMessage>{this.emailErrorMessage}</ErrorMessage>
+                        ) : (
+                           ''
                         )}
-                        errorMessage={this.emailErrorMessage}
-                        validate={this.checkUserNameValidation}
-                     />
-                     {this.emailErrorMessage ? (
-                        <ErrorMessage>{this.emailErrorMessage}</ErrorMessage>
-                     ) : (
-                        ''
-                     )}
-                  </LabelField>
+                     </LabelField>
+                  </EmailInputFieldContainer>
 
-                  <LabelField>
-                     {t('authenticationModule:password')}
-                     <InputField
-                        onChangeField={this.onChangePassword}
-                        type={t('authenticationModule:passwordInputFieldType')}
-                        placeholder={t(
-                           'authenticationModule:passwordPlaceholderText'
+                  <PasswordInputFieldContainer>
+                     <LabelField>
+                        {t('authenticationModule:password')}
+                        <InputField
+                           onChangeField={this.onChangePassword}
+                           type={t(
+                              'authenticationModule:passwordInputFieldType'
+                           )}
+                           placeholder={t(
+                              'authenticationModule:passwordPlaceholderText'
+                           )}
+                           value={this.password}
+                           errorMessage={this.passwordErrorMessage}
+                           validate={this.checkPasswordValidation}
+                        />
+                        {this.passwordErrorMessage ? (
+                           <ErrorMessage>
+                              {this.passwordErrorMessage}
+                           </ErrorMessage>
+                        ) : (
+                           ''
                         )}
-                        value={this.password}
-                        errorMessage={this.passwordErrorMessage}
-                        validate={this.checkPasswordValidation}
-                     />
-                     {this.passwordErrorMessage ? (
-                        <ErrorMessage>{this.passwordErrorMessage}</ErrorMessage>
-                     ) : (
-                        ''
-                     )}
-                  </LabelField>
+                     </LabelField>
+                  </PasswordInputFieldContainer>
 
-                  <LabelField>
-                     {t('authenticationModule:confirmPassword')}
-                     <InputField
-                        onChangeField={this.onChangeConfirmPassword}
-                        type={t(
-                           'authenticationModule:confirmPasswordInputFieldType'
+                  <ConfirmPasswordInputFieldContainer>
+                     <LabelField>
+                        {t('authenticationModule:confirmPassword')}
+                        <InputField
+                           onChangeField={this.onChangeConfirmPassword}
+                           type={t(
+                              'authenticationModule:confirmPasswordInputFieldType'
+                           )}
+                           placeholder={t(
+                              'authenticationModule:confirmPasswordPlaceholderText'
+                           )}
+                           value={this.confirmPassword}
+                           errorMessage={this.confirmPasswordErrorMessage}
+                           validate={this.validateConfirmPassword}
+                        />
+                        {this.confirmPasswordErrorMessage ? (
+                           <ErrorMessage>
+                              {this.confirmPasswordErrorMessage}
+                           </ErrorMessage>
+                        ) : (
+                           ''
                         )}
-                        placeholder={t(
-                           'authenticationModule:confirmPasswordPlaceholderText'
-                        )}
-                        value={this.confirmPassword}
-                        errorMessage={this.confirmPasswordErrorMessage}
-                        validate={this.validateConfirmPassword}
-                     />
-                     {this.passwordErrorMessage ? (
-                        <ErrorMessage>
-                           {this.confirmPasswordErrorMessage}
-                        </ErrorMessage>
-                     ) : (
-                        ''
-                     )}
-                  </LabelField>
+                     </LabelField>
+                  </ConfirmPasswordInputFieldContainer>
 
-                  <SignInButton
-                     apiStatus={10}
-                     onClickSignIn={onClickSignUp}
-                     name={t('authenticationModule:signUp')}
+                  <Button
+                     typo={Typo14DarkBlueGreyHKGroteskRegularSpan}
+                     type={Button.buttonType.filled}
+                     onClick={this.onClickSignUp}
+                     name={t('authenticationModule:login')}
+                     apiStatus={getUserSignInAPIStatus}
                   />
-
+                  {errorMessage ? (
+                     <ErrorMessage>{errorMessage}</ErrorMessage>
+                  ) : (
+                     ''
+                  )}
                   {this.errorMessage ? (
                      <ErrorMessage>{this.errorMessage}</ErrorMessage>
                   ) : (

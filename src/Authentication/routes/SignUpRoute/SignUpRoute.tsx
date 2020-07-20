@@ -7,6 +7,9 @@ import { SMART_FOOD_MANAGEMENT_SIGN_IN_PAGE } from '../../../Common/routes/Route
 
 import SignUpPage from '../../components/SignUpPage/SignUpPage'
 import AuthenticationStore from '../../stores/AuthenticationStore'
+import { goToCoivd19DashBoard } from '../../utils/NavigationModule/NavigationModule'
+import { observable } from 'mobx'
+import { getUserDisplayableErrorMessage } from '../../../Common/utils/APIUtils'
 
 interface AuthenticationRouteProps extends WithTranslation {}
 
@@ -19,22 +22,43 @@ interface InjectedProps extends AuthenticationRouteProps {
 @inject('authenticationStore')
 @observer
 class SignUpRoute extends Component<AuthenticationRouteProps> {
+   @observable errorMessage!: string
    getInjectedProps = (): InjectedProps => this.props as InjectedProps
 
    getAuthenticationStore = () => {
       return this.getInjectedProps().authenticationStore
    }
-   onClickSignUp = () => {}
+
+   onSignInSuccess = () => {
+      const { history } = this.props
+      goToCoivd19DashBoard(history)
+   }
+
+   onSignInFailure = () => {
+      const { getUserSignInAPIError: apiError } = this.getAuthenticationStore()
+
+      if (apiError !== null && apiError !== undefined) {
+         this.errorMessage = getUserDisplayableErrorMessage(apiError)
+      }
+   }
+   onClickSignUp = (email, password, conformPassword) => {
+      const { history } = this.props
+      history.push(SMART_FOOD_MANAGEMENT_SIGN_IN_PAGE)
+   }
    goToSignInPage = () => {
       this.props.history.push(SMART_FOOD_MANAGEMENT_SIGN_IN_PAGE)
    }
    render() {
+      const { getUserSignInAPIStatus } = this.getAuthenticationStore()
       const { t } = this.props
+
       return (
          <SignUpPage
             t={t}
             goToSignInPage={this.goToSignInPage}
             onClickSignUp={this.onClickSignUp}
+            getUserSignInAPIStatus={getUserSignInAPIStatus}
+            errorMessage={this.errorMessage}
          />
       )
    }

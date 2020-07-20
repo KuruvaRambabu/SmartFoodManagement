@@ -15,6 +15,7 @@ class AuthenticationStore {
    @observable getUserSignInAPIStatus!: APIStatus
    @observable accessToken!: string
    authAPIService: AuthService
+   @observable isAdmin!: boolean
 
    constructor(authAPIService: AuthService) {
       this.authAPIService = authAPIService
@@ -44,7 +45,8 @@ class AuthenticationStore {
 
    @action.bound
    setUserSignInAPIResponse(response) {
-      setAccessToken(response[0].access_token)
+      setAccessToken(response.access_token)
+      this.isAdmin = response.is_admin
       this.accessToken = getAccessToken()
    }
 

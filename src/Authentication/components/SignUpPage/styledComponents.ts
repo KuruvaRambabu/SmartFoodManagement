@@ -41,7 +41,7 @@ export const Heading = styled.p`
 export const LabelField = styled(Typo12SteelHKGrotesk)``
 
 export const ErrorMessage = styled.span`
-   ${tw`text-red-500 text-center h-6  `}
+   ${tw`text-red-500 text-center -mt-10  `}
 `
 export const AlreadyHaveAnAccountContainer = styled.div`
    ${tw`m-2`}
@@ -51,4 +51,13 @@ export const AlreadyHaveAccountText = styled.p``
 
 export const SignInText = styled.span`
    ${tw`text-blue-700 cursor-pointer`}
+`
+export const EmailInputFieldContainer = styled.div`
+   ${tw`h-20 `}
+`
+export const PasswordInputFieldContainer = styled.div`
+   ${tw`h-20`}
+`
+export const ConfirmPasswordInputFieldContainer = styled.div`
+   ${tw`h-20`}
 `

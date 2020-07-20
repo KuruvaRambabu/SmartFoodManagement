@@ -50,7 +50,7 @@ export const PrimarySignInButton = styled.button`
 `
 
 export const ErrorMessage = styled.span`
-   ${tw`text-red-500 text-center h-6  `}
+   ${tw`text-red-500 text-center  `}
 `
 export const LabelField = styled(Typo12SteelHKGrotesk)``
 
@@ -68,4 +68,10 @@ export const GoToSignUp = styled.span`
 export const ButtonStyles = css`
    width: 200px;
    background-color: blue;
+`
+export const EmailInputFieldContainer = styled.div`
+   ${tw`h-20 `}
+`
+export const PasswordInputFieldContainer = styled.div`
+   ${tw`h-20 `}
 `

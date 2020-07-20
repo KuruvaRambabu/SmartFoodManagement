@@ -5,10 +5,9 @@ import {
    API_INITIAL
 } from '@ib/api-constants'
 
-import AuthenticationService from '../../services/AuthenticationService'
-
 import AuthenticationStore from '.'
 import getUserSignInRepsonse from '../../fixtures/getUserSignInRepsonse.json'
+import AuthenticationService from '../../services/AuthenticationService/index.fixutes'
 
 describe('test for AuthenticationStore', () => {
    let authAPI

@@ -2,13 +2,14 @@ import styled from '@emotion/styled'
 
 export const Typo12SteelHKGrotesk = styled.label`
    font-family: HKGrotesk;
-   font-size: 12px;
-   font-weight: 300;
+   font-size: 13px;
+   font-weight: 600;
    font-stretch: normal;
    font-style: normal;
    color: #7e858e;
-   padding: 5px;
+   padding: 2px;
 `
+
 export const Typo14DarkBlueGreyHKGroteskRegularSpan = styled.span`
    font-family: HKGrotesk;
    font-size: 14px;

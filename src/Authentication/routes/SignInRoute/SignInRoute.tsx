@@ -7,7 +7,7 @@ import { Redirect, withRouter, RouteComponentProps } from 'react-router-dom'
 import { SMART_FOOD_MANAGEMENT_SIGN_UP_PAGE } from '../../../Common/routes/RouteConstants'
 import { getUserDisplayableErrorMessage } from '../../../Common/utils/APIUtils'
 
-import { goToCoivd19_DashBoard } from '../../utils/NavigationModule/NavigationModule'
+import { goToCoivd19DashBoard } from '../../utils/NavigationModule/NavigationModule'
 import AuthenticationStore from '../../stores/AuthenticationStore'
 
 import SignInPage from '../../components/SignInPage'
@@ -41,7 +41,7 @@ class SignInRoute extends React.Component<AuthenticationRouteProps> {
 
    onSignInSuccess = () => {
       const { history } = this.props
-      goToCoivd19_DashBoard(history)
+      goToCoivd19DashBoard(history)
    }
 
    onSignInFailure = () => {
@@ -68,6 +68,7 @@ class SignInRoute extends React.Component<AuthenticationRouteProps> {
       const { history } = this.props
       history.push(SMART_FOOD_MANAGEMENT_SIGN_UP_PAGE)
    }
+
    render() {
       const { getUserSignInAPIStatus } = this.getAuthenticationStore()
       const { t } = this.props
