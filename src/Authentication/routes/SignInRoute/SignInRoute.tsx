@@ -1,23 +1,16 @@
 import React from 'react'
-import SignInPage from '../../components/SignInPage'
 import { observer, inject } from 'mobx-react'
 import { observable } from 'mobx'
-import {
-   SMART_FOOD_MANAGEMENT_SIGN_IN_PAGE,
-   SMART_FOOD_MANAGEMENT_SIGN_UP_PAGE
-} from '../../../Common/routes/RouteConstants'
-import { getAccessToken } from '../../../Common/utils/StorageUtils'
+import { withTranslation, WithTranslation } from 'react-i18next'
 import { Redirect, withRouter, RouteComponentProps } from 'react-router-dom'
+
+import { SMART_FOOD_MANAGEMENT_SIGN_UP_PAGE } from '../../../Common/routes/RouteConstants'
 import { getUserDisplayableErrorMessage } from '../../../Common/utils/APIUtils'
+
 import { goToCoivd19_DashBoard } from '../../utils/NavigationModule/NavigationModule'
 import AuthenticationStore from '../../stores/AuthenticationStore'
 
-import { withTranslation, WithTranslation } from 'react-i18next'
-import {
-   ValidateConfirmPassword,
-   ValidatePassword,
-   ValidateUserName
-} from '../../utils/Validation/Validations'
+import SignInPage from '../../components/SignInPage'
 import { isLoggedIn } from '../../utils/AuthUtils/AuthUtils'
 
 interface AuthenticationRouteProps extends WithTranslation {}

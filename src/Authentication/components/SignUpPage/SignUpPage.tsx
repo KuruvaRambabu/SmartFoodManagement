@@ -54,6 +54,7 @@ class SignUpPage extends Component<SignUpPageProps> {
       this.confirmPassword = ''
       this.confirmPasswordErrorMessage = ''
    }
+
    onChangeUserName = (event: React.ChangeEvent<HTMLInputElement>) => {
       this.email = event.target.value
       this.checkUserNameValidation()
@@ -96,9 +97,11 @@ class SignUpPage extends Component<SignUpPageProps> {
                <ImageContainer>
                   <IbHubsLogo />
                </ImageContainer>
+
                <Heading>
                   {t('authenticationModule:hiTherePleaseSignUp')}
                </Heading>
+
                <Form>
                   <LabelField>
                      {t('authenticationModule:userName')}
@@ -118,6 +121,7 @@ class SignUpPage extends Component<SignUpPageProps> {
                         ''
                      )}
                   </LabelField>
+
                   <LabelField>
                      {t('authenticationModule:password')}
                      <InputField
@@ -136,6 +140,7 @@ class SignUpPage extends Component<SignUpPageProps> {
                         ''
                      )}
                   </LabelField>
+
                   <LabelField>
                      {t('authenticationModule:confirmPassword')}
                      <InputField
@@ -158,10 +163,11 @@ class SignUpPage extends Component<SignUpPageProps> {
                         ''
                      )}
                   </LabelField>
+
                   <SignInButton
                      apiStatus={10}
                      onClickSignIn={onClickSignUp}
-                     name={t('authenticationModule:login')}
+                     name={t('authenticationModule:signUp')}
                   />
 
                   {this.errorMessage ? (
@@ -170,6 +176,7 @@ class SignUpPage extends Component<SignUpPageProps> {
                      ''
                   )}
                </Form>
+
                <AlreadyHaveAnAccountContainer>
                   <AlreadyHaveAccountText>
                      {t('authenticationModule:alreadyHaveAnAccount')}
@@ -178,6 +185,7 @@ class SignUpPage extends Component<SignUpPageProps> {
                      </SignInText>
                   </AlreadyHaveAccountText>
                </AlreadyHaveAnAccountContainer>
+
                <LanguageSelector changeLanguage={this.changeLanguage} t={t} />
             </SignUpCardContanier>
          </SignUpPageMainContainer>

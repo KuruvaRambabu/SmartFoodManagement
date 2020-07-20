@@ -5,6 +5,7 @@ import {
    ErrorImage,
    InputFieldContainer
 } from './styledComponents'
+
 import { colors } from '../../../Authentication/themes/Colors'
 
 type InputFieldTypes = {
@@ -17,7 +18,6 @@ type InputFieldTypes = {
    forwardRef?: React.RefObject<HTMLInputElement>
    isError?: string
 }
-import { InputErrorLogo } from '../Icons/index'
 
 class InputField extends React.Component<InputFieldTypes> {
    render() {

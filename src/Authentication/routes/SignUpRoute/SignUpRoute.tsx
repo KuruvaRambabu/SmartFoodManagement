@@ -1,10 +1,12 @@
 import React, { Component } from 'react'
-import SignUpPage from '../../components/SignUpPage/SignUpPage'
 import { inject, observer } from 'mobx-react'
 import { withTranslation, WithTranslation } from 'react-i18next'
-import { Redirect, withRouter, RouteComponentProps } from 'react-router-dom'
-import AuthenticationStore from '../../stores/AuthenticationStore'
+import { withRouter, RouteComponentProps } from 'react-router-dom'
+
 import { SMART_FOOD_MANAGEMENT_SIGN_IN_PAGE } from '../../../Common/routes/RouteConstants'
+
+import SignUpPage from '../../components/SignUpPage/SignUpPage'
+import AuthenticationStore from '../../stores/AuthenticationStore'
 
 interface AuthenticationRouteProps extends WithTranslation {}
 

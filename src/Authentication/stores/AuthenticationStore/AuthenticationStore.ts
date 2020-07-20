@@ -2,12 +2,13 @@ import { observable, action } from 'mobx'
 import { bindPromiseWithOnSuccess } from '@ib/mobx-promise'
 import { API_INITIAL, APIStatus } from '@ib/api-constants'
 
+import AuthService from '../../services/AuthenticationService'
+
 import {
    getAccessToken,
    setAccessToken,
    clearUserSession
 } from '../../../Common/utils/StorageUtils'
-import AuthService from '../../services/AuthenticationService'
 
 class AuthenticationStore {
    @observable getUserSignInAPIError!: Error | null

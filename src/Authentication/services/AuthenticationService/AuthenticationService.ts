@@ -1,8 +1,12 @@
 import { create } from 'apisauce'
-import { baseUrl } from '../../constants/EnvironmentConstants'
+
 import { networkCallWithApisauce } from '../../../Common/utils/APIUtils'
 import { apiMethods } from '../../../Common/constants/APIConstants'
+
+import { baseUrl } from '../../constants/EnvironmentConstants'
+
 import endpoints from '../endPoints'
+
 import AuthService from '.'
 
 class AuthenticationService implements AuthService {

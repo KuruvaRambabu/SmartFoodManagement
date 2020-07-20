@@ -1,8 +1,6 @@
 import React, { Component } from 'react'
 import { observer } from 'mobx-react'
 
-import i18n from '../../i18n'
-
 import { LanguageSelectContainer, Languages } from './styledComponents'
 
 interface LanguageSelectorProps {

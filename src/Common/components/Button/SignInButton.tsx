@@ -1,7 +1,7 @@
 import React from 'react'
-
 import { observer } from 'mobx-react'
 import Loader from 'react-loader-spinner'
+
 import { PrimarySignInButton } from './styledComponents'
 
 type SignInButtonTypes = {

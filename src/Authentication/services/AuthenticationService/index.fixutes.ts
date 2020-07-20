@@ -1,6 +1,8 @@
-import signInAccessToken from '../../fixtures/getUserSignInRepsonse.json'
-import AuthService from '.'
 import { resolveWithTimeout } from '../../../Common/utils/TestUtils'
+
+import signInAccessToken from '../../fixtures/getUserSignInRepsonse.json'
+
+import AuthService from '.'
 
 class AuthenticationService implements AuthService {
    signInAPI(requestObject) {

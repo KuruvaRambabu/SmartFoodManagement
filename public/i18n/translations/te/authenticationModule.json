@@ -17,5 +17,6 @@
    "telugu": "తెలుగు ",
    "confirmPasswordInputFieldType": "password",
    "confirmPassword": "పాస్వర్డ్ను నిర్ధారించండి",
-   "confirmPasswordPlaceholderText": "పాస్వర్డ్ను నిర్ధారించి నమోదు చేయండి"
+   "confirmPasswordPlaceholderText": "పాస్వర్డ్ను నిర్ధారించి నమోదు చేయండి",
+   "signUp": "చేరండి"
 }

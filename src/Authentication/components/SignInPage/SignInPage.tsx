@@ -1,13 +1,18 @@
 import React from 'react'
 import { observer } from 'mobx-react'
+import { observable } from 'mobx'
 
 import { Typo14DarkBlueGreyHKGroteskRegularSpan } from '.././../../Common/styleGuide/Typos/index'
 
-import SignInButton from '../../../Common/components/Button/SignInButton'
 import InputField from '../../../Common/components/InputField/index'
 import IbHubsLogo from '../../../Common/components/Icons/IbHubsLogo/IbHubsLogo'
+import Button from '../../../Common/components/Button/Button'
 
 import i18n from '../../i18n'
+import {
+   ValidatePassword,
+   ValidateUserName
+} from '../../utils/Validation/Validations'
 
 import LanguageSelector from '../LanguageSelector/LanguageSelector'
 
@@ -24,14 +29,6 @@ import {
    ButtonStyles
 } from './styledComponents'
 
-import Button from '../../../Common/components/Button/Button'
-import { css } from '@emotion/core'
-import tw from 'tailwind.macro'
-import { observable } from 'mobx'
-import {
-   ValidatePassword,
-   ValidateUserName
-} from '../../utils/Validation/Validations'
 interface SignInPageTypes {
    onClickSignIn: (email: string, password: string) => void
    getUserSignInAPIStatus: number
@@ -60,12 +57,11 @@ class SignInPage extends React.Component<SignInPageTypes> {
    componentDidMount() {
       this.emailRef.current?.focus()
    }
+
    changeLanguage = e => {
       i18n.changeLanguage(e.target.value)
    }
-   onClickSampleButton = () => {
-      alert('hii')
-   }
+
    onChangeUserName = (event: React.ChangeEvent<HTMLInputElement>) => {
       this.email = event.target.value
       this.checkUserNameValidation()
@@ -85,6 +81,7 @@ class SignInPage extends React.Component<SignInPageTypes> {
       const res = ValidatePassword(this.password)
       this.passwordErrorMessage = res.errorMessage
    }
+
    onClickSignIn = (event: React.FormEvent) => {
       event.preventDefault()
       if (this.email === '' && this.password === '') {

@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { buttonType, variationType } from './constants'
+
 import BaseButton from './BaseButton/BaseButton'
-import { css, jsx } from '@emotion/core'
 import OutlineButton from './OutlineButton/OutlineButton'
 interface ButtonProps {
    type: string

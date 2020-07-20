@@ -1,8 +1,10 @@
 import React from 'react'
 import { Route, Redirect } from 'react-router-dom'
 import { observer, inject } from 'mobx-react'
-import { SMART_FOOD_MANAGEMENT_SIGN_UP_PAGE } from '../../routes/RouteConstants'
+
 import { isLoggedIn } from '../../../Authentication/utils/AuthUtils/AuthUtils'
+
+import { SMART_FOOD_MANAGEMENT_SIGN_UP_PAGE } from '../../routes/RouteConstants'
 
 export const ProtectedRoute = inject('authenticationStore')(
    observer(({ component: Component, authenticationStore, ...rest }) => {
