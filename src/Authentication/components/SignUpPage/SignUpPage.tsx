@@ -1,5 +1,19 @@
 import React, { Component } from 'react'
 import { observer } from 'mobx-react'
+import { observable } from 'mobx'
+
+import SignInButton from '../../../Common/components/Button/SignInButton'
+import IbHubsLogo from '../../../Common/components/Icons/IbHubsLogo/IbHubsLogo'
+import InputField from '../../../Common/components/InputField/InputField'
+
+import i18n from '../../i18n'
+import {
+   ValidatePassword,
+   ValidateUserName,
+   ValidateConfirmPassword
+} from '../../utils/Validation/Validations'
+
+import LanguageSelector from '../LanguageSelector/LanguageSelector'
 
 import {
    SignUpPageMainContainer,
@@ -8,22 +22,16 @@ import {
    Heading,
    ImageContainer,
    LabelField,
-   ErrorMessage
+   ErrorMessage,
+   AlreadyHaveAnAccountContainer,
+   AlreadyHaveAccountText,
+   SignInText
 } from './styledComponents'
-import IbHubsLogo from '../../../Common/components/Icons/IbHubsLogo/IbHubsLogo'
-import { observable } from 'mobx'
-import InputField from '../../../Common/components/InputField/InputField'
-import i18n from '../../i18n'
-import {
-   ValidatePassword,
-   ValidateUserName,
-   ValidateConfirmPassword
-} from '../../utils/Validation/Validations'
-import SignInButton from '../../../Common/components/Button/SignInButton'
 
 interface SignUpPageProps {
    t: any
    onClickSignUp: any
+   goToSignInPage: () => void
 }
 
 @observer
@@ -55,6 +63,7 @@ class SignUpPage extends Component<SignUpPageProps> {
       this.password = event.target.value
       this.checkPasswordValidation()
    }
+
    checkUserNameValidation = () => {
       const res = ValidateUserName(this.email)
       this.emailErrorMessage = res.errorMessage
@@ -64,16 +73,23 @@ class SignUpPage extends Component<SignUpPageProps> {
       const res = ValidatePassword(this.password)
       this.passwordErrorMessage = res.errorMessage
    }
+
    validateConfirmPassword = () => {
       const res = ValidateConfirmPassword(this.password, this.confirmPassword)
       this.confirmPasswordErrorMessage = res.errorMessage
    }
+
    onChangeConfirmPassword = (event: React.ChangeEvent<HTMLInputElement>) => {
       this.confirmPassword = event.target.value
       this.validateConfirmPassword()
    }
+
+   changeLanguage = e => {
+      i18n.changeLanguage(e.target.value)
+   }
+
    render() {
-      const { t, onClickSignUp } = this.props
+      const { t, goToSignInPage, onClickSignUp } = this.props
       return (
          <SignUpPageMainContainer>
             <SignUpCardContanier>
@@ -154,6 +170,15 @@ class SignUpPage extends Component<SignUpPageProps> {
                      ''
                   )}
                </Form>
+               <AlreadyHaveAnAccountContainer>
+                  <AlreadyHaveAccountText>
+                     {t('authenticationModule:alreadyHaveAnAccount')}
+                     <SignInText onClick={goToSignInPage}>
+                        {t('authenticationModule:logInText')}
+                     </SignInText>
+                  </AlreadyHaveAccountText>
+               </AlreadyHaveAnAccountContainer>
+               <LanguageSelector changeLanguage={this.changeLanguage} t={t} />
             </SignUpCardContanier>
          </SignUpPageMainContainer>
       )

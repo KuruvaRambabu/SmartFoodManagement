@@ -16,7 +16,7 @@ class LanguageSelector extends Component<LanguageSelectorProps> {
       const { changeLanguage, t } = this.props
       return (
          <LanguageSelectContainer onChange={changeLanguage}>
-            <Languages selected value='en'>
+            <Languages defaultValue='en'>
                {t('authenticationModule:english')}
             </Languages>
             <Languages value='te'>{t('authenticationModule:telugu')}</Languages>

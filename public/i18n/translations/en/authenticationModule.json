@@ -17,5 +17,7 @@
    "LoginButtonName": "LOGIN",
    "dontHaveanAccountText": "Don't have an account ?",
    "english": "English",
-   "telugu": "Telugu"
+   "telugu": "Telugu",
+   "alreadyHaveAnAccount": "Already have an account?",
+   "logInText": "Log in"
 }

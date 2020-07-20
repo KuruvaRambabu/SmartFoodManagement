@@ -12,7 +12,7 @@ export const Typo12SteelHKGrotesk = styled.label`
 export const Typo14DarkBlueGreyHKGroteskRegularSpan = styled.span`
    font-family: HKGrotesk;
    font-size: 14px;
-   font-weight: normal;
+   font-weight: bold;
    font-stretch: normal;
    font-style: normal;
    line-height: 1.71;

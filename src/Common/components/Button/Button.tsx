@@ -3,8 +3,15 @@ import { buttonType, variationType } from './constants'
 import BaseButton from './BaseButton/BaseButton'
 import { css, jsx } from '@emotion/core'
 import OutlineButton from './OutlineButton/OutlineButton'
-
-class Button extends Component {
+interface ButtonProps {
+   type: string
+   typo?: any
+   onClick: any
+   name: any
+   apiStatus?: any
+   buttonStyles?: object
+}
+class Button extends Component<ButtonProps> {
    static buttonType = buttonType
    static variationType = variationType
 
@@ -17,8 +24,8 @@ class Button extends Component {
       }
    }
    render() {
-      const { ...otherProps } = this.props
-      switch ('type') {
+      const { type, ...otherProps } = this.props
+      switch (type) {
          case buttonType.filled:
             return <BaseButton {...otherProps} />
          case buttonType.outline:

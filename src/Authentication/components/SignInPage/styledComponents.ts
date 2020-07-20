@@ -1,7 +1,9 @@
 import styled from '@emotion/styled'
+
 import tw from 'tailwind.macro'
 import { colors } from '../../themes/Colors'
 import { Typo12SteelHKGrotesk } from '../../../Common/styleGuide/Typos/index'
+import { css } from '@emotion/core'
 
 export const SignInPageMainContainer = styled.div`
    ${tw`min-h-screen w-full flex justify-center items-center`}
@@ -62,4 +64,8 @@ export const DontHaveAccount = styled.p`
 `
 export const GoToSignUp = styled.span`
    color: ${colors.brightBlue};
+`
+export const ButtonStyles = css`
+   width: 200px;
+   background-color: blue;
 `

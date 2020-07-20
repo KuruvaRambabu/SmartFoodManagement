@@ -43,3 +43,12 @@ export const LabelField = styled(Typo12SteelHKGrotesk)``
 export const ErrorMessage = styled.span`
    ${tw`text-red-500 text-center h-6  `}
 `
+export const AlreadyHaveAnAccountContainer = styled.div`
+   ${tw`m-2`}
+`
+
+export const AlreadyHaveAccountText = styled.p``
+
+export const SignInText = styled.span`
+   ${tw`text-blue-700 cursor-pointer`}
+`

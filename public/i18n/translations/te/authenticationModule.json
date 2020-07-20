@@ -14,5 +14,8 @@
    "LoginButtonName": "LOGIN",
    "dontHaveanAccountText": "ఖాతా లేదా? సృష్టించుకుని చేరoడి ?",
    "english": "ఆంగ్లo",
-   "telugu": "తెలుగు "
+   "telugu": "తెలుగు ",
+   "confirmPasswordInputFieldType": "password",
+   "confirmPassword": "పాస్వర్డ్ను నిర్ధారించండి",
+   "confirmPasswordPlaceholderText": "పాస్వర్డ్ను నిర్ధారించి నమోదు చేయండి"
 }

@@ -18,6 +18,7 @@ import {
    ValidatePassword,
    ValidateUserName
 } from '../../utils/Validation/Validations'
+import { isLoggedIn } from '../../utils/AuthUtils/AuthUtils'
 
 interface AuthenticationRouteProps extends WithTranslation {}
 
@@ -30,20 +31,12 @@ interface InjectedProps extends AuthenticationRouteProps {
 @inject('authenticationStore')
 @observer
 class SignInRoute extends React.Component<AuthenticationRouteProps> {
-   @observable email: string
-   @observable password: string
    @observable errorMessage: string
-   @observable passwordErrorMessage: string
-   @observable emailErrorMessage: string
    private signInref: React.RefObject<SignInPage>
 
    constructor(props) {
       super(props)
-      this.email = ''
-      this.password = ''
       this.errorMessage = ''
-      this.passwordErrorMessage = ''
-      this.emailErrorMessage = ''
       this.signInref = React.createRef()
    }
 
@@ -51,16 +44,6 @@ class SignInRoute extends React.Component<AuthenticationRouteProps> {
 
    getAuthenticationStore = () => {
       return this.getInjectedProps().authenticationStore
-   }
-
-   onChangeUserName = (event: React.ChangeEvent<HTMLInputElement>) => {
-      this.email = event.target.value
-      this.checkUserNameValidation()
-   }
-
-   onChangePassword = (event: React.ChangeEvent<HTMLInputElement>) => {
-      this.password = event.target.value
-      this.checkPasswordValidation()
    }
 
    onSignInSuccess = () => {
@@ -76,43 +59,18 @@ class SignInRoute extends React.Component<AuthenticationRouteProps> {
       }
    }
 
-   onClickSignIn = (event: React.FormEvent) => {
-      event.preventDefault()
-      if (this.email === '' && this.password === '') {
-         this.checkUserNameValidation()
-         this.checkPasswordValidation()
-         this.signInref.current?.emailRef.current?.focus()
-      } else if (this.email && this.password === '') {
-         this.checkPasswordValidation()
-         this.signInref.current?.passwordRef.current?.focus()
-      } else {
-         if (this.emailErrorMessage || this.passwordErrorMessage) {
-            this.checkUserNameValidation()
-            this.checkPasswordValidation()
-         } else {
-            this.errorMessage = ''
-            const { userSignIn } = this.getAuthenticationStore()
-            userSignIn(
-               {
-                  email: this.email,
-                  password: this.password
-               },
-               this.onSignInSuccess,
-               this.onSignInFailure
-            )
-         }
-      }
+   onClickSignIn = (email: string, password: string) => {
+      const { userSignIn } = this.getAuthenticationStore()
+      userSignIn(
+         {
+            email: email,
+            password: password
+         },
+         this.onSignInSuccess,
+         this.onSignInFailure
+      )
    }
 
-   checkUserNameValidation = () => {
-      const res = ValidateUserName(this.email)
-      this.emailErrorMessage = res.errorMessage
-   }
-
-   checkPasswordValidation = () => {
-      const res = ValidatePassword(this.password)
-      this.passwordErrorMessage = res.errorMessage
-   }
    goToSignUpPage = () => {
       const { history } = this.props
       history.push(SMART_FOOD_MANAGEMENT_SIGN_UP_PAGE)
@@ -120,22 +78,14 @@ class SignInRoute extends React.Component<AuthenticationRouteProps> {
    render() {
       const { getUserSignInAPIStatus } = this.getAuthenticationStore()
       const { t } = this.props
-      if (getAccessToken()) {
+      if (isLoggedIn()) {
          return <Redirect to={{ pathname: '' }} />
       }
       return (
          <SignInPage
             getUserSignInAPIStatus={getUserSignInAPIStatus}
-            email={this.email}
-            password={this.password}
             errorMessage={this.errorMessage}
-            onChangePassword={this.onChangePassword}
-            onChangeUserName={this.onChangeUserName}
             onClickSignIn={this.onClickSignIn}
-            passwordErrorMessage={this.passwordErrorMessage}
-            emailErrorMessage={this.emailErrorMessage}
-            validateUserName={this.checkUserNameValidation}
-            validatePassword={this.checkPasswordValidation}
             ref={this.signInref}
             t={t}
             goToSignUpPage={this.goToSignUpPage}

@@ -20,31 +20,42 @@ import {
    ErrorMessage,
    DontHaveAccount,
    LabelField,
-   GoToSignUp
+   GoToSignUp,
+   ButtonStyles
 } from './styledComponents'
 
 import Button from '../../../Common/components/Button/Button'
-
+import { css } from '@emotion/core'
+import tw from 'tailwind.macro'
+import { observable } from 'mobx'
+import {
+   ValidatePassword,
+   ValidateUserName
+} from '../../utils/Validation/Validations'
 interface SignInPageTypes {
-   email: string
-   password: string
-   errorMessage: string
-   onChangePassword: Function
-   onClickSignIn: (event: React.FormEvent) => void
-   onChangeUserName: Function
+   onClickSignIn: (email: string, password: string) => void
    getUserSignInAPIStatus: number
-   passwordErrorMessage: string
-   emailErrorMessage: string
-   validateUserName: Function
-   validatePassword: Function
    t: any
+   errorMessage: string
    goToSignUpPage: any
 }
-Typo14DarkBlueGreyHKGroteskRegularSp
 @observer
 class SignInPage extends React.Component<SignInPageTypes> {
+   @observable email: string
+   @observable password: string
+   @observable errorMessage: string
+   @observable passwordErrorMessage: string
+   @observable emailErrorMessage: string
    emailRef: React.RefObject<HTMLInputElement> = React.createRef()
    passwordRef: React.RefObject<HTMLInputElement> = React.createRef()
+   constructor(props) {
+      super(props)
+      this.email = ''
+      this.password = ''
+      this.errorMessage = ''
+      this.passwordErrorMessage = ''
+      this.emailErrorMessage = ''
+   }
 
    componentDidMount() {
       this.emailRef.current?.focus()
@@ -55,33 +66,55 @@ class SignInPage extends React.Component<SignInPageTypes> {
    onClickSampleButton = () => {
       alert('hii')
    }
+   onChangeUserName = (event: React.ChangeEvent<HTMLInputElement>) => {
+      this.email = event.target.value
+      this.checkUserNameValidation()
+   }
+
+   onChangePassword = (event: React.ChangeEvent<HTMLInputElement>) => {
+      this.password = event.target.value
+      this.checkPasswordValidation()
+   }
+
+   checkUserNameValidation = () => {
+      const res = ValidateUserName(this.email)
+      this.emailErrorMessage = res.errorMessage
+   }
+
+   checkPasswordValidation = () => {
+      const res = ValidatePassword(this.password)
+      this.passwordErrorMessage = res.errorMessage
+   }
+   onClickSignIn = (event: React.FormEvent) => {
+      event.preventDefault()
+      if (this.email === '' && this.password === '') {
+         this.checkUserNameValidation()
+         this.checkPasswordValidation()
+         this.emailRef.current?.focus()
+      } else if (this.email && this.password === '') {
+         this.checkPasswordValidation()
+         this.passwordRef.current?.focus()
+      } else {
+         if (this.emailErrorMessage || this.passwordErrorMessage) {
+            this.checkUserNameValidation()
+            this.checkPasswordValidation()
+         } else {
+            const { onClickSignIn } = this.props
+            onClickSignIn(this.email, this.password)
+         }
+      }
+   }
 
    render() {
       const {
-         email,
-         password,
          errorMessage,
-         onChangePassword,
-         onChangeUserName,
-         onClickSignIn,
          getUserSignInAPIStatus,
-         passwordErrorMessage,
-         emailErrorMessage,
-         validateUserName,
-         validatePassword,
          t,
          goToSignUpPage
       } = this.props
 
       return (
          <SignInPageMainContainer>
-            <Button
-               typo={Typo14DarkBlueGreyHKGroteskRegularSpan}
-               type={Button.buttonType.filled}
-               onClickBtn={this.onClickSampleButton}
-               name={'sample'}
-               apiStatus={100}
-            />
             <SignInCardContanier>
                <ImageContainer>
                   <IbHubsLogo />
@@ -95,19 +128,19 @@ class SignInPage extends React.Component<SignInPageTypes> {
                   <LabelField>
                      {t('authenticationModule:userName')}
                      <InputField
-                        isError={emailErrorMessage}
+                        isError={this.emailErrorMessage}
                         forwardRef={this.emailRef}
-                        onChangeField={onChangeUserName}
+                        onChangeField={this.onChangeUserName}
                         type={t('authenticationModule:userNameInputFieldType')}
-                        value={email}
+                        value={this.email}
                         placeholder={t(
                            'authenticationModule:userNamePlaceholderText'
                         )}
-                        errorMessage={emailErrorMessage}
-                        validate={validateUserName}
+                        errorMessage={this.emailErrorMessage}
+                        validate={this.checkUserNameValidation}
                      />
-                     {emailErrorMessage ? (
-                        <ErrorMessage>{emailErrorMessage}</ErrorMessage>
+                     {this.emailErrorMessage ? (
+                        <ErrorMessage>{this.emailErrorMessage}</ErrorMessage>
                      ) : (
                         ''
                      )}
@@ -117,26 +150,28 @@ class SignInPage extends React.Component<SignInPageTypes> {
                      {t('authenticationModule:password')}
                      <InputField
                         forwardRef={this.passwordRef}
-                        onChangeField={onChangePassword}
+                        onChangeField={this.onChangePassword}
                         type={t('authenticationModule:passwordInputFieldType')}
                         placeholder={t(
                            'authenticationModule:passwordPlaceholderText'
                         )}
-                        value={password}
-                        errorMessage={passwordErrorMessage}
-                        validate={validatePassword}
+                        value={this.password}
+                        errorMessage={this.passwordErrorMessage}
+                        validate={this.checkPasswordValidation}
                      />
-                     {passwordErrorMessage ? (
-                        <ErrorMessage>{passwordErrorMessage}</ErrorMessage>
+                     {this.passwordErrorMessage ? (
+                        <ErrorMessage>{this.passwordErrorMessage}</ErrorMessage>
                      ) : (
                         ''
                      )}
                   </LabelField>
 
-                  <SignInButton
-                     apiStatus={getUserSignInAPIStatus}
-                     onClickSignIn={onClickSignIn}
+                  <Button
+                     typo={Typo14DarkBlueGreyHKGroteskRegularSpan}
+                     type={Button.buttonType.filled}
+                     onClick={this.onClickSignIn}
                      name={t('authenticationModule:login')}
+                     apiStatus={getUserSignInAPIStatus}
                   />
                   {errorMessage ? (
                      <ErrorMessage>{errorMessage}</ErrorMessage>
