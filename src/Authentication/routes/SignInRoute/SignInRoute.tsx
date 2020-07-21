@@ -76,7 +76,7 @@ class SignInRoute extends React.Component<AuthenticationRouteProps> {
       const { getUserSignInAPIStatus } = this.getAuthenticationStore()
       const { t } = this.props
       if (isLoggedIn()) {
-         return <Redirect to={{ pathname: '' }} />
+         return <Redirect to={{ pathname: SMART_FOOD_MANAGEMENT_HOME_PAGE }} />
       }
       return (
          <SignInPage

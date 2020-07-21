@@ -1,31 +1,29 @@
 import React, { Component } from 'react'
-import { HomePageMainContainer } from './styledComponents'
-import { withHeaderComponent } from '../../../Common/Hocs/withHeader'
-import { observer } from 'mobx-react'
+import { WeeklyMenuPageMainContainer } from './styledComponents'
 import Header from '../../../Common/components/Header/Header'
-import Banner from '../Banner/Banner'
+import { observer } from 'mobx-react'
 
-interface HomePagePropsTypes {
+interface WeeklyMenuPagePropsTypes {
    onClickWeeklyMenu: () => void
    selectedPage: string
    onClickHomePage: () => void
 }
+
 @observer
-class HomePage extends Component<HomePagePropsTypes> {
+class WeeklyMenuPage extends Component<WeeklyMenuPagePropsTypes> {
    render() {
       const { onClickWeeklyMenu, onClickHomePage, selectedPage } = this.props
-      console.log(this.props)
       return (
-         <HomePageMainContainer>
+         <WeeklyMenuPageMainContainer>
             <Header
                onClickWeeklyMenu={onClickWeeklyMenu}
                onClickHomePage={onClickHomePage}
                selectedPage={selectedPage}
             />
-            <Banner />
-         </HomePageMainContainer>
+            Weekly Menu Page
+         </WeeklyMenuPageMainContainer>
       )
    }
 }
 
-export default HomePage
+export default WeeklyMenuPage

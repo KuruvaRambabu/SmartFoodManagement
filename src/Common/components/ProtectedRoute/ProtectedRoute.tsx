@@ -4,25 +4,10 @@ import { observer, inject } from 'mobx-react'
 
 import { isLoggedIn } from '../../../Authentication/utils/AuthUtils/AuthUtils'
 
-import { SMART_FOOD_MANAGEMENT_SIGN_UP_PAGE } from '../../routes/RouteConstants'
+import { SMART_FOOD_MANAGEMENT_SIGN_IN_PAGE } from '../../routes/RouteConstants'
 
-export const ProtectedRoute = inject('authenticationStore')(
-   observer(({ component: Component, authenticationStore, ...rest }) => {
-      return (
-         <Route
-            {...rest}
-            render={(props: any) => {
-               if (isLoggedIn()) {
-                  return <Component />
-               } else {
-                  return (
-                     <Redirect
-                        to={{ pathname: SMART_FOOD_MANAGEMENT_SIGN_UP_PAGE }}
-                     />
-                  )
-               }
-            }}
-         />
-      )
-   })
-)
+export const ProtectedRoute = observer(props => {
+   const { component: Component, ...rest } = props
+   if (isLoggedIn()) return <Route component={Component} {...rest} />
+   else return <Redirect to={SMART_FOOD_MANAGEMENT_SIGN_IN_PAGE} />
+})
