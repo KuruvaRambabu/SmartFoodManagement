@@ -5,9 +5,10 @@ import { I18nextProvider } from 'react-i18next'
 import { Provider } from 'mobx-react'
 ;``
 import stores from './Common/stores/index'
-import i18n from './Authentication/i18n'
+import i18n from './Common/i18n'
 import './App.css'
 import { authenticationRoutes } from './Authentication/routes'
+import { userDashboardRoutes } from './UserDasboard/routes'
 
 const App = () => {
    return (
@@ -17,6 +18,7 @@ const App = () => {
                <Router basename={process.env.PUBLIC_URL}>
                   <Switch>
                      {authenticationRoutes}
+                     {userDashboardRoutes}
                      <Route path='/'>
                         <HomePage />
                      </Route>

@@ -3,7 +3,8 @@ import {
    InputElement,
    ErrorImageContainer,
    ErrorImage,
-   InputFieldContainer
+   InputFieldContainer,
+   ErrorMessage
 } from './styledComponents'
 
 import { colors } from '../../../Authentication/themes/Colors'
@@ -42,6 +43,7 @@ class InputField extends React.Component<InputFieldTypes> {
                onBlur={validate}
                ref={forwardRef}
             ></InputElement>
+            {errorMessage ? <ErrorMessage>{errorMessage}</ErrorMessage> : ''}
          </InputFieldContainer>
       )
    }

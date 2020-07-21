@@ -18,3 +18,13 @@ export const Typo14DarkBlueGreyHKGroteskRegularSpan = styled.span`
    font-style: normal;
    line-height: 1.71;
 `
+export const Typo20DarkBlueGreyHKGroteskMedium = styled.span`
+   font-family: HKGrotesk;
+   font-size: 20px;
+   font-weight: 500;
+   font-stretch: normal;
+   font-style: normal;
+   line-height: 1.2;
+   letter-spacing: normal;
+   padding: 10px;
+`

@@ -1,7 +1,7 @@
 import React from 'react'
 import { render } from '@testing-library/react'
 import SignInPage from '.'
-import strings from "../../i18n/strings.json"
+import strings from '../../../Common/i18n/strings.json'
 
 describe('Test cases for SignInForm', () => {
    it('should test typed userName', () => {
@@ -9,18 +9,17 @@ describe('Test cases for SignInForm', () => {
       const { getByPlaceholderText } = render(
          <SignInPage
             email={userName}
-            onChangeUserName={() => { }}
-            password={""}
-            onChangePassword={() => { }}
-            onClickSignIn={() => { }}
-            errorMessage={""}
+            onChangeUserName={() => {}}
+            password={''}
+            onChangePassword={() => {}}
+            onClickSignIn={() => {}}
+            errorMessage={''}
             getUserSignInAPIStatus={200}
-            passwordErrorMessage={""}
-            emailErrorMessage={""}
-
+            passwordErrorMessage={''}
+            emailErrorMessage={''}
          />
       )
-      const userNameField:any = getByPlaceholderText(
+      const userNameField: any = getByPlaceholderText(
          strings.userNamePlaceholderText
       )
       expect(userNameField.value).toBe(userName)
@@ -30,17 +29,18 @@ describe('Test cases for SignInForm', () => {
       const password = 'test-password'
       const { getByPlaceholderText } = render(
          <SignInPage
-            onChangeUserName={() => { }}
-            email={""}
-            onChangePassword={() => { }}
-            onClickSignIn={() => { }}
-            errorMessage={""}
+            onChangeUserName={() => {}}
+            email={''}
+            onChangePassword={() => {}}
+            onClickSignIn={() => {}}
+            errorMessage={''}
             getUserSignInAPIStatus={200}
-            passwordErrorMessage={""}
-            emailErrorMessage={""}
-            password={password} />
+            passwordErrorMessage={''}
+            emailErrorMessage={''}
+            password={password}
+         />
       )
-      const passwordField:any = getByPlaceholderText(
+      const passwordField: any = getByPlaceholderText(
          strings.passwordPlaceholderText
       )
       expect(passwordField.value).toBe(password)
@@ -49,16 +49,16 @@ describe('Test cases for SignInForm', () => {
    it('should render given username error message', () => {
       const { getByText } = render(
          <SignInPage
-            onChangeUserName={() => { }}
-            email={""}
-            onChangePassword={() => { }}
-            onClickSignIn={() => { }}
-            errorMessage={""}
+            onChangeUserName={() => {}}
+            email={''}
+            onChangePassword={() => {}}
+            onClickSignIn={() => {}}
+            errorMessage={''}
             getUserSignInAPIStatus={200}
-            passwordErrorMessage={""}
-            password={""}
-
-            emailErrorMessage='Invalid username' />
+            passwordErrorMessage={''}
+            password={''}
+            emailErrorMessage='Invalid username'
+         />
       )
 
       getByText(/invalid username/i)
@@ -67,15 +67,16 @@ describe('Test cases for SignInForm', () => {
    it('should render given password error message', () => {
       const { getByText } = render(
          <SignInPage
-            onChangeUserName={() => { }}
-            email={""}
-            onChangePassword={() => { }}
-            onClickSignIn={() => { }}
-            errorMessage={""}
+            onChangeUserName={() => {}}
+            email={''}
+            onChangePassword={() => {}}
+            onClickSignIn={() => {}}
+            errorMessage={''}
             getUserSignInAPIStatus={200}
-            emailErrorMessage={""}
-            password={""}
-            passwordErrorMessage='Invalid password' />
+            emailErrorMessage={''}
+            password={''}
+            passwordErrorMessage='Invalid password'
+         />
       )
 
       getByText(/invalid password/i)

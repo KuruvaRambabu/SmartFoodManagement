@@ -14,7 +14,7 @@ import strings from '../../../../public/i18n/translations/en/authenticationModul
 
 import { getUserDisplayableErrorMessage } from '../../../Common/utils/APIUtils'
 
-import i18n from '../../../Authentication/i18n/index'
+import i18n from '../../../Common/i18n/index'
 
 const LocationDisplay = withRouter(({ location }) => (
    <div data-testid='location-display'>{location.pathname}</div>

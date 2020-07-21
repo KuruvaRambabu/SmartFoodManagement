@@ -18,7 +18,7 @@ export const InputElement = styled.input`
    ${tw`focus:outline-none w-full h-10 `};
 `
 export const InputFieldContainer = styled.div`
-   ${tw`flex `}
+   ${tw``}
 `
 
 export const ErrorImageContainer = styled.div`
@@ -27,3 +27,7 @@ export const ErrorImageContainer = styled.div`
 `
 
 export const ErrorImage = styled.img``
+
+export const ErrorMessage = styled.span`
+   ${tw`text-red-500`}
+`

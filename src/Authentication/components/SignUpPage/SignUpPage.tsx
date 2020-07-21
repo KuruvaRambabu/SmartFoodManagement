@@ -5,7 +5,7 @@ import { observable } from 'mobx'
 import IbHubsLogo from '../../../Common/components/Icons/IbHubsLogo/IbHubsLogo'
 import InputField from '../../../Common/components/InputField/InputField'
 
-import i18n from '../../i18n'
+import i18n from '../../../Common/i18n'
 import {
    ValidatePassword,
    ValidateUserName,
@@ -157,11 +157,6 @@ class SignUpPage extends Component<SignUpPageProps> {
                            errorMessage={this.emailErrorMessage}
                            validate={this.checkUserNameValidation}
                         />
-                        {this.emailErrorMessage ? (
-                           <ErrorMessage>{this.emailErrorMessage}</ErrorMessage>
-                        ) : (
-                           ''
-                        )}
                      </LabelField>
                   </EmailInputFieldContainer>
 
@@ -180,13 +175,6 @@ class SignUpPage extends Component<SignUpPageProps> {
                            errorMessage={this.passwordErrorMessage}
                            validate={this.checkPasswordValidation}
                         />
-                        {this.passwordErrorMessage ? (
-                           <ErrorMessage>
-                              {this.passwordErrorMessage}
-                           </ErrorMessage>
-                        ) : (
-                           ''
-                        )}
                      </LabelField>
                   </PasswordInputFieldContainer>
 
@@ -205,13 +193,6 @@ class SignUpPage extends Component<SignUpPageProps> {
                            errorMessage={this.confirmPasswordErrorMessage}
                            validate={this.validateConfirmPassword}
                         />
-                        {this.confirmPasswordErrorMessage ? (
-                           <ErrorMessage>
-                              {this.confirmPasswordErrorMessage}
-                           </ErrorMessage>
-                        ) : (
-                           ''
-                        )}
                      </LabelField>
                   </ConfirmPasswordInputFieldContainer>
 

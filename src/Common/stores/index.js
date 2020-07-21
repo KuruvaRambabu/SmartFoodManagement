@@ -5,10 +5,6 @@ import AuthenticationService from '../../Authentication/services/AuthenticationS
 const authenticationService = new AuthenticationService()
 const authenticationStore = new AuthenticationStore(authenticationService)
 
-import CounterStore from './CounterStore'
-
-const counterStore = new CounterStore()
-
 export default {
    authenticationStore
 }

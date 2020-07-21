@@ -27,10 +27,13 @@ i18n
       }
    )
 
-i18n.loadNamespaces(['common', 'todos', 'authenticationModule'], err => {
-   if (err) {
-      console.log('I18n loadNamespaces error', err)
+i18n.loadNamespaces(
+   ['common', 'todos', 'userDashboardModule', 'authenticationModule'],
+   err => {
+      if (err) {
+         console.log('I18n loadNamespaces error', err)
+      }
    }
-})
+)
 
 export default i18n

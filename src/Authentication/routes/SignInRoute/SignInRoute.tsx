@@ -4,7 +4,10 @@ import { observable } from 'mobx'
 import { withTranslation, WithTranslation } from 'react-i18next'
 import { Redirect, withRouter, RouteComponentProps } from 'react-router-dom'
 
-import { SMART_FOOD_MANAGEMENT_SIGN_UP_PAGE } from '../../../Common/routes/RouteConstants'
+import {
+   SMART_FOOD_MANAGEMENT_SIGN_UP_PAGE,
+   SMART_FOOD_MANAGEMENT_HOME_PAGE
+} from '../../../Common/routes/RouteConstants'
 import { getUserDisplayableErrorMessage } from '../../../Common/utils/APIUtils'
 
 import { goToCoivd19DashBoard } from '../../utils/NavigationModule/NavigationModule'
@@ -41,7 +44,7 @@ class SignInRoute extends React.Component<AuthenticationRouteProps> {
 
    onSignInSuccess = () => {
       const { history } = this.props
-      goToCoivd19DashBoard(history)
+      history.push(SMART_FOOD_MANAGEMENT_HOME_PAGE)
    }
 
    onSignInFailure = () => {
