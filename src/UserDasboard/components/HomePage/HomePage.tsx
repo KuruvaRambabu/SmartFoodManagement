@@ -6,6 +6,7 @@ import Header from '../../../Common/components/Header/Header'
 import Banner from '../Banner/Banner'
 import UserFoodManagementStore from '../../stores/UserFoodManagementStore/UserFoodManagementStore'
 import DatePicker from '../../../Common/components/DatePicker/DatePicker'
+import { MealCard } from '../Common/MealCard'
 
 interface HomePagePropsTypes {
    onClickWeeklyMenu: () => void
@@ -25,8 +26,12 @@ class HomePage extends Component<HomePagePropsTypes> {
       const {
          bannerData,
          getBannerDataAPIStatus,
-         getBannerDataAPIError
+         getBannerDataAPIError,
+         getMealCardAPIError,
+         getMealCardAPIStatus,
+         mealCardData
       } = userFoodManagementStore
+      console.log(mealCardData, 'homepage')
       return (
          <HomePageMainContainer>
             <Header
@@ -39,7 +44,11 @@ class HomePage extends Component<HomePagePropsTypes> {
                getBannerDataAPIStatus={getBannerDataAPIStatus}
                bannerData={bannerData}
             />
-            <DatePicker />
+            <MealCard
+               getMealCardAPIError={getMealCardAPIError}
+               getMealCardAPIStatus={getMealCardAPIStatus}
+               mealCardData={mealCardData}
+            />
          </HomePageMainContainer>
       )
    }

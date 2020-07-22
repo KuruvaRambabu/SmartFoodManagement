@@ -76,7 +76,6 @@ class Banner extends React.Component<BannerProps> {
 
    render() {
       const { getBannerDataAPIError, getBannerDataAPIStatus } = this.props
-
       const loadingWrapperWithFailureProps = {
          apiStatus: getBannerDataAPIStatus,
          apiError: getBannerDataAPIError,

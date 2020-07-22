@@ -4,6 +4,7 @@ import { action } from 'mobx'
 import { bindPromiseWithOnSuccess } from '@ib/mobx-promise'
 import BannerDataModel from '../models/BannerDataModel/BannerDataModel'
 import UserFoodManagementService from '../../services/UserFoodMangementService'
+import MealCardDataModel from '../models/MealCardDataModel/MealCardDataModel'
 
 class UserFoodManagementStore {
    @observable selectedPage!: string
@@ -14,7 +15,7 @@ class UserFoodManagementStore {
 
    @observable getMealCardAPIStatus!: APIStatus
    @observable getMealCardAPIError!: Error | null
-   @observable mealCardData!: Array<any>
+   @observable mealCardData!: Array<MealCardDataModel>
 
    userFoodManagementService: UserFoodManagementService
 
@@ -88,7 +89,12 @@ class UserFoodManagementStore {
 
    @action.bound
    setGetMealCardAPIResponse(response) {
-      console.log(response)
+      const data = response.meal_info
+      data.forEach(cardData => {
+         const mealData = new MealCardDataModel(cardData)
+         this.mealCardData.push(mealData)
+      })
+      console.log('hellooooo', this.mealCardData)
    }
 }
 

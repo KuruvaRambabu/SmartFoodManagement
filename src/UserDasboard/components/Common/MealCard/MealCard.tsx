@@ -1,9 +1,46 @@
 import React, { Component } from 'react'
-import { MealCardMainContainer } from './styledComponents'
+import { MealCardMainContainer, CardsContainer } from './styledComponents'
+import { APIStatus } from '@ib/api-constants'
+import { observer } from 'mobx-react'
+import LoadingWrapperWithFailure from '../../../../Common/components/LoadingWrapperWithFailure'
+import DatePicker from '../../../../Common/components/DatePicker/DatePicker'
+import { MealCardDetails } from '../MealCardDetails'
+import MealCardDataModel from '../../../stores/models/MealCardDataModel/MealCardDataModel'
 
-class MealCard extends Component {
+interface MealCardProps {
+   mealCardData: Array<MealCardDataModel>
+   getMealCardAPIError: Error | null
+   getMealCardAPIStatus: APIStatus
+}
+
+@observer
+class MealCard extends Component<MealCardProps> {
+   renderMealCardSuccessUI = observer(() => {
+      const { mealCardData } = this.props
+      return (
+         <MealCardMainContainer>
+            <DatePicker />
+            <CardsContainer>
+               {mealCardData.map(eachMeal => (
+                  <MealCardDetails key={eachMeal.mealId} eachMeal={eachMeal} />
+               ))}
+            </CardsContainer>
+         </MealCardMainContainer>
+      )
+   })
+
+   onRetryClick = () => {
+      this.onRetryClick
+   }
    render() {
-      return <MealCardMainContainer></MealCardMainContainer>
+      const { getMealCardAPIError, getMealCardAPIStatus } = this.props
+      const loadingWrapperWthFailureProps = {
+         apiStatus: getMealCardAPIStatus,
+         apiError: getMealCardAPIError,
+         renderSuccessUI: this.renderMealCardSuccessUI,
+         onRetryClick: this.onRetryClick
+      }
+      return <LoadingWrapperWithFailure {...loadingWrapperWthFailureProps} />
    }
 }
 

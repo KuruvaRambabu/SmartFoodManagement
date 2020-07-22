@@ -11,8 +11,8 @@
          "dead_line": "2020-07-22T07:13:26.806Z"
       },
       {
-         "meal_id": 0,
-         "meal_type": "Breakfast",
+         "meal_id": 4,
+         "meal_type": "Lunch",
          "meal_starttime": "2020-07-22T07:13:26.806Z",
          "meal_endtime": "2020-07-22T07:13:26.806Z",
          "item_names": [
@@ -28,8 +28,8 @@
          "dead_line": "2020-07-22T07:13:26.806Z"
       },
       {
-         "meal_id": 0,
-         "meal_type": "Breakfast",
+         "meal_id": 3,
+         "meal_type": "Dinner",
          "meal_starttime": "2020-07-22T07:13:26.806Z",
          "meal_endtime": "2020-07-22T07:13:26.806Z",
          "item_names": [
