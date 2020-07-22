@@ -17,13 +17,28 @@ class HomePageRoute extends Component<HomePageRouteTypes> {
    @observable selectedPage: string = 'home'
 
    componentDidMount() {
-      this.getUserFoodManagementStore().getBannerDataAPI()
+      this.doNetworkCallForBannerData()
    }
 
    onClickWeeklyMenu = () => {
       this.selectedPage = 'weeklyMenu'
       const { history } = this.props
       history.push(SMART_FOOD_MANAGEMENT_WEEKLY_MENU_PAGE)
+   }
+
+   doNetworkCallForBannerData = () => {
+      this.getUserFoodManagementStore().getBannerDataAPI(
+         this.onSuccess,
+         this.onFailure
+      )
+   }
+
+   onSuccess = () => {
+      this.getUserFoodManagementStore().getMealCardDataAPI()
+   }
+
+   onFailure = () => {
+      this.doNetworkCallForBannerData()
    }
 
    onClickHomePage = () => {
@@ -36,12 +51,18 @@ class HomePageRoute extends Component<HomePageRouteTypes> {
       return this.getInjectedProps().userFoodManagementStore
    }
 
+   componentWillUnmount() {
+      this.getUserFoodManagementStore().init()
+   }
+
    render() {
+      const userFoodManagementStore = this.getUserFoodManagementStore()
       return (
          <HomePage
             selectedPage={this.selectedPage}
             onClickHomePage={this.onClickHomePage}
             onClickWeeklyMenu={this.onClickWeeklyMenu}
+            userFoodManagementStore={userFoodManagementStore}
          />
       )
    }

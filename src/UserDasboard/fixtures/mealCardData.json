@@ -1,0 +1,48 @@
+{
+   "meal_info": [
+      {
+         "meal_id": 0,
+         "meal_type": "Breakfast",
+         "meal_starttime": "2020-07-22T07:13:26.806Z",
+         "meal_endtime": "2020-07-22T07:13:26.806Z",
+         "item_names": ["Idly", "Masala Rice", "Chutney", "Upma", "Sambar"],
+         "preference_status": "Half Meal",
+         "meal_status": "I Ate it",
+         "dead_line": "2020-07-22T07:13:26.806Z"
+      },
+      {
+         "meal_id": 0,
+         "meal_type": "Breakfast",
+         "meal_starttime": "2020-07-22T07:13:26.806Z",
+         "meal_endtime": "2020-07-22T07:13:26.806Z",
+         "item_names": [
+            "White Rice",
+            "Cabbage Pickle",
+            "Mango daal",
+            "Cabbage fry",
+            "Sambar",
+            "Butter Milk"
+         ],
+         "preference_status": "Half Meal",
+         "meal_status": "I Ate it",
+         "dead_line": "2020-07-22T07:13:26.806Z"
+      },
+      {
+         "meal_id": 0,
+         "meal_type": "Breakfast",
+         "meal_starttime": "2020-07-22T07:13:26.806Z",
+         "meal_endtime": "2020-07-22T07:13:26.806Z",
+         "item_names": [
+            "White Rice",
+            "Cabbage Pickle",
+            "Mango daal",
+            "Cabbage fry",
+            "Sambar",
+            "Butter Milk"
+         ],
+         "preference_status": "Half Meal",
+         "meal_status": "I Ate it",
+         "dead_line": "2020-07-22T07:13:26.806Z"
+      }
+   ]
+}

@@ -2,7 +2,7 @@
    height: 400px;
 }
 .banner-user-elem {
-   text-align: center;
+   text-align: left;
    color: #fff;
    position: relative;
    overflow: hidden;
@@ -10,11 +10,26 @@
 .banner-user-elem .banner-user-title {
    font-size: 32px;
    top: 30%;
-   right: 40%;
+   left: 10%;
+   font-family: HKGrotesk;
+   font-size: 32px;
+   font-weight: bold;
+   font-stretch: normal;
+   font-style: normal;
+   line-height: 1.25;
+   letter-spacing: normal;
 }
 .banner-user-elem .banner-user-text {
-   top: 35%;
-   right: 40%;
+   font-size: 16px;
+   top: 30%;
+   left: 10%;
+   font-family: HKGrotesk;
+   font-size: 20px;
+   font-weight: normal;
+   font-stretch: normal;
+   font-style: normal;
+   line-height: 1.6;
+   letter-spacing: normal;
 }
 .banner-anim-elem .bg {
    width: 100%;
@@ -23,4 +38,16 @@
    top: 0;
    left: 0;
    overflow: hidden;
+}
+.banner-user-text-content {
+   width: 35%;
+   top: 35%;
+   left: 10%;
+   color: #eaa800;
+   font-family: HKGrotesk;
+   font-size: 32px;
+   font-weight: normal;
+   font-stretch: normal;
+   font-style: normal;
+   line-height: 1.25;
 }
