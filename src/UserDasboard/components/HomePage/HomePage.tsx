@@ -31,7 +31,6 @@ class HomePage extends Component<HomePagePropsTypes> {
          getMealCardAPIStatus,
          mealCardData
       } = userFoodManagementStore
-      console.log(mealCardData, 'homepage')
       return (
          <HomePageMainContainer>
             <Header

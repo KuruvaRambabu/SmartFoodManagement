@@ -94,7 +94,6 @@ class UserFoodManagementStore {
          const mealData = new MealCardDataModel(cardData)
          this.mealCardData.push(mealData)
       })
-      console.log('hellooooo', this.mealCardData)
    }
 }
 

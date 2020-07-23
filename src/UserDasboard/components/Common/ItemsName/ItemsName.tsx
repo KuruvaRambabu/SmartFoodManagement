@@ -1,8 +1,20 @@
 import React, { Component } from 'react'
+import { Item, ItemContainer } from './styledComponents'
+import { observer } from 'mobx-react'
 
-class ItemsName extends Component {
+interface ItemsNameProps {
+   item: string
+   index: number
+}
+@observer
+class ItemsName extends Component<ItemsNameProps> {
    render() {
-      return <div></div>
+      const { item, index } = this.props
+      return (
+         <ItemContainer>
+            <Item>{item}</Item>
+         </ItemContainer>
+      )
    }
 }
 

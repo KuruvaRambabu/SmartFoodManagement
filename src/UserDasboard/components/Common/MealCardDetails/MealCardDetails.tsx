@@ -12,16 +12,13 @@ import {
    PreferredMeal,
    MealType,
    MealTimings,
-   ButtonStyles,
-   ButtonContainer,
-   ItemsNamesMainContainer,
-   Item
+   ItemsNamesMainContainer
 } from './styledComponents'
 import { BreakfastIcon } from '../../../../Common/components/Icons/BreakfastIcon/BreakFastIcon'
 import { LuchIcon } from '../../../../Common/components/Icons/LunchIcon/LunchIcon'
 import { DinnerIcon } from '../../../../Common/components/Icons/DinnerIcon/DinnnerIcon'
-import Button from '../../../../Common/components/Button/Button'
-import { Typo14DarkBlueGreyHKGroteskRegularSpan } from '../../../../Common/styleGuide/Typos'
+import ItemsName from '../ItemsName/ItemsName'
+import MealEditAndReviewButton from '../MealEditAndReviewButton/MealEditAndReviewButton'
 
 interface MealCardDetailsProps {
    eachMeal: MealCardDataModel
@@ -41,7 +38,6 @@ class MealCardDetails extends Component<MealCardDetailsProps> {
    render() {
       const { eachMeal } = this.props
       const { itemNames } = eachMeal
-      console.log(eachMeal.mealType)
       return (
          <MealCardDetailsMainContainer>
             <IconAndPreferredMealContainer>
@@ -51,27 +47,22 @@ class MealCardDetails extends Component<MealCardDetailsProps> {
                   </MealIconContainer>
                   <MealTypeContainer>
                      <MealType>{eachMeal.mealType}</MealType>
-                     <MealTimings>{'7:00 - 10:00'}</MealTimings>
+                     <MealTimings>
+                        {eachMeal.mealStartTime} - {eachMeal.mealEndTime}
+                     </MealTimings>
                   </MealTypeContainer>
                </IconAndMealTypeContainer>
                <PreferredMealContainer>
                   <PreferredMeal>{eachMeal.preferenceStatus}</PreferredMeal>
                </PreferredMealContainer>
             </IconAndPreferredMealContainer>
+
             <ItemsNamesMainContainer>
-               {itemNames.map(item => {
-                  return <Item>{item}</Item>
-               })}
+               {itemNames.map((item, index) => (
+                  <ItemsName index={index} item={item} key={item} />
+               ))}
             </ItemsNamesMainContainer>
-            <ButtonContainer>
-               <Button
-                  typo={Typo14DarkBlueGreyHKGroteskRegularSpan}
-                  type={Button.buttonType.filled}
-                  onClick={() => alert('hii')}
-                  buttonStyles={ButtonStyles}
-                  name={'Edit'}
-               />
-            </ButtonContainer>
+            <MealEditAndReviewButton deadLine={eachMeal.deadLine} />
          </MealCardDetailsMainContainer>
       )
    }

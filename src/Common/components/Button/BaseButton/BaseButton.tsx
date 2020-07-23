@@ -9,6 +9,7 @@ interface BaseButtonProps {
    name: any
    apiStatus?: any
    buttonStyles?: object
+   disabled?: boolean
 }
 class BaseButton extends Component<BaseButtonProps> {
    render() {
@@ -19,7 +20,6 @@ class BaseButton extends Component<BaseButtonProps> {
          typo: TextTypo,
          ...otherProps
       } = this.props
-      console.log(buttonStyles)
       return (
          <React.Fragment>
             {apiStatus === 100 ? (

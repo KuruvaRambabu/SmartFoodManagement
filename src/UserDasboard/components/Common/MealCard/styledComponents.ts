@@ -6,5 +6,5 @@ export const MealCardMainContainer = styled.div`
    ${tw``}
 `
 export const CardsContainer = styled.div`
-   ${tw`flex flex-wrap justify-around  pl-10`}
+   ${tw`flex flex-wrap justify-around  xl:mx-10  `}
 `

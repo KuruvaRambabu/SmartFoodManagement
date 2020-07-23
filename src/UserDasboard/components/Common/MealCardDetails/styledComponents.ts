@@ -9,11 +9,11 @@ import {
 import { css } from '@emotion/core'
 
 export const MealCardDetailsMainContainer = styled.div`
-   height: 304px;
-   ${tw` border shadow-md w-full md:w-1/4`}
+   height: 290px;
+   ${tw` border m-2 shadow-md w-full md:w-2/5 md:m-2 xl:w-1/4`}
 `
 export const IconAndPreferredMealContainer = styled.div`
-   ${tw`p-4 flex w-full justify-center`}
+   ${tw`p-2  mt-4  flex w-full justify-center`}
 `
 
 export const IconAndMealTypeContainer = styled.div`
@@ -42,18 +42,6 @@ export const MealTimings = styled(Typo12SteelHKGroteskRegulars)`
    ${tw``}
 `
 
-export const ButtonStyles = css`
-   width: 90%;
-   text-align: center;
-   background-color: #0b69ff;
-   height: 40px;
-`
-export const ButtonContainer = styled.div`
-   ${tw`w-full  mt-auto flex justify-center `}
-`
 export const ItemsNamesMainContainer = styled.div`
-   ${tw`flex p-4 flex-wrap justify-between `}
-`
-export const Item = styled(Typo16SteelHKGroteskRegular)`
-   ${tw`w-1/2 `}
+   ${tw`flex px-4  flex-wrap justify-between w-full`}
 `

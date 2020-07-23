@@ -6,6 +6,7 @@ import LoadingWrapperWithFailure from '../../../../Common/components/LoadingWrap
 import DatePicker from '../../../../Common/components/DatePicker/DatePicker'
 import { MealCardDetails } from '../MealCardDetails'
 import MealCardDataModel from '../../../stores/models/MealCardDataModel/MealCardDataModel'
+import { withHeaderComponent } from '../../../../Common/Hocs/withHeader'
 
 interface MealCardProps {
    mealCardData: Array<MealCardDataModel>
@@ -44,4 +45,4 @@ class MealCard extends Component<MealCardProps> {
    }
 }
 
-export default MealCard
+export default withHeaderComponent(MealCard)
