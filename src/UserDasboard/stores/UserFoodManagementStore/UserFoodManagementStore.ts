@@ -61,9 +61,8 @@ class UserFoodManagementStore {
    @action.bound
    setGetBannerDataAPIResponse(response) {
       const data = response.banner_data
-      data.forEach(occasion => {
-         const eachData = new BannerDataModel(occasion)
-         this.bannerData.push(eachData)
+      this.bannerData = data.map(occasion => {
+         return new BannerDataModel(occasion)
       })
    }
 
@@ -90,9 +89,8 @@ class UserFoodManagementStore {
    @action.bound
    setGetMealCardAPIResponse(response) {
       const data = response.meal_info
-      data.forEach(cardData => {
-         const mealData = new MealCardDataModel(cardData)
-         this.mealCardData.push(mealData)
+      this.mealCardData = data.map(cardData => {
+         return new MealCardDataModel(cardData)
       })
    }
 }

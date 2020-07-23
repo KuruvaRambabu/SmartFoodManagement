@@ -3,6 +3,7 @@ import { buttonType, variationType } from './constants'
 
 import BaseButton from './BaseButton/BaseButton'
 import OutlineButton from './OutlineButton/OutlineButton'
+import { observer } from 'mobx-react'
 interface ButtonProps {
    type: string
    typo?: any
@@ -11,7 +12,9 @@ interface ButtonProps {
    apiStatus?: any
    buttonStyles?: object
    disabled?: boolean
+   value?: string
 }
+@observer
 class Button extends Component<ButtonProps> {
    static buttonType = buttonType
    static variationType = variationType

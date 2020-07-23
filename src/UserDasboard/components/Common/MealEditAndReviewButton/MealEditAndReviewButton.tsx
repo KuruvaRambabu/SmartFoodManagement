@@ -16,6 +16,10 @@ import { formatDistance, compareAsc, subHours, subMinutes } from 'date-fns'
 
 interface MealEditAndReviewButtonProps {
    deadLine: string
+   mealType: string
+   onClickEditPreferenceButton: (
+      event: React.FormEvent<HTMLInputElement>
+   ) => void
 }
 
 @observer
@@ -40,24 +44,28 @@ class MealEditAndReviewButton extends Component<MealEditAndReviewButtonProps> {
       }, 1000)
    }
    render() {
+      const { onClickEditPreferenceButton, mealType } = this.props
+      console.log('button', mealType)
       return (
          <ButtonContainer>
             {this.isWithInTime ? (
                <Button
                   typo={Typo14DarkBlueGreyHKGroteskRegularSpan}
                   type={Button.buttonType.filled}
-                  onClick={() => alert('hii')}
+                  onClick={onClickEditPreferenceButton}
                   buttonStyles={ButtonStyles}
                   name={`Edit ${this.timeLeft} Left`}
+                  value={mealType}
                />
             ) : (
                <Button
                   typo={Typo14DarkBlueGreyHKGroteskRegularSpan}
                   type={Button.buttonType.filled}
-                  onClick={() => alert('hii')}
+                  onClick={onClickEditPreferenceButton}
                   buttonStyles={DisableEditButtonStyles}
                   name={'Edit Closed'}
                   disabled={true}
+                  value={mealType}
                />
             )}
          </ButtonContainer>

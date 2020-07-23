@@ -13,6 +13,9 @@ interface HomePagePropsTypes {
    selectedPage: string
    onClickHomePage: () => void
    userFoodManagementStore: UserFoodManagementStore
+   onClickEditPreferenceButton: (
+      event: React.FormEvent<HTMLInputElement>
+   ) => void
 }
 @observer
 class HomePage extends Component<HomePagePropsTypes> {
@@ -21,7 +24,8 @@ class HomePage extends Component<HomePagePropsTypes> {
          onClickWeeklyMenu,
          onClickHomePage,
          selectedPage,
-         userFoodManagementStore
+         userFoodManagementStore,
+         onClickEditPreferenceButton
       } = this.props
       const {
          bannerData,
@@ -47,6 +51,7 @@ class HomePage extends Component<HomePagePropsTypes> {
                getMealCardAPIError={getMealCardAPIError}
                getMealCardAPIStatus={getMealCardAPIStatus}
                mealCardData={mealCardData}
+               onClickEditPreferenceButton={onClickEditPreferenceButton}
             />
          </HomePageMainContainer>
       )

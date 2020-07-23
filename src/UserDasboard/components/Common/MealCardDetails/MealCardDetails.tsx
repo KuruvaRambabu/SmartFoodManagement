@@ -22,6 +22,9 @@ import MealEditAndReviewButton from '../MealEditAndReviewButton/MealEditAndRevie
 
 interface MealCardDetailsProps {
    eachMeal: MealCardDataModel
+   onClickEditPreferenceButton: (
+      event: React.FormEvent<HTMLInputElement>
+   ) => void
 }
 
 @observer
@@ -36,7 +39,7 @@ class MealCardDetails extends Component<MealCardDetailsProps> {
       }
    }
    render() {
-      const { eachMeal } = this.props
+      const { eachMeal, onClickEditPreferenceButton } = this.props
       const { itemNames } = eachMeal
       return (
          <MealCardDetailsMainContainer>
@@ -62,7 +65,11 @@ class MealCardDetails extends Component<MealCardDetailsProps> {
                   <ItemsName index={index} item={item} key={item} />
                ))}
             </ItemsNamesMainContainer>
-            <MealEditAndReviewButton deadLine={eachMeal.deadLine} />
+            <MealEditAndReviewButton
+               mealType={eachMeal.mealType}
+               onClickEditPreferenceButton={onClickEditPreferenceButton}
+               deadLine={eachMeal.deadLine}
+            />
          </MealCardDetailsMainContainer>
       )
    }

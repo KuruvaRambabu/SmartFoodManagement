@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import Loader from 'react-loader-spinner'
 
 import { BaseBtn } from './styledComponents'
+import { observer } from 'mobx-react'
 
 interface BaseButtonProps {
    typo?: any
@@ -10,7 +11,9 @@ interface BaseButtonProps {
    apiStatus?: any
    buttonStyles?: object
    disabled?: boolean
+   value?: string
 }
+@observer
 class BaseButton extends Component<BaseButtonProps> {
    render() {
       const {

@@ -1,23 +1,20 @@
 import React, { Component } from 'react'
-import HomePage from '../../components/HomePage'
+
 import { observable } from 'mobx'
 import { observer, inject } from 'mobx-react'
 import { withRouter, RouteComponentProps } from 'react-router-dom'
-import {
-   SMART_FOOD_MANAGEMENT_WEEKLY_MENU_PAGE,
-   SMART_FOOD_MANAGEMENT_HOME_PAGE,
-   SMART_FOOD_MANAGEMENT_MEAL_PREFERENCE_PAGE
-} from '../../../Common/routes/RouteConstants'
+import { SMART_FOOD_MANAGEMENT_WEEKLY_MENU_PAGE } from '../../../Common/routes/RouteConstants'
 import UserFoodManagementStore from '../../stores/UserFoodManagementStore/UserFoodManagementStore'
+import MealPreferencePage from '../../components/MealPreferencePage/MealPreferencePage'
 
-interface HomePageRouteTypes extends RouteComponentProps {}
-interface InjectedProps extends HomePageRouteTypes {
+interface MealPreferencePageRouteTypes extends RouteComponentProps {}
+interface InjectedProps extends MealPreferencePageRouteTypes {
    userFoodManagementStore: UserFoodManagementStore
 }
 
 @inject('userFoodManagementStore')
 @observer
-class HomePageRoute extends Component<HomePageRouteTypes> {
+class MealPreferencePageRoute extends Component<MealPreferencePageRouteTypes> {
    @observable selectedPage: string = 'home'
 
    componentDidMount() {
@@ -38,7 +35,7 @@ class HomePageRoute extends Component<HomePageRouteTypes> {
    }
 
    onSuccess = () => {
-      this.getUserFoodManagementStore().getMealCardDataAPI()
+      this.getUserFoodManagementStore()
    }
 
    onFailure = () => {
@@ -54,27 +51,19 @@ class HomePageRoute extends Component<HomePageRouteTypes> {
    getUserFoodManagementStore = () => {
       return this.getInjectedProps().userFoodManagementStore
    }
-   onClickEditPreferenceButton = event => {
-      const id = event.target.value
-      console.log(id)
-      const { history } = this.props
-      history.push(
-         `${SMART_FOOD_MANAGEMENT_HOME_PAGE}${SMART_FOOD_MANAGEMENT_MEAL_PREFERENCE_PAGE}/${id}`
-      )
-   }
 
    render() {
       const userFoodManagementStore = this.getUserFoodManagementStore()
+      console.log('history id', this.props.match.params)
       return (
-         <HomePage
+         <MealPreferencePage
             selectedPage={this.selectedPage}
             onClickHomePage={this.onClickHomePage}
             onClickWeeklyMenu={this.onClickWeeklyMenu}
             userFoodManagementStore={userFoodManagementStore}
-            onClickEditPreferenceButton={this.onClickEditPreferenceButton}
          />
       )
    }
 }
 
-export default withRouter(HomePageRoute)
+export default withRouter(MealPreferencePageRoute)
