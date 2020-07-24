@@ -18,6 +18,7 @@ class OutlineButton extends Component<OutlineButtonProps> {
          apiStatus,
          buttonStyles,
          typo: TextTypo,
+         id,
          ...otherProps
       } = this.props
       return (
@@ -26,7 +27,7 @@ class OutlineButton extends Component<OutlineButtonProps> {
             apiStatus={apiStatus}
             {...otherProps}
          >
-            <TextTypo>{name}</TextTypo>
+            <TextTypo id={id}>{name}</TextTypo>
          </OutlineBtn>
       )
    }

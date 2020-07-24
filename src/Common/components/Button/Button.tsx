@@ -28,12 +28,12 @@ class Button extends Component<ButtonProps> {
       }
    }
    render() {
-      const { type, ...otherProps } = this.props
+      const { type, id, ...otherProps } = this.props
       switch (type) {
          case buttonType.filled:
-            return <BaseButton {...otherProps} />
+            return <BaseButton id={id} {...otherProps} />
          case buttonType.outline:
-            return <OutlineButton {...otherProps} />
+            return <OutlineButton id={id} {...otherProps} />
          default:
             console.warn('Invalid button type', 'type')
             break
