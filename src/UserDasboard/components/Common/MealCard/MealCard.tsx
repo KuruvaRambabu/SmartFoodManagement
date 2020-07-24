@@ -1,5 +1,9 @@
 import React, { Component } from 'react'
-import { MealCardMainContainer, CardsContainer } from './styledComponents'
+import {
+   MealCardMainContainer,
+   CardsContainer,
+   DatePickerContainer
+} from './styledComponents'
 import { APIStatus } from '@ib/api-constants'
 import { observer } from 'mobx-react'
 import LoadingWrapperWithFailure from '../../../../Common/components/LoadingWrapperWithFailure'
@@ -20,7 +24,10 @@ class MealCard extends Component<MealCardProps> {
       const { mealCardData } = this.props
       return (
          <MealCardMainContainer>
-            <DatePicker />
+            <DatePickerContainer>
+               <DatePicker />
+            </DatePickerContainer>
+
             <CardsContainer>
                {mealCardData.map(eachMeal => (
                   <MealCardDetails key={eachMeal.mealId} eachMeal={eachMeal} />

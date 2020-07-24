@@ -2,32 +2,42 @@ import React, { Component } from 'react'
 import { Tab } from 'semantic-ui-react'
 import 'semantic-ui-css/semantic.min.css'
 import './index.css'
+import { MealTypeContainer } from '../MealCardDetails/styledComponents'
+import { observable } from 'mobx'
 
-const panes = [
-   {
-      menuItem: 'Full meal',
-      render: () => <Tab.Pane attached={false}> </Tab.Pane>
-   },
-   {
-      menuItem: 'Half meal',
-      render: () => <Tab.Pane attached={false}>Tab 2 Content</Tab.Pane>
-   },
-   {
-      menuItem: 'Custom',
-      render: () => <Tab.Pane attached={false}>Tab 3 Content</Tab.Pane>
-   }
-]
+import {
+   MealTabsMainContainer,
+   FullMealTabContainer,
+   HalfMealTabContainer,
+   CustomMealTabContainer,
+   FullMealTabText,
+   HalfMealTabText,
+   CustomMealTabText,
+   MealTabsContainer,
+   MealTabsAndDateContainer
+} from './styledComponents'
+import DatePicker from '../../../../Common/components/DatePicker/DatePicker'
+
 class MealTabs extends Component {
+   @observable selectedTab = 'fullMeal'
    render() {
-      const color = 'blue'
-
       return (
-         <div>
-            <Tab
-               menu={{ color, pointing: true, attached: false, tabular: false }}
-               panes={panes}
-            />
-         </div>
+         <MealTabsMainContainer>
+            <MealTabsAndDateContainer>
+               <MealTabsContainer>
+                  <FullMealTabContainer>
+                     <FullMealTabText>Full meal</FullMealTabText>
+                  </FullMealTabContainer>
+                  <HalfMealTabContainer>
+                     <HalfMealTabText>Half meal</HalfMealTabText>
+                  </HalfMealTabContainer>
+                  <CustomMealTabContainer>
+                     <CustomMealTabText>Custom</CustomMealTabText>
+                  </CustomMealTabContainer>
+                  <DatePicker />
+               </MealTabsContainer>
+            </MealTabsAndDateContainer>
+         </MealTabsMainContainer>
       )
    }
 }
