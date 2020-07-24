@@ -1,4 +1,5 @@
 import styled from '@emotion/styled'
+import { colors } from '../../../Authentication/themes/Colors'
 
 export const Typo12SteelHKGrotesk = styled.label`
    font-family: HKGrotesk;
@@ -83,4 +84,14 @@ export const Typo14WhiteHKGroteskSemiBold = styled.span`
    font-stretch: normal;
    font-style: normal;
    line-height: 1.71;
+`
+export const Typo32DarkBlueGreyHKGroteskMedium = styled.span`
+   font-family: HKGrotesk;
+   font-size: 32px;
+   font-weight: 500;
+   font-stretch: normal;
+   font-style: normal;
+   line-height: 1.5;
+   padding-bottom: 10px;
+   border-bottom: 1px solid ${colors.brightBlue};
 `

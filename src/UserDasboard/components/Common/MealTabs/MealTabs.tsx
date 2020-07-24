@@ -1,21 +1,35 @@
-import React from 'react'
+import React, { Component } from 'react'
 import { Tab } from 'semantic-ui-react'
+import 'semantic-ui-css/semantic.min.css'
 import './index.css'
+
 const panes = [
    {
-      menuItem: 'Tab 1',
-      render: () => <Tab.Pane attached={false}>Tab 1 Content</Tab.Pane>
+      menuItem: 'Full meal',
+      render: () => <Tab.Pane attached={false}> </Tab.Pane>
    },
    {
-      menuItem: 'Tab 2',
+      menuItem: 'Half meal',
       render: () => <Tab.Pane attached={false}>Tab 2 Content</Tab.Pane>
    },
    {
-      menuItem: 'Tab 3',
+      menuItem: 'Custom',
       render: () => <Tab.Pane attached={false}>Tab 3 Content</Tab.Pane>
    }
 ]
+class MealTabs extends Component {
+   render() {
+      const color = 'blue'
 
-const MealTabs = () => <Tab menu={{ pointing: true }} panes={panes} />
+      return (
+         <div>
+            <Tab
+               menu={{ color, pointing: true, attached: false, tabular: false }}
+               panes={panes}
+            />
+         </div>
+      )
+   }
+}
 
 export default MealTabs

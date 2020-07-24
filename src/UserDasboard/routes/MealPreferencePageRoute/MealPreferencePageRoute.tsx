@@ -18,7 +18,9 @@ class MealPreferencePageRoute extends Component<MealPreferencePageRouteTypes> {
    @observable selectedPage: string = 'home'
 
    componentDidMount() {
-      this.doNetworkCallForBannerData()
+      if (this.getUserFoodManagementStore().bannerData.length === 0) {
+         this.doNetworkCallForBannerData()
+      }
    }
 
    onClickWeeklyMenu = () => {
@@ -54,14 +56,14 @@ class MealPreferencePageRoute extends Component<MealPreferencePageRouteTypes> {
 
    render() {
       const userFoodManagementStore = this.getUserFoodManagementStore()
-      console.log('history id', this.props.match.params)
-
+      const mealType = this.props.match.params['id']
       return (
          <MealPreferencePage
             selectedPage={this.selectedPage}
             onClickHomePage={this.onClickHomePage}
             onClickWeeklyMenu={this.onClickWeeklyMenu}
             userFoodManagementStore={userFoodManagementStore}
+            mealType={mealType}
          />
       )
    }

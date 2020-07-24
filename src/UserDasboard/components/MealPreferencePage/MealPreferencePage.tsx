@@ -12,6 +12,7 @@ interface MealPreferencePageProps {
    selectedPage: string
    onClickHomePage: () => void
    userFoodManagementStore: UserFoodManagementStore
+   mealType: string
 }
 
 @observer
@@ -21,7 +22,8 @@ class MealPreferencePage extends Component<MealPreferencePageProps> {
          onClickWeeklyMenu,
          onClickHomePage,
          selectedPage,
-         userFoodManagementStore
+         userFoodManagementStore,
+         mealType
       } = this.props
       const {
          bannerData,
@@ -40,7 +42,7 @@ class MealPreferencePage extends Component<MealPreferencePageProps> {
                getBannerDataAPIStatus={getBannerDataAPIStatus}
                bannerData={bannerData}
             />
-            <MealPreferenceCard />
+            <MealPreferenceCard mealType={mealType} />
          </MealPreferencePageMainContainer>
       )
    }
