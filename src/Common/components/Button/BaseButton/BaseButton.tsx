@@ -21,6 +21,7 @@ class BaseButton extends Component<BaseButtonProps> {
          apiStatus,
          buttonStyles,
          typo: TextTypo,
+         id,
          ...otherProps
       } = this.props
       return (
@@ -38,8 +39,9 @@ class BaseButton extends Component<BaseButtonProps> {
                   buttonStyles={buttonStyles}
                   apiStatus={apiStatus}
                   {...otherProps}
+                  id={id}
                >
-                  <TextTypo>{name}</TextTypo>
+                  <TextTypo id={id}>{name}</TextTypo>
                </BaseBtn>
             )}
          </React.Fragment>

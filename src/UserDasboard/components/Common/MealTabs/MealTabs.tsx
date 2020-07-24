@@ -7,16 +7,9 @@ import { observable } from 'mobx'
 
 import {
    MealTabsMainContainer,
-   FullMealTabContainer,
-   HalfMealTabContainer,
-   CustomMealTabContainer,
-   FullMealTabText,
-   HalfMealTabText,
-   CustomMealTabText,
    MealTabsContainer,
    MealTabsAndDateContainer,
-   MealTypeButtonStyles,
-   MealTypeButtons
+   MealTypeButtonStyles
 } from './styledComponents'
 import DatePicker from '../../../../Common/components/DatePicker/DatePicker'
 import Button from '../../../../Common/components/Button/Button'
@@ -25,40 +18,53 @@ import { observer } from 'mobx-react'
 
 interface MealTabsProps {
    selectedMealType: string
+   t: any
    onChangeMealType: (event: any) => void
 }
 
 @observer
 class MealTabs extends Component<MealTabsProps> {
    render() {
-      const { onChangeMealType } = this.props
+      const { onChangeMealType, t, selectedMealType } = this.props
       return (
          <MealTabsMainContainer>
             <MealTabsAndDateContainer>
                <MealTabsContainer>
                   <Button
                      onClick={onChangeMealType}
-                     type={Button.buttonType.outline}
+                     type={
+                        selectedMealType === 'fullMeal'
+                           ? Button.buttonType.filled
+                           : Button.buttonType.outline
+                     }
                      typo={Typo14DarkBlueGreyHKGroteskSemiBold}
                      id='fullMeal'
                      buttonStyles={MealTypeButtonStyles}
-                     name={'Full meal'}
+                     name={t('userDashboardModule:fullMeal')}
                   />
                   <Button
                      onClick={onChangeMealType}
-                     type={Button.buttonType.outline}
+                     type={
+                        selectedMealType === 'halfMeal'
+                           ? Button.buttonType.filled
+                           : Button.buttonType.outline
+                     }
                      typo={Typo14DarkBlueGreyHKGroteskSemiBold}
                      id='halfMeal'
                      buttonStyles={MealTypeButtonStyles}
-                     name={'Half meal'}
+                     name={t('userDashboardModule:halfMeal')}
                   />
                   <Button
                      onClick={onChangeMealType}
-                     type={Button.buttonType.outline}
+                     type={
+                        selectedMealType === 'custom'
+                           ? Button.buttonType.filled
+                           : Button.buttonType.outline
+                     }
                      typo={Typo14DarkBlueGreyHKGroteskSemiBold}
-                     id='custom '
                      buttonStyles={MealTypeButtonStyles}
-                     name={'custom'}
+                     id='custom'
+                     name={t('userDashboardModule:custom')}
                   />
                </MealTabsContainer>
 

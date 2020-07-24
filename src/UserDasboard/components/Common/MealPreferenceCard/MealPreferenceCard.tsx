@@ -15,7 +15,9 @@ import { Typo14DarkBlueGreyHKGroteskSemiBold } from '../../../../Common/styleGui
 import { ISkippedButtonStyles } from '../MealEditAndReviewButton/styledComponents'
 import { observable } from 'mobx'
 import { observer } from 'mobx-react'
-
+import { withTranslation, WithTranslation } from 'react-i18next'
+import { PreferenceItems } from '../PreferenceItems'
+interface MealPreferenceCardProps extends WithTranslation {}
 interface MealPreferenceCardProps {
    mealType: string
 }
@@ -23,13 +25,17 @@ interface MealPreferenceCardProps {
 @observer
 class MealPreferenceCard extends Component<MealPreferenceCardProps> {
    @observable selectedMealType: string = 'fullMeal'
+
    onClickSkipMeal = () => {}
 
    onChangeMealType = event => {
-      alert(event.target.id)
+      if (this.selectedMealType !== event.target.id) {
+         this.selectedMealType = event.target.id
+      }
+      console.log(event.target.id)
    }
    render() {
-      const { mealType } = this.props
+      const { mealType, t } = this.props
       return (
          <MealPreferenceCardMainContainer>
             <MealPreferenceCardContainer>
@@ -40,18 +46,20 @@ class MealPreferenceCard extends Component<MealPreferenceCardProps> {
                      type={Button.buttonType.outline}
                      onClick={this.onClickSkipMeal}
                      buttonStyles={SkipMealButtonStyles}
-                     name={`Skip meal`}
+                     name={t('userDashboardModule:skipMeal')}
                   />
                </PreferenceMealTypeContainer>
                <MealTabs
                   selectedMealType={this.selectedMealType}
+                  t={t}
                   onChangeMealType={this.onChangeMealType}
                />
-               <UpdateMealPreferenceAndBackButtons />
+               <PreferenceItems selectedMealType={this.selectedMealType} />
+               <UpdateMealPreferenceAndBackButtons t={t} />
             </MealPreferenceCardContainer>
          </MealPreferenceCardMainContainer>
       )
    }
 }
 
-export default MealPreferenceCard
+export default withTranslation('translation')(MealPreferenceCard)

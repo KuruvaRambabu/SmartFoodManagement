@@ -25,6 +25,7 @@ class OutlineButton extends Component<OutlineButtonProps> {
          <OutlineBtn
             buttonStyles={buttonStyles}
             apiStatus={apiStatus}
+            id={id}
             {...otherProps}
          >
             <TextTypo id={id}>{name}</TextTypo>

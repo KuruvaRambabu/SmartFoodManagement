@@ -14,7 +14,9 @@ import {
 
 import { withRouter, RouteComponentProps } from 'react-router-dom'
 
-interface UpdateMealPreferenceAndBackButtonsProps extends RouteComponentProps {}
+interface UpdateMealPreferenceAndBackButtonsProps extends RouteComponentProps {
+   t: any
+}
 
 class UpdateMealPreferenceAndBackButtons extends Component<
    UpdateMealPreferenceAndBackButtonsProps
@@ -25,20 +27,21 @@ class UpdateMealPreferenceAndBackButtons extends Component<
    }
 
    render() {
+      const { t } = this.props
       return (
          <SavePreferenceAndCancelButtonsMainContainer>
             <Button
                onClick={this.onClickBackButton}
                type={Button.buttonType.outline}
                typo={Typo14DarkBlueGreyHKGroteskSemiBold}
-               name={'Back'}
+               name={t('userDashboardModule:backToHomePage')}
                buttonStyles={BackButtonStyles}
             />
             <Button
                onClick={this.onClickBackButton}
                type={Button.buttonType.filled}
                typo={Typo14WhiteHKGroteskSemiBold}
-               name={'Save'}
+               name={t('userDashboardModule:savePreference')}
                buttonStyles={SaveButtonStyles}
             />
          </SavePreferenceAndCancelButtonsMainContainer>

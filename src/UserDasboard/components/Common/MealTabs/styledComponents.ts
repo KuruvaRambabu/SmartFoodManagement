@@ -4,45 +4,20 @@ import { Typo14DarkBlueGreyHKGroteskSemiBold } from '../../../../Common/styleGui
 import { Colors } from '../../../themes/Colors'
 import { css } from '@emotion/core'
 
-export const MealTabsMainContainer = styled.div``
+export const MealTabsMainContainer = styled.div`
+   ${tw`w-full`}
+`
 
 export const MealTabsContainer = styled.div`
-   ${tw` flex  w-11/12 -mt-4 `}
+   ${tw`  w-full flex -mt-4  ml-6`}
 `
-
-export const FullMealTabContainer = styled.div`
-   ${tw`flex justify-center items-center cursor-pointer`}
-`
-
-export const CustomMealTabContainer = styled.div`
-   width: 100px;
-   height: 40px;
-   border: solid 1px ${Colors.lightBlueGray};
-   ${tw`flex justify-center items-center cursor-pointer`}
-`
-
-export const HalfMealTabContainer = styled.div`
-   width: 100px;
-   height: 40px;
-   border: solid 1px ${Colors.lightBlueGray};
-   ${tw`flex justify-center items-center`}
-`
-
-export const CustomMealTabText = styled(Typo14DarkBlueGreyHKGroteskSemiBold)``
-
-export const FullMealTabText = styled(Typo14DarkBlueGreyHKGroteskSemiBold)``
-
-export const HalfMealTabText = styled(Typo14DarkBlueGreyHKGroteskSemiBold)``
 
 export const MealTabsAndDateContainer = styled.div`
-   ${tw`flex w-9/12 p-4 justify-center `}
+   ${tw`flex w-full lg:w-9/12 flex-col lg:flex-row p-4 justify-center `}
 `
 export const MealTypeButtonStyles = css`
    width: 100px;
    height: 40px;
    border: solid 1px ${Colors.lightBlueGray};
    cursor: pointer;
-`
-export const MealTypeButtons = styled.div`
-   ${tw` flex border `}
 `

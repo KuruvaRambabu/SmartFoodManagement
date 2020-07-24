@@ -1,5 +1,16 @@
 {
    "home": "Home",
    "weeklyMenu": "Weekly Menu",
-   "profileName": "Profile"
+   "profileName": "Profile",
+   "iSkipped": "I Skipped",
+   "iAteIt": "I Ate it",
+   "skipMeal": "Skip meal",
+   "fullMeal": "Full meal",
+   "halfMeal": "Half meal",
+   "custom": "custom",
+   "editClosed": "Edit closed",
+   "savePreference": "Save",
+   "backToHomePage": "Back",
+   "reviewFood": "Review Food",
+   "Date": "Date : "
 }

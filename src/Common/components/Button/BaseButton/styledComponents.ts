@@ -13,7 +13,8 @@ export const BaseBtn = styled.button`
    font-family: Rubik;
    font-size: 14px;
    font-weight: 800;
+
    opacity: ${(props: PrimarySignInButtonProps) =>
       props.apiStatus === 100 ? 0.7 : ''};
-   ${(props: PrimarySignInButtonProps) => props.buttonStyles}
+   ${(props: PrimarySignInButtonProps) => props.buttonStyles};
 `
