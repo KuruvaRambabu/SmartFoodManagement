@@ -3,74 +3,158 @@ import { observer } from 'mobx-react'
 import { observable } from 'mobx'
 
 import Button from '../../../../Common/components/Button/Button'
-import { Typo14DarkBlueGreyHKGroteskRegularSpan } from '../../../../Common/styleGuide/Typos'
+import {
+   Typo14DarkBlueGreyHKGroteskRegularSpan,
+   Typo14DarkBlueGreyHKGroteskSemiBold
+} from '../../../../Common/styleGuide/Typos'
 
 import {
    ButtonContainer,
    ButtonStyles,
-   DisableEditButtonStyles
+   DisableEditButtonStyles,
+   IAteAndSkippedContainer,
+   IAteItButtonStyles,
+   ISkippedButtonStyles
 } from './styledComponents'
-import { withHeaderComponent } from '../../../../Common/Hocs/withHeader'
 
-import { formatDistance, compareAsc, subHours, subMinutes } from 'date-fns'
+import {
+   formatDistance,
+   getTime,
+   compareAsc,
+   subHours,
+   subMinutes,
+   format
+} from 'date-fns'
+import { withRouter, RouteComponentProps } from 'react-router-dom'
+import {
+   SMART_FOOD_MANAGEMENT_HOME_PAGE,
+   SMART_FOOD_MANAGEMENT_MEAL_PREFERENCE_PAGE
+} from '../../../../Common/routes/RouteConstants'
 
-interface MealEditAndReviewButtonProps {
+interface MealEditAndReviewButtonProps extends RouteComponentProps {
    deadLine: string
    mealType: string
-   onClickEditPreferenceButton: (
-      event: React.FormEvent<HTMLInputElement>
-   ) => void
+   startTime: string
+   endTime: string
 }
 
 @observer
 class MealEditAndReviewButton extends Component<MealEditAndReviewButtonProps> {
    @observable timeLeft: string = 'time'
    @observable isWithInTime: boolean = true
+   @observable isTimeBetweenTheMealTimings: boolean = false
+   @observable isReviewButtonTime: boolean = false
+   timer
 
    componentDidMount() {
-      const { deadLine } = this.props
-      let date: any = new Date(deadLine).toUTCString()
-      date = subHours(new Date(date), 5)
-      date = subMinutes(new Date(date), 30)
-      setInterval(() => {
-         if (compareAsc(new Date(date), new Date()) === 1) {
-            this.timeLeft = formatDistance(new Date(date), new Date(), {
+      this.renderTimings()
+   }
+   renderTimings = () => {
+      const { deadLine, startTime, endTime } = this.props
+      this.timer = setInterval(() => {
+         if (compareAsc(new Date(deadLine), new Date()) === 1) {
+            this.timeLeft = formatDistance(new Date(deadLine), new Date(), {
                includeSeconds: true
             })
-         } else {
+         } else if (compareAsc(new Date(startTime), new Date()) === 1) {
+            this.isWithInTime = false
+            this.timeLeft = 'Edit closed'
+         } else if (
+            compareAsc(new Date(), new Date(startTime)) === 1 &&
+            compareAsc(new Date(endTime), new Date()) === 1
+         ) {
             this.timeLeft = ' I Ate it'
             this.isWithInTime = false
+            this.isTimeBetweenTheMealTimings = true
+         } else {
+            this.isReviewButtonTime = true
+            this.isTimeBetweenTheMealTimings = false
          }
-      }, 1000)
+      })
+   }
+   onClickEditPreferenceButton = () => {
+      const { history, mealType } = this.props
+      history.push(
+         `${SMART_FOOD_MANAGEMENT_HOME_PAGE}${SMART_FOOD_MANAGEMENT_MEAL_PREFERENCE_PAGE}/${mealType}`
+      )
+   }
+   componentWillUnmount() {
+      this.timer
    }
    render() {
-      const { onClickEditPreferenceButton, mealType } = this.props
-      console.log('button', mealType)
-      return (
-         <ButtonContainer>
-            {this.isWithInTime ? (
+      const { mealType } = this.props
+      if (
+         this.isWithInTime &&
+         !this.isReviewButtonTime &&
+         !this.isTimeBetweenTheMealTimings
+      ) {
+         return (
+            <ButtonContainer>
                <Button
                   typo={Typo14DarkBlueGreyHKGroteskRegularSpan}
                   type={Button.buttonType.filled}
-                  onClick={onClickEditPreferenceButton}
+                  onClick={this.onClickEditPreferenceButton}
                   buttonStyles={ButtonStyles}
                   name={`Edit ${this.timeLeft} Left`}
-                  value={mealType}
+                  id={mealType}
                />
-            ) : (
+            </ButtonContainer>
+         )
+      } else if (
+         !this.isWithInTime &&
+         !this.isTimeBetweenTheMealTimings &&
+         !this.isReviewButtonTime
+      ) {
+         return (
+            <ButtonContainer>
                <Button
                   typo={Typo14DarkBlueGreyHKGroteskRegularSpan}
                   type={Button.buttonType.filled}
-                  onClick={onClickEditPreferenceButton}
+                  onClick={this.onClickEditPreferenceButton}
                   buttonStyles={DisableEditButtonStyles}
-                  name={'Edit Closed'}
+                  name={`${this.timeLeft}`}
                   disabled={true}
-                  value={mealType}
+                  id={mealType}
                />
-            )}
-         </ButtonContainer>
-      )
+            </ButtonContainer>
+         )
+      } else if (this.isTimeBetweenTheMealTimings && !this.isReviewButtonTime) {
+         return (
+            <IAteAndSkippedContainer>
+               <Button
+                  typo={Typo14DarkBlueGreyHKGroteskRegularSpan}
+                  type={Button.buttonType.filled}
+                  onClick={this.onClickEditPreferenceButton}
+                  buttonStyles={IAteItButtonStyles}
+                  name={`I Ate it`}
+                  id={mealType}
+               />
+
+               <Button
+                  typo={Typo14DarkBlueGreyHKGroteskSemiBold}
+                  type={Button.buttonType.outline}
+                  onClick={this.onClickEditPreferenceButton}
+                  buttonStyles={ISkippedButtonStyles}
+                  name={`I skipped `}
+                  id={mealType}
+               />
+            </IAteAndSkippedContainer>
+         )
+      } else {
+         return (
+            <ButtonContainer>
+               <Button
+                  typo={Typo14DarkBlueGreyHKGroteskRegularSpan}
+                  type={Button.buttonType.filled}
+                  onClick={this.onClickEditPreferenceButton}
+                  buttonStyles={DisableEditButtonStyles}
+                  name={`${'Review Food'}`}
+                  id={mealType}
+               />
+            </ButtonContainer>
+         )
+      }
    }
 }
 
-export default withHeaderComponent(MealEditAndReviewButton)
+export default withRouter(MealEditAndReviewButton)

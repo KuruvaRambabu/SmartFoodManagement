@@ -19,14 +19,11 @@ import { LuchIcon } from '../../../../Common/components/Icons/LunchIcon/LunchIco
 import { DinnerIcon } from '../../../../Common/components/Icons/DinnerIcon/DinnnerIcon'
 import ItemsName from '../ItemsName/ItemsName'
 import MealEditAndReviewButton from '../MealEditAndReviewButton/MealEditAndReviewButton'
+import { format } from 'date-fns/esm'
 
 interface MealCardDetailsProps {
    eachMeal: MealCardDataModel
-   onClickEditPreferenceButton: (
-      event: React.FormEvent<HTMLInputElement>
-   ) => void
 }
-
 @observer
 class MealCardDetails extends Component<MealCardDetailsProps> {
    renderMealIcon = type => {
@@ -39,8 +36,10 @@ class MealCardDetails extends Component<MealCardDetailsProps> {
       }
    }
    render() {
-      const { eachMeal, onClickEditPreferenceButton } = this.props
+      const { eachMeal } = this.props
       const { itemNames } = eachMeal
+      const startTime = format(new Date(eachMeal.mealStartTime), 'HH:mm')
+      const endTime = format(new Date(eachMeal.mealEndTime), 'HH:mm')
       return (
          <MealCardDetailsMainContainer>
             <IconAndPreferredMealContainer>
@@ -51,7 +50,7 @@ class MealCardDetails extends Component<MealCardDetailsProps> {
                   <MealTypeContainer>
                      <MealType>{eachMeal.mealType}</MealType>
                      <MealTimings>
-                        {eachMeal.mealStartTime} - {eachMeal.mealEndTime}
+                        {startTime} - {endTime}
                      </MealTimings>
                   </MealTypeContainer>
                </IconAndMealTypeContainer>
@@ -67,8 +66,9 @@ class MealCardDetails extends Component<MealCardDetailsProps> {
             </ItemsNamesMainContainer>
             <MealEditAndReviewButton
                mealType={eachMeal.mealType}
-               onClickEditPreferenceButton={onClickEditPreferenceButton}
                deadLine={eachMeal.deadLine}
+               startTime={eachMeal.mealStartTime}
+               endTime={eachMeal.mealEndTime}
             />
          </MealCardDetailsMainContainer>
       )

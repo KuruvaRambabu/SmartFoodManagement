@@ -19,6 +19,7 @@ interface InjectedProps extends HomePageRouteTypes {
 @observer
 class HomePageRoute extends Component<HomePageRouteTypes> {
    @observable selectedPage: string = 'home'
+   @observable id
 
    componentDidMount() {
       this.doNetworkCallForBannerData()
@@ -54,14 +55,6 @@ class HomePageRoute extends Component<HomePageRouteTypes> {
    getUserFoodManagementStore = () => {
       return this.getInjectedProps().userFoodManagementStore
    }
-   onClickEditPreferenceButton = event => {
-      const id = event.target.value
-      console.log(id)
-      const { history } = this.props
-      history.push(
-         `${SMART_FOOD_MANAGEMENT_HOME_PAGE}${SMART_FOOD_MANAGEMENT_MEAL_PREFERENCE_PAGE}/${id}`
-      )
-   }
 
    render() {
       const userFoodManagementStore = this.getUserFoodManagementStore()
@@ -71,7 +64,6 @@ class HomePageRoute extends Component<HomePageRouteTypes> {
             onClickHomePage={this.onClickHomePage}
             onClickWeeklyMenu={this.onClickWeeklyMenu}
             userFoodManagementStore={userFoodManagementStore}
-            onClickEditPreferenceButton={this.onClickEditPreferenceButton}
          />
       )
    }

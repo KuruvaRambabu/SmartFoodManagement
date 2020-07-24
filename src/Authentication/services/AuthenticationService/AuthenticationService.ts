@@ -8,15 +8,17 @@ import { baseUrl } from '../../constants/EnvironmentConstants'
 import endpoints from '../endPoints'
 
 import AuthService from '.'
+import Config from '../../../Common/constants/EnvironmentConstants'
 
 class AuthenticationService implements AuthService {
    api: Record<string, any>
    constructor() {
       this.api = create({
-         baseURL: baseUrl
+         baseURL: Config.BASE_URL
       })
    }
    signInAPI(requestObject) {
+      console.log(requestObject)
       return networkCallWithApisauce(
          this.api,
          endpoints.signIn,

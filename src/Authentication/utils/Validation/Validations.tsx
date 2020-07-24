@@ -6,7 +6,7 @@ export function ValidateUserName(value) {
       return {
          errorMessage: '*Required'
       }
-   } else if (emailRegex.test(value)) {
+   } else if (emailRegex) {
       return {
          errorMessage: ''
       }
@@ -22,7 +22,7 @@ export function ValidatePassword(value) {
       return {
          errorMessage: '*Required'
       }
-   } else if (passw.test(value)) {
+   } else if (passw) {
       return {
          errorMessage: ''
       }

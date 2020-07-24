@@ -12,25 +12,18 @@ interface MealCardProps {
    mealCardData: Array<MealCardDataModel>
    getMealCardAPIError: Error | null
    getMealCardAPIStatus: APIStatus
-   onClickEditPreferenceButton: (
-      event: React.FormEvent<HTMLInputElement>
-   ) => void
 }
 
 @observer
 class MealCard extends Component<MealCardProps> {
    renderMealCardSuccessUI = observer(() => {
-      const { mealCardData, onClickEditPreferenceButton } = this.props
+      const { mealCardData } = this.props
       return (
          <MealCardMainContainer>
             <DatePicker />
             <CardsContainer>
                {mealCardData.map(eachMeal => (
-                  <MealCardDetails
-                     onClickEditPreferenceButton={onClickEditPreferenceButton}
-                     key={eachMeal.mealId}
-                     eachMeal={eachMeal}
-                  />
+                  <MealCardDetails key={eachMeal.mealId} eachMeal={eachMeal} />
                ))}
             </CardsContainer>
          </MealCardMainContainer>
@@ -42,6 +35,7 @@ class MealCard extends Component<MealCardProps> {
    }
    render() {
       const { getMealCardAPIError, getMealCardAPIStatus } = this.props
+
       const loadingWrapperWthFailureProps = {
          apiStatus: getMealCardAPIStatus,
          apiError: getMealCardAPIError,

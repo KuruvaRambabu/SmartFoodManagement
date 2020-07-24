@@ -11,7 +11,7 @@ interface BaseButtonProps {
    apiStatus?: any
    buttonStyles?: object
    disabled?: boolean
-   value?: string
+   id?: string
 }
 @observer
 class BaseButton extends Component<BaseButtonProps> {

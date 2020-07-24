@@ -12,7 +12,7 @@ interface ButtonProps {
    apiStatus?: any
    buttonStyles?: object
    disabled?: boolean
-   value?: string
+   id?: string
 }
 @observer
 class Button extends Component<ButtonProps> {
@@ -33,7 +33,7 @@ class Button extends Component<ButtonProps> {
          case buttonType.filled:
             return <BaseButton {...otherProps} />
          case buttonType.outline:
-            return <OutlineButton />
+            return <OutlineButton {...otherProps} />
          default:
             console.warn('Invalid button type', 'type')
             break
