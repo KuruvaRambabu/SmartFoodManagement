@@ -32,3 +32,7 @@ export const SkipMealButtonStyles = css`
    border-radius: 4px;
    border: 1px solid ${Colors.lightBlueGray};
 `
+export const MealTabAndDateContainer = styled.div`
+${tw`flex `}
+`
+

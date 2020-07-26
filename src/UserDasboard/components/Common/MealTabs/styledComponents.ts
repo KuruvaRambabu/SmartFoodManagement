@@ -9,7 +9,7 @@ export const MealTabsMainContainer = styled.div`
 `
 
 export const MealTabsContainer = styled.div`
-   ${tw`  w-full flex -mt-4  ml-6`}
+   ${tw`  w-7/12 flex-grow flex `}
 `
 
 export const MealTabsAndDateContainer = styled.div`

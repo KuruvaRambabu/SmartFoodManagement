@@ -6,6 +6,7 @@ import {
    FoodIllustrationImage
 } from './styledComponents'
 import { observer } from 'mobx-react'
+import DatePicker from "../../../../Common/components/DatePicker/DatePicker"
 
 interface PreferenceItemsProps {
    selectedMealType: string
@@ -16,7 +17,7 @@ class PreferenceItems extends Component<PreferenceItemsProps> {
    render() {
       return (
          <PreferenceItemsMainContainer>
-            <ItemsContainer></ItemsContainer>
+            <DatePicker />
             <ImageContainer>
                <FoodIllustrationImage
                   src={

@@ -5,7 +5,8 @@ import {
    MealPreferenceCardContainer,
    PreferenceMealType,
    PreferenceMealTypeContainer,
-   SkipMealButtonStyles
+   SkipMealButtonStyles,
+   MealTabAndDateContainer
 } from './styledComponents'
 import { UpdateMealPreferenceAndBackButtons } from '../UpdateMealPreferenceAndBackButtons'
 import MealTabs from '../MealTabs/MealTabs'
@@ -17,6 +18,7 @@ import { observable } from 'mobx'
 import { observer } from 'mobx-react'
 import { withTranslation, WithTranslation } from 'react-i18next'
 import { PreferenceItems } from '../PreferenceItems'
+import { MealTabsContainer } from "../MealTabs/styledComponents"
 interface MealPreferenceCardProps extends WithTranslation {}
 interface MealPreferenceCardProps {
    mealType: string
@@ -49,12 +51,16 @@ class MealPreferenceCard extends Component<MealPreferenceCardProps> {
                      name={t('userDashboardModule:skipMeal')}
                   />
                </PreferenceMealTypeContainer>
+               <MealTabAndDateContainer>
+               <MealTabsContainer>
                <MealTabs
                   selectedMealType={this.selectedMealType}
-                  t={t}
+            
                   onChangeMealType={this.onChangeMealType}
                />
+               </MealTabsContainer>
                <PreferenceItems selectedMealType={this.selectedMealType} />
+               </MealTabAndDateContainer>
                <UpdateMealPreferenceAndBackButtons t={t} />
             </MealPreferenceCardContainer>
          </MealPreferenceCardMainContainer>
