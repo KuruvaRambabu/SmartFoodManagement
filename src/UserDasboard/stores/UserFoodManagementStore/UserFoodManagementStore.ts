@@ -17,6 +17,10 @@ class UserFoodManagementStore {
    @observable getMealCardAPIError!: Error | null
    @observable mealCardData!: Array<MealCardDataModel>
 
+   @observable getUserMealPreferenceDetailsAPIStatus!:APIStatus
+   @observable getUserMealPreferenceDetailsAPIError!:Error |null
+   @observable getUserMealPreferenceDetailsData
+
    userFoodManagementService: UserFoodManagementService
 
    constructor(userFoodManagementService) {
@@ -33,6 +37,11 @@ class UserFoodManagementStore {
       this.getMealCardAPIStatus = API_INITIAL
       this.getMealCardAPIError = null
       this.mealCardData = []
+
+      this.getUserMealPreferenceDetailsAPIStatus = API_INITIAL
+      this.getUserMealPreferenceDetailsAPIError = null
+      this.getUserMealPreferenceDetailsData = []
+
    }
    @action.bound
    getBannerDataAPI(onSuccess, onFailure) {
@@ -92,6 +101,33 @@ class UserFoodManagementStore {
       this.mealCardData = data.map(cardData => {
          return new MealCardDataModel(cardData)
       })
+   }
+
+   @action.bound
+   getUserMealPreferenceDetailsAPI(){
+      const userMealPreferenceDetailsPromise = this.userFoodManagementService.getUserMealPreferenceDetailsDataAPI()
+      return bindPromiseWithOnSuccess(userMealPreferenceDetailsPromise)
+         .to(this.setGetUserMealPreferenceDetailsAPIStatus, response => {
+            this.setGetUserMealPreferenceDetailsDataResponse(response)
+         })
+         .catch(this.setGetUserMealPreferenceDetailsAPIError)
+   }
+
+   @action.bound
+   setGetUserMealPreferenceDetailsAPIStatus(apiStatus){
+
+      this.getUserMealPreferenceDetailsAPIStatus = apiStatus
+
+   }
+
+   @action.bound
+   setGetUserMealPreferenceDetailsAPIError(error){
+      this.getUserMealPreferenceDetailsAPIError = error
+   }
+   @action.bound
+   setGetUserMealPreferenceDetailsDataResponse(response){
+      this.getUserMealPreferenceDetailsData = response
+      console.log(response)
    }
 }
 

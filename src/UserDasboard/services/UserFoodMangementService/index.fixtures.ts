@@ -13,6 +13,9 @@ class UserFoodManagementFixtureService implements UserFoodManagementService {
    getMealCardDataAPI() {
       return resolveWithTimeout(mealCardData)
    }
+   getUserMealPreferenceDetailsDataAPI(){
+      return resolveWithTimeout(mealCardData)
+   }
 }
 
 export default UserFoodManagementFixtureService

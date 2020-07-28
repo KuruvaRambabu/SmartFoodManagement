@@ -16,7 +16,7 @@ const panes = [
    },
    {
       menuItem: 'Half meal',
-      render: () => <Tab.Pane attached={false}>Tab 2 Content</Tab.Pane>
+      render: () => <Tab.Pane attached={false}></Tab.Pane>
    },
    {
       menuItem: 'Custom',
