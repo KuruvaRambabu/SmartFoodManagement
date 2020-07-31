@@ -5,7 +5,7 @@ import { MealPreferencePageMainContainer } from './styledComponents'
 import UserFoodManagementStore from '../../stores/UserFoodManagementStore/UserFoodManagementStore'
 import Header from '../../../Common/components/Header/Header'
 import Banner from '../Banner/Banner'
-import { MealPreferenceCard } from '../Common/MealPreferenceCard'
+import MealPreferenceCard from '../Common/MealPreferenceCard/MealPreferenceCard'
 
 interface MealPreferencePageProps {
    onClickWeeklyMenu: () => void
@@ -28,7 +28,10 @@ class MealPreferencePage extends Component<MealPreferencePageProps> {
       const {
          bannerData,
          getBannerDataAPIStatus,
-         getBannerDataAPIError
+         getBannerDataAPIError,
+         getUserMealPreferenceDetailsAPIStatus,
+         getUserMealPreferenceDetailsAPIError,
+         getUserMealPreferenceDetailsData
       } = userFoodManagementStore
       return (
          <MealPreferencePageMainContainer>
@@ -42,7 +45,18 @@ class MealPreferencePage extends Component<MealPreferencePageProps> {
                getBannerDataAPIStatus={getBannerDataAPIStatus}
                bannerData={bannerData}
             />
-            <MealPreferenceCard mealType={mealType} />
+            <MealPreferenceCard
+               getUserMealPreferenceDetailsAPIError={
+                  getUserMealPreferenceDetailsAPIError
+               }
+               getUserMealPreferenceDetailsAPIStatus={
+                  getUserMealPreferenceDetailsAPIStatus
+               }
+               getUserMealPreferenceDetailsData={
+                  getUserMealPreferenceDetailsData
+               }
+               mealType={mealType}
+            />
          </MealPreferencePageMainContainer>
       )
    }

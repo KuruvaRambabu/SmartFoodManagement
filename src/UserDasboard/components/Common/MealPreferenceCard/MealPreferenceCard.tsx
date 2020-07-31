@@ -18,10 +18,17 @@ import { observable } from 'mobx'
 import { observer } from 'mobx-react'
 import { withTranslation, WithTranslation } from 'react-i18next'
 import { PreferenceItems } from '../PreferenceItems'
-import { MealTabsContainer } from "../MealTabs/styledComponents"
+import { MealTabsContainer } from '../MealTabs/styledComponents'
+import UserSelectedMealPreferenceModel from '../../../stores/models/UserSelectedMealPreferenceModel/UserSelectedMealPreferenceModel'
+import { APIStatus } from '@ib/api-constants'
+import UserFoodManagementStore from '../../../stores/UserFoodManagementStore/UserFoodManagementStore'
+import LoadingWrapperWithFailure from '../../../../Common/components/LoadingWrapperWithFailure'
 interface MealPreferenceCardProps extends WithTranslation {}
 interface MealPreferenceCardProps {
    mealType: string
+   getUserMealPreferenceDetailsData: Array<UserSelectedMealPreferenceModel>
+   getUserMealPreferenceDetailsAPIStatus: APIStatus
+   getUserMealPreferenceDetailsAPIError: Error | null
 }
 
 @observer
@@ -30,38 +37,53 @@ class MealPreferenceCard extends Component<MealPreferenceCardProps> {
 
    onClickSkipMeal = () => {}
 
-   onChangeMealType = event => {
-      if (this.selectedMealType !== event.target.id) {
-         this.selectedMealType = event.target.id
-      }
-      console.log(event.target.id)
-   }
-   render() {
+   renderUserSelectedMealPreferenceDetails = observer(() => {
       const { mealType, t } = this.props
+      const { getUserMealPreferenceDetailsData } = this.props
+      return (
+         <React.Fragment>
+            <PreferenceMealTypeContainer>
+               <PreferenceMealType>{mealType}</PreferenceMealType>
+               <Button
+                  typo={Typo14DarkBlueGreyHKGroteskSemiBold}
+                  type={Button.buttonType.outline}
+                  onClick={this.onClickSkipMeal}
+                  buttonStyles={SkipMealButtonStyles}
+                  name={t('userDashboardModule:skipMeal')}
+               />
+            </PreferenceMealTypeContainer>
+            <MealTabAndDateContainer>
+               <MealTabsContainer>
+                  <MealTabs
+                     getUserMealPreferenceDetailsData={
+                        getUserMealPreferenceDetailsData
+                     }
+                     selectedMealType={this.selectedMealType}
+                  />
+               </MealTabsContainer>
+               <PreferenceItems selectedMealType={this.selectedMealType} />
+            </MealTabAndDateContainer>
+            <UpdateMealPreferenceAndBackButtons t={t} />
+         </React.Fragment>
+      )
+   })
+   onRetryClick = () => {}
+   render() {
+      const {
+         getUserMealPreferenceDetailsAPIStatus,
+         getUserMealPreferenceDetailsAPIError
+      } = this.props
+
+      const LoadingWrapperWithFailureProps = {
+         apiError: getUserMealPreferenceDetailsAPIError,
+         apiStatus: getUserMealPreferenceDetailsAPIStatus,
+         renderSuccessUI: this.renderUserSelectedMealPreferenceDetails,
+         onRetryClick: this.onRetryClick
+      }
       return (
          <MealPreferenceCardMainContainer>
             <MealPreferenceCardContainer>
-               <PreferenceMealTypeContainer>
-                  <PreferenceMealType>{mealType}</PreferenceMealType>
-                  <Button
-                     typo={Typo14DarkBlueGreyHKGroteskSemiBold}
-                     type={Button.buttonType.outline}
-                     onClick={this.onClickSkipMeal}
-                     buttonStyles={SkipMealButtonStyles}
-                     name={t('userDashboardModule:skipMeal')}
-                  />
-               </PreferenceMealTypeContainer>
-               <MealTabAndDateContainer>
-               <MealTabsContainer>
-               <MealTabs
-                  selectedMealType={this.selectedMealType}
-            
-                  onChangeMealType={this.onChangeMealType}
-               />
-               </MealTabsContainer>
-               <PreferenceItems selectedMealType={this.selectedMealType} />
-               </MealTabAndDateContainer>
-               <UpdateMealPreferenceAndBackButtons t={t} />
+               <LoadingWrapperWithFailure {...LoadingWrapperWithFailureProps} />
             </MealPreferenceCardContainer>
          </MealPreferenceCardMainContainer>
       )

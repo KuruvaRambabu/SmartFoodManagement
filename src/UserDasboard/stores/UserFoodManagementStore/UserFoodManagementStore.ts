@@ -5,6 +5,7 @@ import { bindPromiseWithOnSuccess } from '@ib/mobx-promise'
 import BannerDataModel from '../models/BannerDataModel/BannerDataModel'
 import UserFoodManagementService from '../../services/UserFoodMangementService'
 import MealCardDataModel from '../models/MealCardDataModel/MealCardDataModel'
+import UserSelectedMealPreferenceModel from '../models/UserSelectedMealPreferenceModel/UserSelectedMealPreferenceModel'
 
 class UserFoodManagementStore {
    @observable selectedPage!: string
@@ -17,9 +18,10 @@ class UserFoodManagementStore {
    @observable getMealCardAPIError!: Error | null
    @observable mealCardData!: Array<MealCardDataModel>
 
-   @observable getUserMealPreferenceDetailsAPIStatus!:APIStatus
-   @observable getUserMealPreferenceDetailsAPIError!:Error |null
+   @observable getUserMealPreferenceDetailsAPIStatus!: APIStatus
+   @observable getUserMealPreferenceDetailsAPIError!: Error | null
    @observable getUserMealPreferenceDetailsData
+   @observable selectedMealPreference!: string
 
    userFoodManagementService: UserFoodManagementService
 
@@ -41,7 +43,6 @@ class UserFoodManagementStore {
       this.getUserMealPreferenceDetailsAPIStatus = API_INITIAL
       this.getUserMealPreferenceDetailsAPIError = null
       this.getUserMealPreferenceDetailsData = []
-
    }
    @action.bound
    getBannerDataAPI(onSuccess, onFailure) {
@@ -104,7 +105,7 @@ class UserFoodManagementStore {
    }
 
    @action.bound
-   getUserMealPreferenceDetailsAPI(){
+   getUserMealPreferenceDetailsAPI() {
       const userMealPreferenceDetailsPromise = this.userFoodManagementService.getUserMealPreferenceDetailsDataAPI()
       return bindPromiseWithOnSuccess(userMealPreferenceDetailsPromise)
          .to(this.setGetUserMealPreferenceDetailsAPIStatus, response => {
@@ -114,20 +115,23 @@ class UserFoodManagementStore {
    }
 
    @action.bound
-   setGetUserMealPreferenceDetailsAPIStatus(apiStatus){
-
+   setGetUserMealPreferenceDetailsAPIStatus(apiStatus) {
       this.getUserMealPreferenceDetailsAPIStatus = apiStatus
-
    }
 
    @action.bound
-   setGetUserMealPreferenceDetailsAPIError(error){
+   setGetUserMealPreferenceDetailsAPIError(error) {
       this.getUserMealPreferenceDetailsAPIError = error
    }
    @action.bound
-   setGetUserMealPreferenceDetailsDataResponse(response){
-      this.getUserMealPreferenceDetailsData = response
-      console.log(response)
+   setGetUserMealPreferenceDetailsDataResponse(response) {
+      this.selectedMealPreference = response.selected_status
+      const selectedMealInformation = response.selected_meal_information
+      this.getUserMealPreferenceDetailsData = selectedMealInformation.map(
+         mealObject => {
+            return new UserSelectedMealPreferenceModel(mealObject)
+         }
+      )
    }
 }
 

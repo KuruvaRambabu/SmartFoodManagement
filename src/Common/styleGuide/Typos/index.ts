@@ -95,3 +95,34 @@ export const Typo32DarkBlueGreyHKGroteskMedium = styled.span`
    padding-bottom: 10px;
    border-bottom: 1px solid ${colors.brightBlue};
 `
+export const Typo12CoolGreyHKGroteskSemiBold = styled.span`
+   font-family: HKGrotesk;
+   font-size: 12px;
+   font-weight: normal;
+   font-stretch: normal;
+   font-style: normal;
+   line-height: 1.33;
+   letter-spacing: normal;
+   color: #b5b7c4;
+`
+export const Typo18SteelHKGroteskMedium = styled.span`
+   font-family: HKGrotesk;
+   font-size: 18px;
+   font-weight: 500;
+   font-stretch: normal;
+   font-style: normal;
+   line-height: 1.33;
+   letter-spacing: normal;
+   color: #7e858e;
+`
+
+export const Typo14SteelHKGroteskRegular = styled.span`
+   font-family: HKGrotesk;
+   font-size: 14px;
+   font-weight: normal;
+   font-stretch: normal;
+   font-style: normal;
+   line-height: 1.71;
+   letter-spacing: normal;
+   color: #7e858e;
+`

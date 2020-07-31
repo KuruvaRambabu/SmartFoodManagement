@@ -20,13 +20,17 @@ class MealPreferencePageRoute extends Component<MealPreferencePageRouteTypes> {
    componentDidMount() {
       if (this.getUserFoodManagementStore().bannerData.length === 0) {
          this.doNetworkCallForBannerData()
-      }
+      } else this.doNetworkForUserMealPreferenceDetails()
    }
 
    onClickWeeklyMenu = () => {
       this.selectedPage = 'weeklyMenu'
       const { history } = this.props
       history.push(SMART_FOOD_MANAGEMENT_WEEKLY_MENU_PAGE)
+   }
+
+   doNetworkForUserMealPreferenceDetails = () => {
+      this.getUserFoodManagementStore().getUserMealPreferenceDetailsAPI()
    }
 
    doNetworkCallForBannerData = () => {
@@ -37,11 +41,11 @@ class MealPreferencePageRoute extends Component<MealPreferencePageRouteTypes> {
    }
 
    onSuccess = () => {
-      this.getUserFoodManagementStore()
+      this.doNetworkForUserMealPreferenceDetails()
    }
 
    onFailure = () => {
-      this.doNetworkCallForBannerData()
+      this.doNetworkForUserMealPreferenceDetails()
    }
 
    onClickHomePage = () => {
