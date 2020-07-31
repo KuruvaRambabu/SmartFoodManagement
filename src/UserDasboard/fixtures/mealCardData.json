@@ -3,18 +3,18 @@
       {
          "meal_id": 0,
          "meal_type": "Breakfast",
-         "meal_starttime": "2020-07-24 16:00:00",
-         "meal_endtime": "2020-07-24 22:00:00",
+         "meal_starttime": "2020-08-01 16:00:00",
+         "meal_endtime": "2020-08-01 22:00:00",
          "item_names": ["Idly", "Masala Rice", "Chutney", "Upma", "Sambar"],
          "preference_status": "Full Meal",
          "meal_status": "I Ate it",
-         "dead_line": "2020-07-24 14:00:00"
+         "dead_line": "2020-08-01 14:00:00"
       },
       {
          "meal_id": 4,
          "meal_type": "Lunch",
-         "meal_starttime": "2020-07-24 12:00:00 ",
-         "meal_endtime": "2020-07-24 15:00:00",
+         "meal_starttime": "2020-08-01 12:00:00 ",
+         "meal_endtime": "2020-08-01 15:00:00",
          "item_names": [
             "White Rice",
             "Cabbage Pickle",
@@ -25,13 +25,13 @@
          ],
          "preference_status": "Half Meal",
          "meal_status": "I Ate it",
-         "dead_line": "2020-07-24 04:00:00"
+         "dead_line": "2020-08-01 04:00:00"
       },
       {
          "meal_id": 3,
          "meal_type": "Dinner",
-         "meal_starttime": "2020-07-24 22:38:00",
-         "meal_endtime": "2020-07-24 24:00:00",
+         "meal_starttime": "2020-07-31 19:38:00",
+         "meal_endtime": "2020-07-31 22:00:00",
          "item_names": [
             "White Rice",
             "Cabbage Pickle",
@@ -42,7 +42,7 @@
          ],
          "preference_status": "Half Meal",
          "meal_status": "I Ate it",
-         "dead_line": "2020-07-24 22:38:00"
+         "dead_line": "2020-07-31 22:38:00"
       }
    ]
 }

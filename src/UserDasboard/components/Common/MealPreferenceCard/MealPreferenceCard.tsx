@@ -6,14 +6,13 @@ import {
    PreferenceMealType,
    PreferenceMealTypeContainer,
    SkipMealButtonStyles,
-   MealTabAndDateContainer
+   MealTabAndDateContainer,
+   RenderUserSelectedMealPreferenceDetailsMainContainer
 } from './styledComponents'
 import { UpdateMealPreferenceAndBackButtons } from '../UpdateMealPreferenceAndBackButtons'
 import MealTabs from '../MealTabs/MealTabs'
-import { MealTypeContainer } from '../MealCardDetails/styledComponents'
 import Button from '../../../../Common/components/Button/Button'
 import { Typo14DarkBlueGreyHKGroteskSemiBold } from '../../../../Common/styleGuide/Typos'
-import { ISkippedButtonStyles } from '../MealEditAndReviewButton/styledComponents'
 import { observable } from 'mobx'
 import { observer } from 'mobx-react'
 import { withTranslation, WithTranslation } from 'react-i18next'
@@ -21,7 +20,6 @@ import { PreferenceItems } from '../PreferenceItems'
 import { MealTabsContainer } from '../MealTabs/styledComponents'
 import UserSelectedMealPreferenceModel from '../../../stores/models/UserSelectedMealPreferenceModel/UserSelectedMealPreferenceModel'
 import { APIStatus } from '@ib/api-constants'
-import UserFoodManagementStore from '../../../stores/UserFoodManagementStore/UserFoodManagementStore'
 import LoadingWrapperWithFailure from '../../../../Common/components/LoadingWrapperWithFailure'
 interface MealPreferenceCardProps extends WithTranslation {}
 interface MealPreferenceCardProps {
@@ -41,7 +39,7 @@ class MealPreferenceCard extends Component<MealPreferenceCardProps> {
       const { mealType, t } = this.props
       const { getUserMealPreferenceDetailsData } = this.props
       return (
-         <React.Fragment>
+         <RenderUserSelectedMealPreferenceDetailsMainContainer>
             <PreferenceMealTypeContainer>
                <PreferenceMealType>{mealType}</PreferenceMealType>
                <Button
@@ -64,7 +62,7 @@ class MealPreferenceCard extends Component<MealPreferenceCardProps> {
                <PreferenceItems selectedMealType={this.selectedMealType} />
             </MealTabAndDateContainer>
             <UpdateMealPreferenceAndBackButtons t={t} />
-         </React.Fragment>
+         </RenderUserSelectedMealPreferenceDetailsMainContainer>
       )
    })
    onRetryClick = () => {}

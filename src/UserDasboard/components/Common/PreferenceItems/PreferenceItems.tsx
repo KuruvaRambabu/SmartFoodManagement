@@ -6,7 +6,7 @@ import {
    FoodIllustrationImage
 } from './styledComponents'
 import { observer } from 'mobx-react'
-import DatePicker from "../../../../Common/components/DatePicker/DatePicker"
+import DatePicker from '../../../../Common/components/DatePicker/DatePicker'
 
 interface PreferenceItemsProps {
    selectedMealType: string

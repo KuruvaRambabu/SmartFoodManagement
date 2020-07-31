@@ -6,12 +6,13 @@ import UserSelectedMealPreferenceModel from '../../../stores/models/UserSelected
 import { MealTabsMainContainer } from './styledComponents'
 import HalfOrFullMealDetails from '../HalfOrFullMealDetails/HalfOrFullMealDetails'
 import { observer } from 'mobx-react'
+import CustomDetails from '../../CustomDetails/CustomDetails'
 
 interface MealTabsProps {
    selectedMealType: string
    getUserMealPreferenceDetailsData: Array<UserSelectedMealPreferenceModel>
 }
-
+const color = 'blue'
 @observer
 class MealTabs extends Component<MealTabsProps> {
    renderMealPreferences = mealObject => {
@@ -20,6 +21,8 @@ class MealTabs extends Component<MealTabsProps> {
          mealObject.mealPreference === 'Full Meal'
       ) {
          return <HalfOrFullMealDetails mealItemsDetails={mealObject} />
+      } else {
+         return <CustomDetails customMealItemsDetails={mealObject} />
       }
    }
 
@@ -39,13 +42,14 @@ class MealTabs extends Component<MealTabsProps> {
       })
    }
    render() {
-      const color = 'blue'
-
       return (
          <MealTabsMainContainer>
             {this.renderMealTabs()}
             <Tab
-               menu={{ color, pointing: true, attached: false, tabular: false }}
+               menu={{
+                  color,
+                  secondary: true
+               }}
                panes={this.panes}
             />
          </MealTabsMainContainer>

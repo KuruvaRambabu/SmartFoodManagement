@@ -10,9 +10,10 @@ import {
    QuantityAndServingTypeContainer,
    QuantityAndServeType
 } from './styledComponents'
+import UserSelectedMealPreferenceModel from '../../../stores/models/UserSelectedMealPreferenceModel/UserSelectedMealPreferenceModel'
 
 interface HalfOrFullMealDetailsProps {
-   mealItemsDetails: any
+   mealItemsDetails: UserSelectedMealPreferenceModel
 }
 
 function renderItems(eachItem) {

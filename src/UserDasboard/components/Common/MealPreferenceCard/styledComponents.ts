@@ -2,7 +2,6 @@ import styled from '@emotion/styled'
 import tw from 'tailwind.macro'
 import { Typo32DarkBlueGreyHKGroteskMedium } from '../../../../Common/styleGuide/Typos'
 import { css } from '@emotion/core'
-import { colors } from '../../../../Authentication/themes/Colors'
 import { Colors } from '../../../themes/Colors'
 
 export const MealPreferenceCardMainContainer = styled.div`
@@ -17,7 +16,7 @@ export const MealPreferenceCardContainer = styled.div`
    position: absolute;
    border-radius: 6px;
    background-color: #ffffff;
-   ${tw`w-full md:w-10/12 lg:w-1/2 shadow-xl h-full  border `}
+   ${tw`w-full md:w-10/12 lg:w-1/2 shadow-xl h-full   `}
 `
 export const PreferenceMealTypeContainer = styled.div`
    ${tw`w-full p-6  flex justify-between`}
@@ -33,6 +32,8 @@ export const SkipMealButtonStyles = css`
    border: 1px solid ${Colors.lightBlueGray};
 `
 export const MealTabAndDateContainer = styled.div`
-${tw`flex `}
+   ${tw`flex `}
 `
-
+export const RenderUserSelectedMealPreferenceDetailsMainContainer = styled.div`
+   ${tw``}
+`

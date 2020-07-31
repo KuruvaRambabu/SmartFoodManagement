@@ -5,7 +5,7 @@ import { Colors } from '../../../themes/Colors'
 import { css } from '@emotion/core'
 
 export const MealTabsMainContainer = styled.div`
-   ${tw`w-full`}
+   ${tw`w-full md:ml-4`}
 `
 
 export const MealTabsContainer = styled.div`
