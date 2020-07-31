@@ -14,7 +14,8 @@ import {
    DisableEditButtonStyles,
    IAteAndSkippedContainer,
    IAteItButtonStyles,
-   ISkippedButtonStyles
+   ISkippedButtonStyles,
+   ReviewButtonStyles
 } from './styledComponents'
 
 import {
@@ -74,9 +75,10 @@ class MealEditAndReviewButton extends Component<MealEditAndReviewButtonProps> {
    }
    onClickEditPreferenceButton = () => {
       const { history, mealType } = this.props
-      history.push(
-         `${SMART_FOOD_MANAGEMENT_HOME_PAGE}${SMART_FOOD_MANAGEMENT_MEAL_PREFERENCE_PAGE}/${mealType}`
-      )
+      history.push({
+         pathname: `${SMART_FOOD_MANAGEMENT_MEAL_PREFERENCE_PAGE}`,
+         search: `?date=01/05/2020&meal_type=${mealType}`
+      })
    }
    componentWillUnmount() {
       this.timer
@@ -144,10 +146,10 @@ class MealEditAndReviewButton extends Component<MealEditAndReviewButtonProps> {
          return (
             <ButtonContainer>
                <Button
-                  typo={Typo14DarkBlueGreyHKGroteskRegularSpan}
+                  typo={Typo14DarkBlueGreyHKGroteskSemiBold}
                   type={Button.buttonType.filled}
                   onClick={this.onClickEditPreferenceButton}
-                  buttonStyles={DisableEditButtonStyles}
+                  buttonStyles={ReviewButtonStyles}
                   name={`${'Review Food'}`}
                   id={mealType}
                />

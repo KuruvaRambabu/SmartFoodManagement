@@ -27,16 +27,16 @@ interface MealPreferenceCardProps {
    getUserMealPreferenceDetailsData: Array<UserSelectedMealPreferenceModel>
    getUserMealPreferenceDetailsAPIStatus: APIStatus
    getUserMealPreferenceDetailsAPIError: Error | null
+   selectedMealDate: Date
+   onChangeMealDate: (Date: Date) => void
 }
 
 @observer
 class MealPreferenceCard extends Component<MealPreferenceCardProps> {
-   @observable selectedMealType: string = 'fullMeal'
-
    onClickSkipMeal = () => {}
 
    renderUserSelectedMealPreferenceDetails = observer(() => {
-      const { mealType, t } = this.props
+      const { mealType, selectedMealDate, onChangeMealDate, t } = this.props
       const { getUserMealPreferenceDetailsData } = this.props
       return (
          <RenderUserSelectedMealPreferenceDetailsMainContainer>
@@ -56,10 +56,12 @@ class MealPreferenceCard extends Component<MealPreferenceCardProps> {
                      getUserMealPreferenceDetailsData={
                         getUserMealPreferenceDetailsData
                      }
-                     selectedMealType={this.selectedMealType}
                   />
                </MealTabsContainer>
-               <PreferenceItems selectedMealType={this.selectedMealType} />
+               <PreferenceItems
+                  onChangeMealDate={onChangeMealDate}
+                  selectedMealDate={selectedMealDate}
+               />
             </MealTabAndDateContainer>
             <UpdateMealPreferenceAndBackButtons t={t} />
          </RenderUserSelectedMealPreferenceDetailsMainContainer>

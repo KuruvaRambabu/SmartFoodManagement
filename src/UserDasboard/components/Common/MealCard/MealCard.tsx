@@ -16,16 +16,21 @@ interface MealCardProps {
    mealCardData: Array<MealCardDataModel>
    getMealCardAPIError: Error | null
    getMealCardAPIStatus: APIStatus
+   selectedMealDate: Date
+   onChangeMealDate: (Date: Date) => void
 }
 
 @observer
 class MealCard extends Component<MealCardProps> {
    renderMealCardSuccessUI = observer(() => {
-      const { mealCardData } = this.props
+      const { mealCardData, selectedMealDate, onChangeMealDate } = this.props
       return (
          <MealCardMainContainer>
             <DatePickerContainer>
-               <DatePicker />
+               <DatePicker
+                  selectedMealDate={selectedMealDate}
+                  onChangeMealDate={onChangeMealDate}
+               />
             </DatePickerContainer>
 
             <CardsContainer>

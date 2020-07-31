@@ -7,8 +7,12 @@ import 'react-datepicker/dist/react-datepicker.css'
 
 import { DatePickerMainContainer, DateLabel } from './styledComponents'
 
+interface DatePickerProps {
+   selectedMealDate: Date
+   onChangeMealDate: (date: Date) => void
+}
 @observer
-class DatePicker extends Component {
+class DatePicker extends Component<DatePickerProps> {
    @observable date = new Date()
 
    handleChange = date => {
@@ -16,12 +20,13 @@ class DatePicker extends Component {
    }
 
    render() {
+      const { selectedMealDate, onChangeMealDate } = this.props
       return (
          <DatePickerMainContainer>
             <DateLabel>Date :</DateLabel>
             <ReactDatePicker
-               selected={this.date}
-               onChange={this.handleChange}
+               selected={selectedMealDate}
+               onChange={onChangeMealDate}
                dateFormat='yyyy-MM-dd'
                className='text-xl rounded h-10 border text-center w-36 focus:outline-none'
             />

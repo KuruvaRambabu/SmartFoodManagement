@@ -31,7 +31,10 @@ class MealPreferencePage extends Component<MealPreferencePageProps> {
          getBannerDataAPIError,
          getUserMealPreferenceDetailsAPIStatus,
          getUserMealPreferenceDetailsAPIError,
-         getUserMealPreferenceDetailsData
+         getUserMealPreferenceDetailsData,
+         selectedMealPreference,
+         selectedMealDate,
+         onChangeMealDate
       } = userFoodManagementStore
       return (
          <MealPreferencePageMainContainer>
@@ -55,7 +58,9 @@ class MealPreferencePage extends Component<MealPreferencePageProps> {
                getUserMealPreferenceDetailsData={
                   getUserMealPreferenceDetailsData
                }
-               mealType={mealType}
+               mealType={selectedMealPreference}
+               selectedMealDate={selectedMealDate}
+               onChangeMealDate={onChangeMealDate}
             />
          </MealPreferencePageMainContainer>
       )

@@ -25,7 +25,7 @@ export const userDashboardRoutes = [
    <ProtectedRoute
       key={SMART_FOOD_MANAGEMENT_HOME_PAGE}
       exact
-      path={`${SMART_FOOD_MANAGEMENT_HOME_PAGE}${SMART_FOOD_MANAGEMENT_MEAL_PREFERENCE_PAGE}/:id`}
+      path={SMART_FOOD_MANAGEMENT_MEAL_PREFERENCE_PAGE}
       component={MealPreferencePageRoute}
    />
 ]

@@ -10,10 +10,10 @@ export const ButtonStyles = css`
    height: 40px;
 `
 export const ButtonContainer = styled.div`
-   ${tw`w-full mt-4 mb-auto flex justify-center `}
+   ${tw`w-full mt-6 mb-auto flex justify-center `}
 `
 export const DisableEditButtonStyles = css`
-   width: 90%;
+   width: 50%;
    text-align: center;
    background-color: rgba(126, 133, 142, 0.4);
    height: 40px;
@@ -33,4 +33,11 @@ export const ISkippedButtonStyles = css`
    height: 40px;
    border-radius: 4px;
    border: solid 1px #e4e9f0;
+`
+export const ReviewButtonStyles = css`
+   width: 50%;
+   text-align: center;
+   background-color: #fff;
+   height: 40px;
+   border: solid 1px #d7dfe9;
 `

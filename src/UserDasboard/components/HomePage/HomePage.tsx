@@ -29,7 +29,9 @@ class HomePage extends Component<HomePagePropsTypes> {
          getBannerDataAPIError,
          getMealCardAPIError,
          getMealCardAPIStatus,
-         mealCardData
+         mealCardData,
+         selectedMealDate,
+         onChangeMealDate
       } = userFoodManagementStore
       return (
          <HomePageMainContainer>
@@ -47,6 +49,8 @@ class HomePage extends Component<HomePagePropsTypes> {
                getMealCardAPIError={getMealCardAPIError}
                getMealCardAPIStatus={getMealCardAPIStatus}
                mealCardData={mealCardData}
+               onChangeMealDate={onChangeMealDate}
+               selectedMealDate={selectedMealDate}
             />
          </HomePageMainContainer>
       )

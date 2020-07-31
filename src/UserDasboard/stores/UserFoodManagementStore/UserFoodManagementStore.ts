@@ -2,10 +2,12 @@ import { observable } from 'mobx'
 import { APIStatus, API_INITIAL } from '@ib/api-constants'
 import { action } from 'mobx'
 import { bindPromiseWithOnSuccess } from '@ib/mobx-promise'
-import BannerDataModel from '../models/BannerDataModel/BannerDataModel'
+
 import UserFoodManagementService from '../../services/UserFoodMangementService'
+
 import MealCardDataModel from '../models/MealCardDataModel/MealCardDataModel'
 import UserSelectedMealPreferenceModel from '../models/UserSelectedMealPreferenceModel/UserSelectedMealPreferenceModel'
+import BannerDataModel from '../models/BannerDataModel/BannerDataModel'
 
 class UserFoodManagementStore {
    @observable selectedPage!: string
@@ -25,8 +27,11 @@ class UserFoodManagementStore {
 
    userFoodManagementService: UserFoodManagementService
 
+   @observable selectedMealDate: Date
+
    constructor(userFoodManagementService) {
       this.userFoodManagementService = userFoodManagementService
+      this.selectedMealDate = new Date()
       this.init()
    }
 
@@ -44,6 +49,11 @@ class UserFoodManagementStore {
       this.getUserMealPreferenceDetailsAPIError = null
       this.getUserMealPreferenceDetailsData = []
    }
+   @action.bound
+   onChangeMealDate(date: Date) {
+      this.selectedMealDate = date
+   }
+
    @action.bound
    getBannerDataAPI(onSuccess, onFailure) {
       const bannerDataPromise = this.userFoodManagementService.getBannerDataAPI()
@@ -116,6 +126,7 @@ class UserFoodManagementStore {
 
    @action.bound
    setGetUserMealPreferenceDetailsAPIStatus(apiStatus) {
+      console.log(apiStatus)
       this.getUserMealPreferenceDetailsAPIStatus = apiStatus
    }
 
@@ -125,7 +136,7 @@ class UserFoodManagementStore {
    }
    @action.bound
    setGetUserMealPreferenceDetailsDataResponse(response) {
-      this.selectedMealPreference = response.selected_status
+      this.selectedMealPreference = response.meal_type
       const selectedMealInformation = response.selected_meal_information
       this.getUserMealPreferenceDetailsData = selectedMealInformation.map(
          mealObject => {

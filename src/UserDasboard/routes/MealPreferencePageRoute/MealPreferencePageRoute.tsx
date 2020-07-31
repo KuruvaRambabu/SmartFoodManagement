@@ -60,7 +60,10 @@ class MealPreferencePageRoute extends Component<MealPreferencePageRouteTypes> {
 
    render() {
       const userFoodManagementStore = this.getUserFoodManagementStore()
-      const mealType = this.props.match.params['id']
+      const mealType = this.props.history.location.search
+      console.log(mealType)
+
+      // const mealType = this.props.match.params['id']
       return (
          <MealPreferencePage
             selectedPage={this.selectedPage}

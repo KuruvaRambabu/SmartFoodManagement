@@ -9,15 +9,20 @@ import { observer } from 'mobx-react'
 import DatePicker from '../../../../Common/components/DatePicker/DatePicker'
 
 interface PreferenceItemsProps {
-   selectedMealType: string
+   selectedMealDate: Date
+   onChangeMealDate: (Date: Date) => void
 }
 
 @observer
 class PreferenceItems extends Component<PreferenceItemsProps> {
    render() {
+      const { onChangeMealDate, selectedMealDate } = this.props
       return (
          <PreferenceItemsMainContainer>
-            <DatePicker />
+            <DatePicker
+               selectedMealDate={selectedMealDate}
+               onChangeMealDate={onChangeMealDate}
+            />
             <ImageContainer>
                <FoodIllustrationImage
                   src={

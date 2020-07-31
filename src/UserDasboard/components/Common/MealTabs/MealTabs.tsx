@@ -9,7 +9,6 @@ import { observer } from 'mobx-react'
 import CustomDetails from '../../CustomDetails/CustomDetails'
 
 interface MealTabsProps {
-   selectedMealType: string
    getUserMealPreferenceDetailsData: Array<UserSelectedMealPreferenceModel>
 }
 const color = 'blue'
