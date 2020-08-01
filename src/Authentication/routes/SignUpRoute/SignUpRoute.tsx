@@ -7,7 +7,7 @@ import { SMART_FOOD_MANAGEMENT_SIGN_IN_PAGE } from '../../../Common/routes/Route
 
 import SignUpPage from '../../components/SignUpPage/SignUpPage'
 import AuthenticationStore from '../../stores/AuthenticationStore'
-import { goToCoivd19DashBoard } from '../../utils/NavigationModule/NavigationModule'
+import { navigateToSignInPage } from '../../utils/NavigationModule/NavigationModule'
 import { observable } from 'mobx'
 import { getUserDisplayableErrorMessage } from '../../../Common/utils/APIUtils'
 
@@ -31,7 +31,7 @@ class SignUpRoute extends Component<AuthenticationRouteProps> {
 
    onSignInSuccess = () => {
       const { history } = this.props
-      goToCoivd19DashBoard(history)
+      navigateToSignInPage(history)
    }
 
    onSignInFailure = () => {
@@ -43,10 +43,10 @@ class SignUpRoute extends Component<AuthenticationRouteProps> {
    }
    onClickSignUp = (email, password, conformPassword) => {
       const { history } = this.props
-      history.push(SMART_FOOD_MANAGEMENT_SIGN_IN_PAGE)
+      navigateToSignInPage(history)
    }
    goToSignInPage = () => {
-      this.props.history.push(SMART_FOOD_MANAGEMENT_SIGN_IN_PAGE)
+      navigateToSignInPage(history)
    }
    render() {
       const { getUserSignInAPIStatus } = this.getAuthenticationStore()

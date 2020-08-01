@@ -1,12 +1,16 @@
 import React, { Component } from 'react'
 import { observer } from 'mobx-react'
 import { observable } from 'mobx'
+import { formatDistance, compareAsc, format } from 'date-fns'
+import { withRouter, RouteComponentProps } from 'react-router-dom'
 
 import Button from '../../../../Common/components/Button/Button'
 import {
    Typo14DarkBlueGreyHKGroteskRegularSpan,
    Typo14DarkBlueGreyHKGroteskSemiBold
 } from '../../../../Common/styleGuide/Typos'
+
+import { navigateToSetMealPreferencePage } from '../../../utils/NavigationModule/NavigationModule'
 
 import {
    ButtonContainer,
@@ -18,25 +22,12 @@ import {
    ReviewButtonStyles
 } from './styledComponents'
 
-import {
-   formatDistance,
-   getTime,
-   compareAsc,
-   subHours,
-   subMinutes,
-   format
-} from 'date-fns'
-import { withRouter, RouteComponentProps } from 'react-router-dom'
-import {
-   SMART_FOOD_MANAGEMENT_HOME_PAGE,
-   SMART_FOOD_MANAGEMENT_MEAL_PREFERENCE_PAGE
-} from '../../../../Common/routes/RouteConstants'
-
 interface MealEditAndReviewButtonProps extends RouteComponentProps {
    deadLine: string
    mealType: string
    startTime: string
    endTime: string
+   selectedMealDate: Date
 }
 
 @observer
@@ -74,11 +65,9 @@ class MealEditAndReviewButton extends Component<MealEditAndReviewButtonProps> {
       })
    }
    onClickEditPreferenceButton = () => {
-      const { history, mealType } = this.props
-      history.push({
-         pathname: `${SMART_FOOD_MANAGEMENT_MEAL_PREFERENCE_PAGE}`,
-         search: `?date=01/05/2020&meal_type=${mealType}`
-      })
+      const { history, mealType, selectedMealDate } = this.props
+      const date = format(new Date(selectedMealDate), 'dd-MM-yyyy')
+      navigateToSetMealPreferencePage(history, date, mealType)
    }
    componentWillUnmount() {
       this.timer

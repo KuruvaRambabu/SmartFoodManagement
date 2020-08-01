@@ -4,6 +4,7 @@ import { observable } from 'mobx'
 import { observer } from 'mobx-react'
 import { SMART_FOOD_MANAGEMENT_HOME_PAGE } from '../../../Common/routes/RouteConstants'
 import { withRouter, RouteComponentProps } from 'react-router-dom'
+import { navigateToHomePage } from '../../utils/NavigationModule/NavigationModule'
 
 interface WeeklyMenuPageRouteTypes extends RouteComponentProps {}
 
@@ -16,7 +17,7 @@ class WeeklyMenuPageRoute extends Component<WeeklyMenuPageRouteTypes> {
    onClickHomePage = () => {
       this.selectedPage = 'home'
       const { history } = this.props
-      history.push(SMART_FOOD_MANAGEMENT_HOME_PAGE)
+      navigateToHomePage(history)
    }
 
    render() {

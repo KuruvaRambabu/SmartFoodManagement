@@ -10,7 +10,10 @@ import {
 } from '../../../Common/routes/RouteConstants'
 import { getUserDisplayableErrorMessage } from '../../../Common/utils/APIUtils'
 
-import { goToCoivd19DashBoard } from '../../utils/NavigationModule/NavigationModule'
+import {
+   navigateToSignUpPage,
+   goToHomePage
+} from '../../utils/NavigationModule/NavigationModule'
 import AuthenticationStore from '../../stores/AuthenticationStore'
 
 import SignInPage from '../../components/SignInPage'
@@ -44,7 +47,7 @@ class SignInRoute extends React.Component<AuthenticationRouteProps> {
 
    onSignInSuccess = () => {
       const { history } = this.props
-      history.push(SMART_FOOD_MANAGEMENT_HOME_PAGE)
+      goToHomePage(history)
    }
 
    onSignInFailure = () => {
@@ -69,7 +72,7 @@ class SignInRoute extends React.Component<AuthenticationRouteProps> {
 
    goToSignUpPage = () => {
       const { history } = this.props
-      history.push(SMART_FOOD_MANAGEMENT_SIGN_UP_PAGE)
+      navigateToSignUpPage(history)
    }
 
    render() {

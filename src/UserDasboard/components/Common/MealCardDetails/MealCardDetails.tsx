@@ -23,6 +23,7 @@ import { format } from 'date-fns/esm'
 
 interface MealCardDetailsProps {
    eachMeal: MealCardDataModel
+   selectedMealDate: Date
 }
 @observer
 class MealCardDetails extends Component<MealCardDetailsProps> {
@@ -36,7 +37,7 @@ class MealCardDetails extends Component<MealCardDetailsProps> {
       }
    }
    render() {
-      const { eachMeal } = this.props
+      const { eachMeal, selectedMealDate } = this.props
       const { itemNames } = eachMeal
       const startTime = format(new Date(eachMeal.mealStartTime), 'HH:mm')
       const endTime = format(new Date(eachMeal.mealEndTime), 'HH:mm')
@@ -69,6 +70,7 @@ class MealCardDetails extends Component<MealCardDetailsProps> {
                deadLine={eachMeal.deadLine}
                startTime={eachMeal.mealStartTime}
                endTime={eachMeal.mealEndTime}
+               selectedMealDate={selectedMealDate}
             />
          </MealCardDetailsMainContainer>
       )

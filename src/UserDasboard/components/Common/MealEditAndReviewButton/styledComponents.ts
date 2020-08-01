@@ -19,7 +19,7 @@ export const DisableEditButtonStyles = css`
    height: 40px;
 `
 export const IAteAndSkippedContainer = styled.div`
-   ${tw`w-11/12 flex justify-around`}
+   ${tw`w-11/12 flex justify-around mt-8`}
 `
 export const IAteItButtonStyles = css`
    width: 128px;

@@ -35,7 +35,11 @@ class MealCard extends Component<MealCardProps> {
 
             <CardsContainer>
                {mealCardData.map(eachMeal => (
-                  <MealCardDetails key={eachMeal.mealId} eachMeal={eachMeal} />
+                  <MealCardDetails
+                     selectedMealDate={selectedMealDate}
+                     key={eachMeal.mealId}
+                     eachMeal={eachMeal}
+                  />
                ))}
             </CardsContainer>
          </MealCardMainContainer>

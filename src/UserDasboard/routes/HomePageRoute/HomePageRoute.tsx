@@ -1,14 +1,12 @@
 import React, { Component } from 'react'
-import HomePage from '../../components/HomePage'
 import { observable } from 'mobx'
 import { observer, inject } from 'mobx-react'
 import { withRouter, RouteComponentProps } from 'react-router-dom'
-import {
-   SMART_FOOD_MANAGEMENT_WEEKLY_MENU_PAGE,
-   SMART_FOOD_MANAGEMENT_HOME_PAGE,
-   SMART_FOOD_MANAGEMENT_MEAL_PREFERENCE_PAGE
-} from '../../../Common/routes/RouteConstants'
+
+import HomePage from '../../components/HomePage'
 import UserFoodManagementStore from '../../stores/UserFoodManagementStore/UserFoodManagementStore'
+
+import { navigateToWeeklyMenuPage } from '../../utils/NavigationModule/NavigationModule'
 
 interface HomePageRouteTypes extends RouteComponentProps {}
 interface InjectedProps extends HomePageRouteTypes {
@@ -28,7 +26,7 @@ class HomePageRoute extends Component<HomePageRouteTypes> {
    onClickWeeklyMenu = () => {
       this.selectedPage = 'weeklyMenu'
       const { history } = this.props
-      history.push(SMART_FOOD_MANAGEMENT_WEEKLY_MENU_PAGE)
+      navigateToWeeklyMenuPage(history)
    }
 
    doNetworkCallForBannerData = () => {
