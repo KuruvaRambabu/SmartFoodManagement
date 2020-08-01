@@ -1,4 +1,10 @@
+import { observable, action } from 'mobx'
+import { API_INITIAL, APIStatus } from '@ib/api-constants'
+
 class MealCardDataModel {
+   @observable getSelectedMealReviewItemsAPIStatus!: APIStatus
+   @observable getSelectedMealReviewItemsAPIError!: Error | null
+   @observable getSelectedMealReviewItemsData
    mealId: number
    mealType: string
    mealStartTime: string
@@ -7,6 +13,7 @@ class MealCardDataModel {
    preferenceStatus: string
    mealStatus: string
    deadLine: string
+
    constructor(mealCardData) {
       this.mealId = mealCardData.meal_id
       this.mealType = mealCardData.meal_type
@@ -16,6 +23,31 @@ class MealCardDataModel {
       this.preferenceStatus = mealCardData.preference_status
       this.mealStatus = mealCardData.meal_status
       this.deadLine = mealCardData.dead_line
+      this.init()
+   }
+
+   init() {
+      this.getSelectedMealReviewItemsAPIStatus = API_INITIAL
+      this.getSelectedMealReviewItemsAPIError = null
+      this.getSelectedMealReviewItemsData = []
+   }
+
+   @action.bound
+   getSelectedMealReviewItemsDataAPI() {
+      const mealReviewPromise = ''
+   }
+   @action.bound
+   setGetSelectedMealReviewItemsAPIStatus(apiStatus) {
+      this.getSelectedMealReviewItemsAPIStatus = apiStatus
+   }
+   @action.bound
+   setGetSelectedMealReviewItemsAPIError(error) {
+      this.getSelectedMealReviewItemsAPIError = error
+   }
+
+   @action.bound
+   setGetSelectedMealReviewItemsDataResponse(response) {
+      console.log(response)
    }
 }
 

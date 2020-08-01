@@ -21,3 +21,22 @@ export interface MealCardDataObject {
 export interface MealCardDataResponseObject {
    meal_info: Array<MealCardDataObject>
 }
+
+export interface FoodItemsData {
+   item_id: number
+   name: string
+   category: string
+   serving_size: string
+   quantity: number
+}
+
+export interface selectedMealInformationData {
+   status: string
+   items: Array<FoodItemsData>
+}
+export interface userSelectedMealPreferenceResponseObject {
+   meal_id: number
+   meal_type: string
+   selected_status: string
+   selected_meal_information: Array<selectedMealInformationData>
+}

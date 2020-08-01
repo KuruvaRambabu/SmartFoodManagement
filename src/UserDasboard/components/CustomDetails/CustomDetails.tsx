@@ -24,7 +24,6 @@ class CustomMealPreferenceDetails extends Component<
    CustomMealPreferenceDetailsProps
 > {
    renderCustomMealItems = observer(({ eachItem }) => {
-      console.log(eachItem)
       return (
          <RenderMealItemsMainContainer>
             <ItemNameAndCategoryContainer>

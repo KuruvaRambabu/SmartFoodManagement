@@ -126,7 +126,6 @@ class UserFoodManagementStore {
 
    @action.bound
    setGetUserMealPreferenceDetailsAPIStatus(apiStatus) {
-      console.log(apiStatus)
       this.getUserMealPreferenceDetailsAPIStatus = apiStatus
    }
 
