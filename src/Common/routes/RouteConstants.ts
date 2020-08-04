@@ -7,3 +7,4 @@ export const SMART_FOOD_MANAGEMENT_HOME_PAGE = '/home'
 export const SMART_FOOD_MANAGEMENT_WEEKLY_MENU_PAGE = '/weekly-menu'
 
 export const SMART_FOOD_MANAGEMENT_MEAL_PREFERENCE_PAGE = '/set-meal-preference'
+export const SMART_FOOD_MANAGEMENT_FOOD_REVIEW_PAGE = '/meal-feedback'

@@ -2,9 +2,10 @@ import { observable, action } from 'mobx'
 import { API_INITIAL, APIStatus } from '@ib/api-constants'
 
 class MealCardDataModel {
-   @observable getSelectedMealReviewItemsAPIStatus!: APIStatus
-   @observable getSelectedMealReviewItemsAPIError!: Error | null
-   @observable getSelectedMealReviewItemsData
+   @observable getReviewForSelectedMealAPIStatus!: APIStatus
+   @observable getReviewForSelectedMealAPIError!: Error | null
+   @observable getReviewForSelectedMealData
+
    mealId: number
    mealType: string
    mealStartTime: string
@@ -27,26 +28,26 @@ class MealCardDataModel {
    }
 
    init() {
-      this.getSelectedMealReviewItemsAPIStatus = API_INITIAL
-      this.getSelectedMealReviewItemsAPIError = null
-      this.getSelectedMealReviewItemsData = []
+      this.getReviewForSelectedMealAPIStatus = API_INITIAL
+      this.getReviewForSelectedMealAPIError = null
+      this.getReviewForSelectedMealData = []
    }
 
    @action.bound
-   getSelectedMealReviewItemsDataAPI() {
+   getReviewForSelectedMealAPI() {
       const mealReviewPromise = ''
    }
    @action.bound
-   setGetSelectedMealReviewItemsAPIStatus(apiStatus) {
-      this.getSelectedMealReviewItemsAPIStatus = apiStatus
+   setGetReviewForSelectedMealAPIStatus(apiStatus) {
+      this.getReviewForSelectedMealAPIStatus = apiStatus
    }
    @action.bound
-   setGetSelectedMealReviewItemsAPIError(error) {
-      this.getSelectedMealReviewItemsAPIError = error
+   setGetReviewForSelectedMealAPIError(error) {
+      this.getReviewForSelectedMealAPIError = error
    }
 
    @action.bound
-   setGetSelectedMealReviewItemsDataResponse(response) {
+   setGetReviewForSelectedMealResponse(response) {
       console.log(response)
    }
 }

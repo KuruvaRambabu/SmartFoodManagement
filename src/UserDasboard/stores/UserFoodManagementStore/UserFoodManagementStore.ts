@@ -143,6 +143,14 @@ class UserFoodManagementStore {
          }
       )
    }
+
+   @action.bound
+   onClickReviewFood() {
+      const reviewFoodModel = new MealCardDataModel(
+         this.userFoodManagementService
+      )
+      reviewFoodModel.getReviewForSelectedMealAPI()
+   }
 }
 
 export default UserFoodManagementStore

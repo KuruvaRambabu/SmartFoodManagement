@@ -12,5 +12,7 @@
    "savePreference": "Save",
    "backToHomePage": "Back",
    "reviewFood": "Review Food",
-   "Date": "Date : "
+   "Date": "Date : ",
+   "timeLeft": "left",
+   "edit": "Edit"
 }

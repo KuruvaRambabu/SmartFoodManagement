@@ -4,13 +4,18 @@ import { observable } from 'mobx'
 import { formatDistance, compareAsc, format } from 'date-fns'
 import { withRouter, RouteComponentProps } from 'react-router-dom'
 
+import { withTranslation, WithTranslation } from 'react-i18next'
+
 import Button from '../../../../Common/components/Button/Button'
 import {
    Typo14DarkBlueGreyHKGroteskRegularSpan,
    Typo14DarkBlueGreyHKGroteskSemiBold
 } from '../../../../Common/styleGuide/Typos'
 
-import { navigateToSetMealPreferencePage } from '../../../utils/NavigationModule/NavigationModule'
+import {
+   navigateToSetMealPreferencePage,
+   navigateToReviewFoodPage
+} from '../../../utils/NavigationModule/NavigationModule'
 
 import {
    ButtonContainer,
@@ -21,6 +26,8 @@ import {
    ISkippedButtonStyles,
    ReviewButtonStyles
 } from './styledComponents'
+
+interface MealEditAndReviewButtonProps extends WithTranslation {}
 
 interface MealEditAndReviewButtonProps extends RouteComponentProps {
    deadLine: string
@@ -69,11 +76,17 @@ class MealEditAndReviewButton extends Component<MealEditAndReviewButtonProps> {
       const date = format(new Date(selectedMealDate), 'dd-MM-yyyy')
       navigateToSetMealPreferencePage(history, date, mealType)
    }
+
+   onClickReviewFood = () => {
+      const { history, mealType, selectedMealDate } = this.props
+      const date = format(new Date(selectedMealDate), 'dd-MM-yyyy')
+      navigateToReviewFoodPage(history, date, mealType)
+   }
    componentWillUnmount() {
       this.timer
    }
    render() {
-      const { mealType } = this.props
+      const { mealType, t } = this.props
       if (
          this.isWithInTime &&
          !this.isReviewButtonTime &&
@@ -86,7 +99,9 @@ class MealEditAndReviewButton extends Component<MealEditAndReviewButtonProps> {
                   type={Button.buttonType.filled}
                   onClick={this.onClickEditPreferenceButton}
                   buttonStyles={ButtonStyles}
-                  name={`Edit ${this.timeLeft} Left`}
+                  name={`${t('userDashboardModule:edit')} ${this.timeLeft} ${t(
+                     'userDashboardModule:timeLeft'
+                  )}`}
                   id={mealType}
                />
             </ButtonContainer>
@@ -103,7 +118,7 @@ class MealEditAndReviewButton extends Component<MealEditAndReviewButtonProps> {
                   type={Button.buttonType.filled}
                   onClick={this.onClickEditPreferenceButton}
                   buttonStyles={DisableEditButtonStyles}
-                  name={`${this.timeLeft}`}
+                  name={t('userDashboardModule:editClosed')}
                   disabled={true}
                   id={mealType}
                />
@@ -126,7 +141,7 @@ class MealEditAndReviewButton extends Component<MealEditAndReviewButtonProps> {
                   type={Button.buttonType.outline}
                   onClick={this.onClickEditPreferenceButton}
                   buttonStyles={ISkippedButtonStyles}
-                  name={`I skipped `}
+                  name={t('userDashboardModule:iSkipped')}
                   id={mealType}
                />
             </IAteAndSkippedContainer>
@@ -137,9 +152,9 @@ class MealEditAndReviewButton extends Component<MealEditAndReviewButtonProps> {
                <Button
                   typo={Typo14DarkBlueGreyHKGroteskSemiBold}
                   type={Button.buttonType.filled}
-                  onClick={this.onClickEditPreferenceButton}
+                  onClick={this.onClickReviewFood}
                   buttonStyles={ReviewButtonStyles}
-                  name={`${'Review Food'}`}
+                  name={t('userDashboardModule:reviewFood')}
                   id={mealType}
                />
             </ButtonContainer>
@@ -148,4 +163,6 @@ class MealEditAndReviewButton extends Component<MealEditAndReviewButtonProps> {
    }
 }
 
-export default withRouter(MealEditAndReviewButton)
+export default withRouter(
+   withTranslation('translation')(MealEditAndReviewButton)
+)

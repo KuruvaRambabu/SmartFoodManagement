@@ -7,8 +7,10 @@ import MealPreferencePageRoute from './MealPreferencePageRoute/MealPreferencePag
 import {
    SMART_FOOD_MANAGEMENT_HOME_PAGE,
    SMART_FOOD_MANAGEMENT_WEEKLY_MENU_PAGE,
-   SMART_FOOD_MANAGEMENT_MEAL_PREFERENCE_PAGE
+   SMART_FOOD_MANAGEMENT_MEAL_PREFERENCE_PAGE,
+   SMART_FOOD_MANAGEMENT_FOOD_REVIEW_PAGE
 } from '../../Common/routes/RouteConstants'
+import FoodReviewPageRoute from './FoodReviewPageRoute/FoodReviewPageRoute'
 export const userDashboardRoutes = [
    <ProtectedRoute
       key={SMART_FOOD_MANAGEMENT_HOME_PAGE}
@@ -27,5 +29,11 @@ export const userDashboardRoutes = [
       exact
       path={SMART_FOOD_MANAGEMENT_MEAL_PREFERENCE_PAGE}
       component={MealPreferencePageRoute}
+   />,
+   <ProtectedRoute
+      key={SMART_FOOD_MANAGEMENT_HOME_PAGE}
+      exact
+      path={SMART_FOOD_MANAGEMENT_FOOD_REVIEW_PAGE}
+      component={FoodReviewPageRoute}
    />
 ]

@@ -2,7 +2,8 @@ import {
    SMART_FOOD_MANAGEMENT_HOME_PAGE,
    SMART_FOOD_MANAGEMENT_WEEKLY_MENU_PAGE,
    SMART_FOOD_MANAGEMENT_SIGN_IN_PAGE,
-   SMART_FOOD_MANAGEMENT_MEAL_PREFERENCE_PAGE
+   SMART_FOOD_MANAGEMENT_MEAL_PREFERENCE_PAGE,
+   SMART_FOOD_MANAGEMENT_FOOD_REVIEW_PAGE
 } from '../../../Common/routes/RouteConstants'
 
 export const navigateToHomePage = history => {
@@ -16,6 +17,13 @@ export const navigateToWeeklyMenuPage = history => {
 export const navigateToSetMealPreferencePage = (history, date, mealType) => {
    history.push({
       pathname: `${SMART_FOOD_MANAGEMENT_MEAL_PREFERENCE_PAGE}`,
+      search: `?date=${date}&meal_type=${mealType}`
+   })
+}
+
+export const navigateToReviewFoodPage = (history, date, mealType) => {
+   history.push({
+      pathname: `${SMART_FOOD_MANAGEMENT_FOOD_REVIEW_PAGE}`,
       search: `?date=${date}&meal_type=${mealType}`
    })
 }
