@@ -39,7 +39,6 @@ class MealCardDetails extends Component<MealCardDetailsProps> {
    render() {
       const { eachMeal, selectedMealDate } = this.props
       const { itemNames } = eachMeal
-      console.log(eachMeal)
       const startTime = format(new Date(eachMeal.mealStartTime), 'HH:mm')
       const endTime = format(new Date(eachMeal.mealEndTime), 'HH:mm')
       return (

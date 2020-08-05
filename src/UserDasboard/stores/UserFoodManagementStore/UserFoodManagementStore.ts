@@ -29,6 +29,7 @@ class UserFoodManagementStore {
 
    @observable selectedMealDate: Date
 
+   onSelectReviewFood
    constructor(userFoodManagementService) {
       this.userFoodManagementService = userFoodManagementService
       this.selectedMealDate = new Date()
@@ -146,10 +147,10 @@ class UserFoodManagementStore {
 
    @action.bound
    onClickReviewFood() {
-      const reviewFoodModel = new MealCardDataModel(
+      this.onSelectReviewFood = new MealCardDataModel(
          this.userFoodManagementService
       )
-      reviewFoodModel.getReviewForSelectedMealAPI()
+      this.onSelectReviewFood.getReviewForSelectedMealAPI()
    }
 }
 

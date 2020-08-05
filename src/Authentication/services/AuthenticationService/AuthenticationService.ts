@@ -18,7 +18,6 @@ class AuthenticationService implements AuthService {
       })
    }
    signInAPI(requestObject) {
-      console.log(requestObject)
       return networkCallWithApisauce(
          this.api,
          endpoints.signIn,

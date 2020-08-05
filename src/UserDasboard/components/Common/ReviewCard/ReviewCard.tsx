@@ -1,8 +1,25 @@
 import React, { Component } from 'react'
+import { observer } from 'mobx-react'
 
-class ReviewCard extends Component {
+import { ReviewCardMainContainer, ReviewCardWrapper } from './styledComponents'
+import MealCardDataModel from '../../../stores/models/MealCardDataModel/MealCardDataModel'
+
+interface ReviewCardProps {
+   onSelectReviewFood: MealCardDataModel
+}
+@observer
+class ReviewCard extends Component<ReviewCardProps> {
    render() {
-      return <div></div>
+      // const {
+      //    getReviewForSelectedMealAPIStatus,
+      //    getReviewForSelectedMealData
+      // } = this.props.onSelectReviewFood
+      console.log(this.props.onSelectReviewFood)
+      return (
+         <ReviewCardWrapper>
+            <ReviewCardMainContainer>hiii</ReviewCardMainContainer>
+         </ReviewCardWrapper>
+      )
    }
 }
 

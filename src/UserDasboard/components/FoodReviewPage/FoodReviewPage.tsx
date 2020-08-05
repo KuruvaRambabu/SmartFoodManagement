@@ -4,12 +4,16 @@ import { FoodReviewPageMainContainer } from './styledComponents'
 import UserFoodManagementStore from '../../stores/UserFoodManagementStore/UserFoodManagementStore'
 import Header from '../../../Common/components/Header/Header'
 import Banner from '../Banner/Banner'
+import ReviewCard from '../Common/ReviewCard/ReviewCard'
+import { observer } from 'mobx-react'
 interface FoodReviewPagePropsTypes {
    onClickWeeklyMenu: () => void
    selectedPage: string
    onClickHomePage: () => void
    userFoodManagementStore: UserFoodManagementStore
 }
+
+@observer
 class FoodReviewPage extends Component<FoodReviewPagePropsTypes> {
    render() {
       const {
@@ -23,6 +27,7 @@ class FoodReviewPage extends Component<FoodReviewPagePropsTypes> {
          getBannerDataAPIStatus,
          getBannerDataAPIError,
          selectedMealDate,
+         onSelectReviewFood,
          onChangeMealDate
       } = userFoodManagementStore
       return (
@@ -37,6 +42,7 @@ class FoodReviewPage extends Component<FoodReviewPagePropsTypes> {
                getBannerDataAPIStatus={getBannerDataAPIStatus}
                bannerData={bannerData}
             />
+            <ReviewCard onSelectReviewFood={onSelectReviewFood} />
          </FoodReviewPageMainContainer>
       )
    }

@@ -1,0 +1,35 @@
+{
+   "meal_id": 0,
+   "items": [
+      {
+         "item_name": "Idly",
+         "item_id": 1,
+         "quantity": 0,
+         "taste": 0
+      },
+      {
+         "item_name": "Poori",
+         "item_id": 2,
+         "quantity": 0,
+         "taste": 0
+      },
+      {
+         "item_name": "Curry",
+         "item_id": 3,
+         "quantity": 0,
+         "taste": 0
+      },
+      {
+         "item_name": "Fried Rice",
+         "item_id": 4,
+         "quantity": 0,
+         "taste": 0
+      },
+      {
+         "item_name": "Masala Rice",
+         "item_id": 5,
+         "quantity": 0,
+         "taste": 0
+      }
+   ]
+}

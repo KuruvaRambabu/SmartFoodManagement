@@ -17,10 +17,11 @@ interface InjectedProps extends FoodReiviewRouteTypes {
 @observer
 class FoodReviewPageRoute extends Component<FoodReiviewRouteTypes> {
    @observable selectedPage: string = 'home'
-   @observable id
 
    componentDidMount() {
-      this.doNetworkCallForBannerData()
+      if (this.getUserFoodManagementStore().bannerData.length === 0) {
+         this.doNetworkCallForBannerData()
+      } else this.doNetworkCallForSelectedMealReviewItems()
    }
 
    onClickWeeklyMenu = () => {
@@ -36,8 +37,12 @@ class FoodReviewPageRoute extends Component<FoodReiviewRouteTypes> {
       )
    }
 
+   doNetworkCallForSelectedMealReviewItems = () => {
+      this.getUserFoodManagementStore().onClickReviewFood()
+   }
+
    onSuccess = () => {
-      this.getUserFoodManagementStore().getMealCardDataAPI()
+      this.doNetworkCallForSelectedMealReviewItems()
    }
 
    onFailure = () => {
