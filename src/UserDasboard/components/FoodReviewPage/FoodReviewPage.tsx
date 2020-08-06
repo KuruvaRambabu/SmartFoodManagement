@@ -30,6 +30,10 @@ class FoodReviewPage extends Component<FoodReviewPagePropsTypes> {
          onSelectReviewFood,
          onChangeMealDate
       } = userFoodManagementStore
+      console.log(
+         'from food review page',
+         this.props.userFoodManagementStore.onSelectReviewFood
+      )
       return (
          <FoodReviewPageMainContainer>
             <Header

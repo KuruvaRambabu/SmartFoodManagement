@@ -1,6 +1,7 @@
 import styled from '@emotion/styled'
 
 import tw from 'tailwind.macro'
+import { Typo32DarkBlueGreyHKGroteskMedium } from '../../../../Common/styleGuide/Typos'
 
 export const ReviewCardMainContainer = styled.div`
    border-radius: 6px;
@@ -17,3 +18,8 @@ export const ReviewCardWrapper = styled.div`
    position: relative;
    ${tw`w-full flex justify-center items-center   `}
 `
+export const ReviewNameContainer = styled.div`
+   ${tw`ml-10 mt-10`}
+`
+
+export const ReviewName = styled(Typo32DarkBlueGreyHKGroteskMedium)``

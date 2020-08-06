@@ -21,7 +21,9 @@ class FoodReviewPageRoute extends Component<FoodReiviewRouteTypes> {
    componentDidMount() {
       if (this.getUserFoodManagementStore().bannerData.length === 0) {
          this.doNetworkCallForBannerData()
-      } else this.doNetworkCallForSelectedMealReviewItems()
+      } else {
+         this.doNetworkCallForSelectedMealReviewItems()
+      }
    }
 
    onClickWeeklyMenu = () => {

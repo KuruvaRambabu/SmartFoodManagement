@@ -33,6 +33,9 @@ class UserFoodManagementStore {
    constructor(userFoodManagementService) {
       this.userFoodManagementService = userFoodManagementService
       this.selectedMealDate = new Date()
+      this.onSelectReviewFood = new MealCardDataModel(
+         this.userFoodManagementService
+      )
       this.init()
    }
 
@@ -147,9 +150,6 @@ class UserFoodManagementStore {
 
    @action.bound
    onClickReviewFood() {
-      this.onSelectReviewFood = new MealCardDataModel(
-         this.userFoodManagementService
-      )
       this.onSelectReviewFood.getReviewForSelectedMealAPI()
    }
 }

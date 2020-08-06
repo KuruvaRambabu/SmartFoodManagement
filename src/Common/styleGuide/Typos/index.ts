@@ -87,6 +87,7 @@ export const Typo14WhiteHKGroteskSemiBold = styled.span`
 `
 export const Typo32DarkBlueGreyHKGroteskMedium = styled.span`
    font-family: HKGrotesk;
+   height: 41px;
    font-size: 32px;
    font-weight: 500;
    font-stretch: normal;
@@ -95,6 +96,7 @@ export const Typo32DarkBlueGreyHKGroteskMedium = styled.span`
    padding-bottom: 10px;
    border-bottom: 1px solid ${colors.brightBlue};
 `
+
 export const Typo12CoolGreyHKGroteskSemiBold = styled.span`
    font-family: HKGrotesk;
    font-size: 12px;
