@@ -5,11 +5,18 @@ import {
    ReviewCardMainContainer,
    ReviewCardWrapper,
    ReviewNameContainer,
-   ReviewName
+   QuantityAndTasteRatingContainer,
+   ReviewName,
+   ItemDetailsContainer,
+   QuantityHeading,
+   TasteHeading,
+   QuantityHeadingContainer,
+   TasteHeadingContainer
 } from './styledComponents'
 import MealCardDataModel from '../../../stores/models/MealCardDataModel/MealCardDataModel'
 import LoadingWrapperWithFailure from '../../../../Common/components/LoadingWrapperWithFailure'
 import NoDataView from '../../../../Common/components/NoDataView'
+import RatingComponent from '../RatingComponent/RatingComponent'
 
 interface ReviewCardProps {
    onSelectReviewFood: MealCardDataModel
@@ -26,6 +33,19 @@ class ReviewCard extends Component<ReviewCardProps> {
                <ReviewNameContainer>
                   <ReviewName>Review</ReviewName>
                </ReviewNameContainer>
+
+               <QuantityAndTasteRatingContainer>
+                  <ItemDetailsContainer></ItemDetailsContainer>
+                  <QuantityHeadingContainer>
+                     <QuantityHeading>Quantity</QuantityHeading>
+                  </QuantityHeadingContainer>
+                  <TasteHeadingContainer>
+                     <TasteHeading>Taste</TasteHeading>
+                  </TasteHeadingContainer>
+               </QuantityAndTasteRatingContainer>
+               {getReviewForSelectedMealData.map(item => {
+                  return <RatingComponent item={item} key={item.itemId} />
+               })}
             </React.Fragment>
          )
       }
@@ -37,7 +57,7 @@ class ReviewCard extends Component<ReviewCardProps> {
 
          getReviewForSelectedMealAPIError
       } = this.props.onSelectReviewFood
-      console.log('from review card', getReviewForSelectedMealAPIStatus)
+
       const LoadingWrapperWithFailureProps = {
          apiStatus: getReviewForSelectedMealAPIStatus,
          apiError: getReviewForSelectedMealAPIError,

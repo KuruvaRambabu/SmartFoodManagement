@@ -128,3 +128,13 @@ export const Typo14SteelHKGroteskRegular = styled.span`
    letter-spacing: normal;
    color: #7e858e;
 `
+export const Typo20BlackHKGroteskMedium = styled.span`
+   font-family: HKGrotesk;
+   font-size: 20px;
+   font-weight: 500;
+   font-stretch: normal;
+   font-style: normal;
+   line-height: 1.6;
+   letter-spacing: normal;
+   color: #000000;
+`

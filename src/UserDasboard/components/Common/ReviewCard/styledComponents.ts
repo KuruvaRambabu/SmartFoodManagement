@@ -1,7 +1,10 @@
 import styled from '@emotion/styled'
 
 import tw from 'tailwind.macro'
-import { Typo32DarkBlueGreyHKGroteskMedium } from '../../../../Common/styleGuide/Typos'
+import {
+   Typo32DarkBlueGreyHKGroteskMedium,
+   Typo20BlackHKGroteskMedium
+} from '../../../../Common/styleGuide/Typos'
 
 export const ReviewCardMainContainer = styled.div`
    border-radius: 6px;
@@ -23,3 +26,20 @@ export const ReviewNameContainer = styled.div`
 `
 
 export const ReviewName = styled(Typo32DarkBlueGreyHKGroteskMedium)``
+export const QuantityAndTasteRatingContainer = styled.div`
+   ${tw`w-10/12 ml-10 mt-10 flex border border-red-400`}
+`
+
+export const ItemDetailsContainer = styled.div`
+   ${tw`w-1/3 border `}
+`
+export const QuantityHeading = styled(Typo20BlackHKGroteskMedium)``
+export const TasteHeading = styled(Typo20BlackHKGroteskMedium)``
+
+export const QuantityHeadingContainer = styled.div`
+   ${tw`w-1/3 border `}
+`
+
+export const TasteHeadingContainer = styled.div`
+   ${tw`w-1/3 border `}
+`
