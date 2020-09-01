@@ -27,7 +27,7 @@ export const ReviewNameContainer = styled.div`
 
 export const ReviewName = styled(Typo32DarkBlueGreyHKGroteskMedium)``
 export const QuantityAndTasteRatingContainer = styled.div`
-   ${tw`w-10/12 ml-10 mt-10 flex border border-red-400`}
+   ${tw`w-9/12 ml-10 mt-10 flex border border-red-400`}
 `
 
 export const ItemDetailsContainer = styled.div`
@@ -37,9 +37,9 @@ export const QuantityHeading = styled(Typo20BlackHKGroteskMedium)``
 export const TasteHeading = styled(Typo20BlackHKGroteskMedium)``
 
 export const QuantityHeadingContainer = styled.div`
-   ${tw`w-1/3 border `}
+   ${tw`w-1/3 text-center `}
 `
 
 export const TasteHeadingContainer = styled.div`
-   ${tw`w-1/3 border `}
+   ${tw`w-1/3  text-center `}
 `

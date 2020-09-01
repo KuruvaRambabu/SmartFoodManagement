@@ -39,6 +39,7 @@ class ReviewCard extends Component<ReviewCardProps> {
                   <QuantityHeadingContainer>
                      <QuantityHeading>Quantity</QuantityHeading>
                   </QuantityHeadingContainer>
+                  
                   <TasteHeadingContainer>
                      <TasteHeading>Taste</TasteHeading>
                   </TasteHeadingContainer>
