@@ -11,7 +11,8 @@ import {
    QuantityHeading,
    TasteHeading,
    QuantityHeadingContainer,
-   TasteHeadingContainer
+   TasteHeadingContainer,
+   ListOfItemsInTheMenu
 } from './styledComponents'
 import MealCardDataModel from '../../../stores/models/MealCardDataModel/MealCardDataModel'
 import LoadingWrapperWithFailure from '../../../../Common/components/LoadingWrapperWithFailure'
@@ -28,6 +29,7 @@ class ReviewCard extends Component<ReviewCardProps> {
       if (getReviewForSelectedMealData.length === 0) {
          return <NoDataView />
       } else {
+         console.log(getReviewForSelectedMealData)
          return (
             <React.Fragment>
                <ReviewNameContainer>
@@ -37,16 +39,18 @@ class ReviewCard extends Component<ReviewCardProps> {
                <QuantityAndTasteRatingContainer>
                   <ItemDetailsContainer></ItemDetailsContainer>
                   <QuantityHeadingContainer>
-                     <QuantityHeading>Quantity</QuantityHeading>
+                     <QuantityHeading>Quanlity</QuantityHeading>
                   </QuantityHeadingContainer>
-                  
+
                   <TasteHeadingContainer>
                      <TasteHeading>Taste</TasteHeading>
                   </TasteHeadingContainer>
                </QuantityAndTasteRatingContainer>
-               {getReviewForSelectedMealData.map(item => {
-                  return <RatingComponent item={item} key={item.itemId} />
-               })}
+               <ListOfItemsInTheMenu>
+                  {getReviewForSelectedMealData.map(item => {
+                     return <RatingComponent item={item} key={item.itemId} />
+                  })}
+               </ListOfItemsInTheMenu>
             </React.Fragment>
          )
       }

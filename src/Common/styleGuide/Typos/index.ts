@@ -130,6 +130,7 @@ export const Typo14SteelHKGroteskRegular = styled.span`
 `
 export const Typo20BlackHKGroteskMedium = styled.span`
    font-family: HKGrotesk;
+
    font-size: 20px;
    font-weight: 500;
    font-stretch: normal;
