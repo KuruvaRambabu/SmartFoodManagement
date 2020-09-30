@@ -40,3 +40,15 @@ export interface userSelectedMealPreferenceResponseObject {
    selected_status: string
    selected_meal_information: Array<selectedMealInformationData>
 }
+
+export interface reviewForSelectedFoodItemsObject {
+   meal_id: number
+   items: Array<foodItems>
+}
+
+export interface foodItems {
+   item_name: string
+   item_id: number
+   quantity: number
+   taste: number
+}

@@ -39,6 +39,7 @@ class MealCardDataModel {
 
    @action.bound
    getReviewForSelectedMealAPI() {
+      console.log('model')
       const mealReviewPromise = this.apiService.getReviewForSelectedMealAPI()
       return bindPromiseWithOnSuccess(mealReviewPromise)
          .to(this.setGetReviewForSelectedMealAPIStatus, response => {

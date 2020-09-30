@@ -26,29 +26,28 @@ class FoodReviewPage extends Component<FoodReviewPagePropsTypes> {
          bannerData,
          getBannerDataAPIStatus,
          getBannerDataAPIError,
-         selectedMealDate,
          onSelectReviewFood,
          onChangeMealDate
       } = userFoodManagementStore
-      console.log(
-         'from food review page',
-         this.props.userFoodManagementStore.onSelectReviewFood
-      )
-      return (
-         <FoodReviewPageMainContainer>
-            <Header
-               onClickWeeklyMenu={onClickWeeklyMenu}
-               onClickHomePage={onClickHomePage}
-               selectedPage={selectedPage}
-            />
-            <Banner
-               getBannerDataAPIError={getBannerDataAPIError}
-               getBannerDataAPIStatus={getBannerDataAPIStatus}
-               bannerData={bannerData}
-            />
-            <ReviewCard onSelectReviewFood={onSelectReviewFood} />
-         </FoodReviewPageMainContainer>
-      )
+      console.log('FoodReviewPage', onSelectReviewFood)
+      if (onSelectReviewFood) {
+         return (
+            <FoodReviewPageMainContainer>
+               <Header
+                  onClickWeeklyMenu={onClickWeeklyMenu}
+                  onClickHomePage={onClickHomePage}
+                  selectedPage={selectedPage}
+               />
+               <Banner
+                  getBannerDataAPIError={getBannerDataAPIError}
+                  getBannerDataAPIStatus={getBannerDataAPIStatus}
+                  bannerData={bannerData}
+               />
+               <ReviewCard onSelectReviewFood={onSelectReviewFood} />
+            </FoodReviewPageMainContainer>
+         )
+      }
+      return null
    }
 }
 

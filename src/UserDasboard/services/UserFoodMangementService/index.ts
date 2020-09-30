@@ -1,7 +1,8 @@
 import {
    BannerDataResponseObject,
    MealCardDataResponseObject,
-   userSelectedMealPreferenceResponseObject
+   userSelectedMealPreferenceResponseObject,
+   reviewForSelectedFoodItemsObject
 } from '../../stores/types'
 
 interface UserFoodManagementService {
@@ -10,6 +11,7 @@ interface UserFoodManagementService {
    getUserMealPreferenceDetailsDataAPI(): Promise<
       userSelectedMealPreferenceResponseObject
    >
+   getReviewForSelectedMealAPI(): Promise<reviewForSelectedFoodItemsObject>
 }
 
 export default UserFoodManagementService

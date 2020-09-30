@@ -19,7 +19,6 @@ interface RatingComponentProps {
 class RatingComponent extends Component<RatingComponentProps> {
    render() {
       const { item } = this.props
-      console.log(item)
       return (
          <RatingComponentMainContainer>
             <ItemDetailsComponent>

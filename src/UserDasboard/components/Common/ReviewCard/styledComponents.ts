@@ -47,3 +47,14 @@ export const TasteHeadingContainer = styled.div`
 export const ListOfItemsInTheMenu = styled.div`
    ${tw`w-9/12 ml-10 flex flex-col `}
 `
+export const WriteYourReviewContainer = styled.div`
+   ${tw`ml-20 mt-10`}
+`
+export const WriteYourReviewInputField = styled.textarea`
+   font-family: HKGrotesk;
+   font-size: 14px;
+   width: 516px;
+   height: 81px;
+   border-radius: 2px;
+   ${tw`text-xl p-4 border border-gray-300`}
+`

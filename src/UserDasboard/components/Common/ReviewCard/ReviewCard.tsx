@@ -1,6 +1,12 @@
 import React, { Component } from 'react'
 import { observer } from 'mobx-react'
 
+import MealCardDataModel from '../../../stores/models/MealCardDataModel/MealCardDataModel'
+import LoadingWrapperWithFailure from '../../../../Common/components/LoadingWrapperWithFailure'
+import NoDataView from '../../../../Common/components/NoDataView'
+
+import RatingComponent from '../RatingComponent/RatingComponent'
+
 import {
    ReviewCardMainContainer,
    ReviewCardWrapper,
@@ -12,24 +18,28 @@ import {
    TasteHeading,
    QuantityHeadingContainer,
    TasteHeadingContainer,
-   ListOfItemsInTheMenu
+   ListOfItemsInTheMenu,
+   WriteYourReviewContainer,
+   WriteYourReviewInputField
 } from './styledComponents'
-import MealCardDataModel from '../../../stores/models/MealCardDataModel/MealCardDataModel'
-import LoadingWrapperWithFailure from '../../../../Common/components/LoadingWrapperWithFailure'
-import NoDataView from '../../../../Common/components/NoDataView'
-import RatingComponent from '../RatingComponent/RatingComponent'
+import { observable } from 'mobx'
 
 interface ReviewCardProps {
    onSelectReviewFood: MealCardDataModel
 }
 @observer
 class ReviewCard extends Component<ReviewCardProps> {
+   @observable customReview: string = ''
+
+   onChangeReview = event => {
+      this.customReview = event.target.value
+   }
+
    renderReviewItems = observer(() => {
       const { getReviewForSelectedMealData } = this.props.onSelectReviewFood
       if (getReviewForSelectedMealData.length === 0) {
          return <NoDataView />
       } else {
-         console.log(getReviewForSelectedMealData)
          return (
             <React.Fragment>
                <ReviewNameContainer>
@@ -51,6 +61,13 @@ class ReviewCard extends Component<ReviewCardProps> {
                      return <RatingComponent item={item} key={item.itemId} />
                   })}
                </ListOfItemsInTheMenu>
+               <WriteYourReviewContainer>
+                  <WriteYourReviewInputField
+                     placeholder='Write review'
+                     onChange={this.onChangeReview}
+                     value={this.customReview}
+                  ></WriteYourReviewInputField>
+               </WriteYourReviewContainer>
             </React.Fragment>
          )
       }

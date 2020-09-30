@@ -19,11 +19,7 @@ class FoodReviewPageRoute extends Component<FoodReiviewRouteTypes> {
    @observable selectedPage: string = 'home'
 
    componentDidMount() {
-      if (this.getUserFoodManagementStore().bannerData.length === 0) {
-         this.doNetworkCallForBannerData()
-      } else {
-         this.doNetworkCallForSelectedMealReviewItems()
-      }
+      this.doNetworkCallForBannerData()
    }
 
    onClickWeeklyMenu = () => {
@@ -63,6 +59,9 @@ class FoodReviewPageRoute extends Component<FoodReiviewRouteTypes> {
 
    render() {
       const userFoodManagementStore = this.getUserFoodManagementStore()
+      console.log('food review page routee', userFoodManagementStore)
+      const { onSelectReviewFood } = userFoodManagementStore
+      console.log('route', onSelectReviewFood)
       return (
          <FoodReviewPage
             selectedPage={this.selectedPage}

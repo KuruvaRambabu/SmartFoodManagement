@@ -1,8 +1,6 @@
 import React from 'react'
 import {
    InputElement,
-   ErrorImageContainer,
-   ErrorImage,
    InputFieldContainer,
    ErrorMessage
 } from './styledComponents'
@@ -29,8 +27,7 @@ class InputField extends React.Component<InputFieldTypes> {
          onChangeField,
          errorMessage,
          validate,
-         forwardRef,
-         isError
+         forwardRef
       } = this.props
       return (
          <InputFieldContainer>
@@ -50,9 +47,3 @@ class InputField extends React.Component<InputFieldTypes> {
 }
 
 export default InputField
-
-//  <ErrorImage src={InputErrorLogo}></ErrorImage>{errorMessage ? (
-// <ErrorImageContainer>{errorMessage}</ErrorImageContainer>
-// ) : (
-//    ''
-// )}

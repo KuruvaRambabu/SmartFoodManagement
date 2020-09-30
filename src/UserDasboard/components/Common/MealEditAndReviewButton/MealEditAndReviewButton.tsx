@@ -80,6 +80,7 @@ class MealEditAndReviewButton extends Component<MealEditAndReviewButtonProps> {
    onClickReviewFood = () => {
       const { history, mealType, selectedMealDate } = this.props
       const date = format(new Date(selectedMealDate), 'dd-MM-yyyy')
+
       navigateToReviewFoodPage(history, date, mealType)
    }
    componentWillUnmount() {
