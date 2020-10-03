@@ -11,6 +11,7 @@ interface FoodReviewPagePropsTypes {
    selectedPage: string
    onClickHomePage: () => void
    userFoodManagementStore: UserFoodManagementStore
+   onClickRetry: () => void
 }
 
 @observer
@@ -20,7 +21,8 @@ class FoodReviewPage extends Component<FoodReviewPagePropsTypes> {
          onClickWeeklyMenu,
          onClickHomePage,
          selectedPage,
-         userFoodManagementStore
+         userFoodManagementStore,
+         onClickRetry
       } = this.props
       const {
          bannerData,
@@ -29,25 +31,26 @@ class FoodReviewPage extends Component<FoodReviewPagePropsTypes> {
          onSelectReviewFood,
          onChangeMealDate
       } = userFoodManagementStore
-      console.log('FoodReviewPage', onSelectReviewFood)
-      if (onSelectReviewFood) {
-         return (
-            <FoodReviewPageMainContainer>
-               <Header
-                  onClickWeeklyMenu={onClickWeeklyMenu}
-                  onClickHomePage={onClickHomePage}
-                  selectedPage={selectedPage}
-               />
-               <Banner
-                  getBannerDataAPIError={getBannerDataAPIError}
-                  getBannerDataAPIStatus={getBannerDataAPIStatus}
-                  bannerData={bannerData}
-               />
+
+      return (
+         <FoodReviewPageMainContainer>
+            <Header
+               onClickWeeklyMenu={onClickWeeklyMenu}
+               onClickHomePage={onClickHomePage}
+               selectedPage={selectedPage}
+            />
+            <Banner
+               getBannerDataAPIError={getBannerDataAPIError}
+               getBannerDataAPIStatus={getBannerDataAPIStatus}
+               bannerData={bannerData}
+               onClickRetry={onClickRetry}
+            />
+
+            {onSelectReviewFood ? (
                <ReviewCard onSelectReviewFood={onSelectReviewFood} />
-            </FoodReviewPageMainContainer>
-         )
-      }
-      return null
+            ) : null}
+         </FoodReviewPageMainContainer>
+      )
    }
 }
 

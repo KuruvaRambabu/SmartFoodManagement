@@ -5,6 +5,7 @@ import {
    Typo32DarkBlueGreyHKGroteskMedium,
    Typo20BlackHKGroteskMedium
 } from '../../../../Common/styleGuide/Typos'
+import { css } from '@emotion/core'
 
 export const ReviewCardMainContainer = styled.div`
    border-radius: 6px;
@@ -19,7 +20,7 @@ export const ReviewCardMainContainer = styled.div`
 export const ReviewCardWrapper = styled.div`
    height: 627px;
    position: relative;
-   ${tw`w-full flex justify-center items-center   `}
+   ${tw` flex w-11/12 justify-center items-center   `}
 `
 export const ReviewNameContainer = styled.div`
    ${tw`ml-10 mt-10`}
@@ -56,5 +57,16 @@ export const WriteYourReviewInputField = styled.textarea`
    width: 516px;
    height: 81px;
    border-radius: 2px;
-   ${tw`text-xl p-4 border border-gray-300`}
+   ${tw`text-xl p-4 focus:outline-none resize-none	 border border-gray-300`}
+`
+
+export const ReviewButtonContainer = styled.div`
+   ${tw`w-full flex justify-center`}
+`
+export const ReviewButtonStyles = css`
+   width: 71px;
+   border-radius: 4px;
+   height: 40px;
+   background-color: #1db05f;
+   margin: 10px;
 `

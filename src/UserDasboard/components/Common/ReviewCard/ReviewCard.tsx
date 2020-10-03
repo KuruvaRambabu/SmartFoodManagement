@@ -20,9 +20,19 @@ import {
    TasteHeadingContainer,
    ListOfItemsInTheMenu,
    WriteYourReviewContainer,
-   WriteYourReviewInputField
+   WriteYourReviewInputField,
+   ReviewButtonContainer,
+   ReviewButtonStyles
 } from './styledComponents'
 import { observable } from 'mobx'
+import Button from '../../../../Common/components/Button/Button'
+import { Typo14WhiteHKGroteskSemiBold } from '../../../../Common/styleGuide/Typos'
+import { goToHomePage } from '../../../../Authentication/utils/NavigationModule/NavigationModule'
+import { SMART_FOOD_MANAGEMENT_HOME_PAGE } from '../../../../Common/routes/RouteConstants'
+import { RouteComponentProps, withRouter } from 'react-router-dom'
+import { navigateToHomePage } from '../../../utils/NavigationModule/NavigationModule'
+
+interface ReviewCardProps extends RouteComponentProps {}
 
 interface ReviewCardProps {
    onSelectReviewFood: MealCardDataModel
@@ -34,9 +44,14 @@ class ReviewCard extends Component<ReviewCardProps> {
    onChangeReview = event => {
       this.customReview = event.target.value
    }
+   onClickReviewDoneButton = () => {
+      const { history } = this.props
+      navigateToHomePage(history)
+   }
 
    renderReviewItems = observer(() => {
       const { getReviewForSelectedMealData } = this.props.onSelectReviewFood
+      console.log('hello', getReviewForSelectedMealData)
       if (getReviewForSelectedMealData.length === 0) {
          return <NoDataView />
       } else {
@@ -68,6 +83,15 @@ class ReviewCard extends Component<ReviewCardProps> {
                      value={this.customReview}
                   ></WriteYourReviewInputField>
                </WriteYourReviewContainer>
+               <ReviewButtonContainer>
+                  <Button
+                     onClick={this.onClickReviewDoneButton}
+                     type={Button.buttonType.filled}
+                     typo={Typo14WhiteHKGroteskSemiBold}
+                     name={'save'}
+                     buttonStyles={ReviewButtonStyles}
+                  />
+               </ReviewButtonContainer>
             </React.Fragment>
          )
       }
@@ -95,5 +119,4 @@ class ReviewCard extends Component<ReviewCardProps> {
       )
    }
 }
-
-export default ReviewCard
+export default withRouter(ReviewCard)

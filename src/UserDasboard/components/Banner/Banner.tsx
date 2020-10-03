@@ -13,6 +13,7 @@ interface BannerProps {
    bannerData: Array<BannerDataModel>
    getBannerDataAPIStatus: APIStatus
    getBannerDataAPIError: Error | null
+   onClickRetry?: () => void
 }
 @observer
 class Banner extends React.Component<BannerProps> {
@@ -72,15 +73,19 @@ class Banner extends React.Component<BannerProps> {
          </BannerAnim>
       )
    })
-   onRetryClick = () => {}
 
    render() {
-      const { getBannerDataAPIError, getBannerDataAPIStatus } = this.props
+      const {
+         getBannerDataAPIError,
+         getBannerDataAPIStatus,
+         onClickRetry
+      } = this.props
+
       const loadingWrapperWithFailureProps = {
          apiStatus: getBannerDataAPIStatus,
          apiError: getBannerDataAPIError,
          renderSuccessUI: this.renderBannerSuccessUI,
-         onRetryClick: this.onRetryClick
+         onRetryClick: onClickRetry
       }
       return <LoadingWrapperWithFailure {...loadingWrapperWithFailureProps} />
    }

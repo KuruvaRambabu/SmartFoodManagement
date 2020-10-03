@@ -17,8 +17,13 @@ interface RatingComponentProps {
 
 @observer
 class RatingComponent extends Component<RatingComponentProps> {
+   onChangeQualityRating = (rating: any) => {
+      console.log('hello rambabu', rating)
+   }
+
    render() {
       const { item } = this.props
+      console.log('rating component', item)
       return (
          <RatingComponentMainContainer>
             <ItemDetailsComponent>
@@ -27,9 +32,10 @@ class RatingComponent extends Component<RatingComponentProps> {
             <QuanlityRatingContainer>
                <Rating
                   icon='star'
-                  defaultRating={item.quantityRating}
                   maxRating={5}
+                  defaultRating={item.quantityRating}
                   size='huge'
+                  onRate={rating => this.onChangeQualityRating(rating)}
                />
             </QuanlityRatingContainer>
             <TasteRatingContainer>

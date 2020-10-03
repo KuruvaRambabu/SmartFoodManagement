@@ -3,10 +3,10 @@ import tw from 'tailwind.macro'
 import MealCard from './MealCard'
 
 export const MealCardMainContainer = styled.div`
-   ${tw``}
+   ${tw`flex  justify-center items-center flex-col`}
 `
 export const CardsContainer = styled.div`
-   ${tw`flex flex-wrap justify-around  xl:mx-10  `}
+   ${tw`flex w-10/12 flex-wrap justify-around    `}
 `
 export const DatePickerContainer = styled.div`
    ${tw`w-full h-32 flex justify-center  items-center `}

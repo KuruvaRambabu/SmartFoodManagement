@@ -131,7 +131,7 @@ class MealEditAndReviewButton extends Component<MealEditAndReviewButtonProps> {
                <Button
                   typo={Typo14DarkBlueGreyHKGroteskRegularSpan}
                   type={Button.buttonType.filled}
-                  onClick={this.onClickEditPreferenceButton}
+                  onClick={this.onClickReviewFood}
                   buttonStyles={IAteItButtonStyles}
                   name={`I Ate it`}
                   id={mealType}

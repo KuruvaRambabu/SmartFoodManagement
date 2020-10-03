@@ -56,6 +56,9 @@ class FoodReviewPageRoute extends Component<FoodReiviewRouteTypes> {
    getUserFoodManagementStore = () => {
       return this.getInjectedProps().userFoodManagementStore
    }
+   onClickRetry = () => {
+      this.doNetworkCallForBannerData()
+   }
 
    render() {
       const userFoodManagementStore = this.getUserFoodManagementStore()
@@ -68,6 +71,7 @@ class FoodReviewPageRoute extends Component<FoodReiviewRouteTypes> {
             onClickHomePage={this.onClickHomePage}
             onClickWeeklyMenu={this.onClickWeeklyMenu}
             userFoodManagementStore={userFoodManagementStore}
+            onClickRetry={this.onClickRetry}
          />
       )
    }
