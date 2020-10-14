@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { observer } from 'mobx-react'
 
+import StarRatings from 'react-star-ratings'
 import {
    RatingComponentMainContainer,
    ItemDetailsComponent,
@@ -9,6 +10,7 @@ import {
    TasteRatingContainer
 } from './styledomponents'
 import ReviewForSelectedMealItemsModel from '../../../stores/models/ReviewForSelectedMealItemsModel/ReviewForSelectedMealItemsModel'
+
 import { Rating } from 'semantic-ui-react'
 
 interface RatingComponentProps {
@@ -20,30 +22,36 @@ class RatingComponent extends Component<RatingComponentProps> {
    onChangeQualityRating = (rating: any) => {
       console.log('hello rambabu', rating)
    }
-
+   changeRating = () => {}
    render() {
       const { item } = this.props
-      console.log('rating component', item)
       return (
          <RatingComponentMainContainer>
             <ItemDetailsComponent>
                <Name> {item.itemName}</Name>
             </ItemDetailsComponent>
             <QuanlityRatingContainer>
-               <Rating
-                  icon='star'
-                  maxRating={5}
-                  defaultRating={item.quantityRating}
-                  size='huge'
-                  onRate={rating => this.onChangeQualityRating(rating)}
+               <StarRatings
+                  rating={item.quanlityRating}
+                  starRatedColor='#ffd11a'
+                  changeRating={item.onChangeQualityRating}
+                  numberOfStars={5}
+                  name='rating'
+                  starDimension='23px'
+                  starHoverColor=' #ffd11a'
+                  starSpacing='3px'
                />
             </QuanlityRatingContainer>
             <TasteRatingContainer>
-               <Rating
-                  icon='star'
-                  defaultRating={item.tasteRating}
-                  maxRating={5}
-                  size='huge'
+               <StarRatings
+                  rating={item.tasteRating}
+                  starRatedColor='#ffd11a'
+                  changeRating={item.onChangeTasteRating}
+                  numberOfStars={5}
+                  name='rating'
+                  starDimension='23px'
+                  starSpacing='3px'
+                  starHoverColor=' #ffd11a'
                />
             </TasteRatingContainer>
          </RatingComponentMainContainer>
