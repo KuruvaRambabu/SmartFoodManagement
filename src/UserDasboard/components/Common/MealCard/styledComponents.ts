@@ -6,7 +6,7 @@ export const MealCardMainContainer = styled.div`
    ${tw`flex  justify-center items-center flex-col`}
 `
 export const CardsContainer = styled.div`
-   ${tw`flex w-10/12 flex-wrap justify-around    `}
+   ${tw`flex w-10/12 flex-wrap justify-around  rounded-md   `}
 `
 export const DatePickerContainer = styled.div`
    ${tw`w-full h-32 flex justify-center  items-center `}

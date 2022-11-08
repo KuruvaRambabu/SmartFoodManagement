@@ -13,9 +13,9 @@ export const InputElement = styled.input`
    border: 1px solid
       ${(props: borerType) => (props.border === 'red' ? 'red' : colors.steel)};
    color: ${colors.darkBlueGrey};
-
    font-size: 16px;
-   ${tw`focus:outline-none w-full h-10 `};
+   padding:16px 16px;
+   ${tw`focus:outline-none w-full h-12 rounded-md`};
 `
 export const InputFieldContainer = styled.div`
    ${tw``}

@@ -37,9 +37,9 @@ class RatingComponent extends Component<RatingComponentProps> {
                   changeRating={item.onChangeQualityRating}
                   numberOfStars={5}
                   name='rating'
-                  starDimension='23px'
+                  starDimension='20px'
                   starHoverColor=' #ffd11a'
-                  starSpacing='3px'
+                  starSpacing='2px'
                />
             </QuanlityRatingContainer>
             <TasteRatingContainer>
@@ -49,8 +49,8 @@ class RatingComponent extends Component<RatingComponentProps> {
                   changeRating={item.onChangeTasteRating}
                   numberOfStars={5}
                   name='rating'
-                  starDimension='23px'
-                  starSpacing='3px'
+                  starDimension='20px'
+                  starSpacing='2px'
                   starHoverColor=' #ffd11a'
                />
             </TasteRatingContainer>

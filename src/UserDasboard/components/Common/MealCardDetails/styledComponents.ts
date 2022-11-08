@@ -10,7 +10,7 @@ import { css } from '@emotion/core'
 
 export const MealCardDetailsMainContainer = styled.div`
    height: 290px;
-   ${tw` border m-2 shadow-md w-full md:w-2/5 md:m-2 xl:w-1/4`}
+${tw` border m-2  rounded-md shadow-md w-full md:w-full md:m-2 xl:w-1/4`}
 `
 export const IconAndPreferredMealContainer = styled.div`
    ${tw`p-2  mt-4  flex w-full justify-center`}

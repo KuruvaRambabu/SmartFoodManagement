@@ -8,7 +8,7 @@ type PrimarySignInButtonProps = {
 }
 
 export const BaseBtn = styled.button`
-   ${tw`w-full h-8 mt-4 text-white flex justify-center items-center rounded focus:outline-none`};
+   ${tw`w-full h-12 mt-4 text-white flex justify-center items-center rounded focus:outline-none`};
    background: ${colors.brightBlue};
    font-family: Rubik;
    font-size: 14px;

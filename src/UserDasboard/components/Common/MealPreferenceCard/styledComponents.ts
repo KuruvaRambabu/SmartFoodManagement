@@ -1,5 +1,5 @@
 import styled from '@emotion/styled'
-import tw from 'tailwind.macro'
+import tw from "tailwind.macro"
 import { Typo32DarkBlueGreyHKGroteskMedium } from '../../../../Common/styleGuide/Typos'
 import { css } from '@emotion/core'
 import { Colors } from '../../../themes/Colors'

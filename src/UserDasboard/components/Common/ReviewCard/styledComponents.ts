@@ -49,7 +49,7 @@ export const ListOfItemsInTheMenu = styled.div`
    ${tw`w-9/12 ml-10 flex flex-col `}
 `
 export const WriteYourReviewContainer = styled.div`
-   ${tw`ml-20 mt-10`}
+   ${tw`mt-10 w-full flex justify-center items-center`}
 `
 export const WriteYourReviewInputField = styled.textarea`
    font-family: HKGrotesk;

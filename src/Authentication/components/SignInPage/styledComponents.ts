@@ -70,8 +70,8 @@ export const ButtonStyles = css`
    background-color: blue;
 `
 export const EmailInputFieldContainer = styled.div`
-   ${tw`h-20 `}
+   ${tw`h-24 rounded-md	 `}
 `
 export const PasswordInputFieldContainer = styled.div`
-   ${tw`h-20 `}
+   ${tw`h-24 `}
 `
